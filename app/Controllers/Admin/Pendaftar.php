@@ -7,9 +7,10 @@ class Pendaftar extends BaseController
 {
     public function index()
     {
-        if($this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+        if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $data = [
+            "record" => $this->pribadi->find(),
             "judul" => "Data Pendaftar"
         ];
 

@@ -34,16 +34,19 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php
+                  foreach ($record as $key => $v) { ?>
                   <tr>
                     <td>
                       <button class="btn btn-sm btn-info ubahModal" title="Ubah data"><i class="fa fa-pencil-alt"></i></button>
                       <button class="btn btn-sm btn-danger delete_data" title="Hapus data"><i class="fa fa-trash"></i></button>
                     </td>
-                    <td>Saya Siapa</td>
-                    <td>SDN 02 Merauke</td>
+                    <td><?=$v['nama']?></td>
+                    <td><?=$v['asl_sekolah']?></td>
                     <td>87</td>
                     <td>Lulus</td>
                   </tr>
+                  <?php  } ?>
                 </tbody>
               </table>
 

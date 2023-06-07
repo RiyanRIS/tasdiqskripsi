@@ -7,7 +7,9 @@ class Home extends BaseController
 {
     public function index()
     {
-        if($this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+        // var_dump(session()->get());
+        // var_dump($this->isSecure()); die();
+        if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $data = [
             "judul" => "Dashboard"

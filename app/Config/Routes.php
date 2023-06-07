@@ -32,6 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 
 $routes->match(['get', 'post'] ,'login', 'Auth::login');
+$routes->match(['get', 'post'] ,'daftar', 'Auth::daftar');
 $routes->get('logout', 'Auth::logout');
 
 $routes->group('admin', function ($routes) {

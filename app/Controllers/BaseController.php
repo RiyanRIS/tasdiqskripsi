@@ -34,7 +34,7 @@ abstract class BaseController extends Controller
 
     protected $session;
     protected $validation;
-    protected $image;
+    // protected $image;
 
     protected $cfg;
 
@@ -76,41 +76,44 @@ abstract class BaseController extends Controller
 
         $this->session      = \Config\Services::session();
         $this->validation 	= \Config\Services::validation();
-        $this->image        = \Config\Services::image();
+        // $this->image        = \Config\Services::image();
 
         $this->auth = new AuthModel();
         $this->authuser = new AuthUserModel();
         $this->admin = new AdminModel();
         $this->pribadi = new PribadiModel();
 
-        
     }
 
     function isAdmin():bool{
-        if(session()->get('isAdmin') != true){
+        if(session()->get('isAdmin') == true){
             return true;
         }
         return false;
     }
 
     function isLogin():bool{
-        if(session()->get('isLogin') != true){
+        if(session()->get('isLogin') == true){
             return true;
         }
         return false;
     }
 
-    function isSecure($who = 'admin'):bool
+    function isSecure($who = 'admin')
     {
-        if($this->isLogin()){
+        if(session()->get('isLogin')){
             if($who == 'admin'){
-                if($this->isAdmin()){
+                if(session()->get('isAdmin')){
                     return true;
                 } else {
                     return false;
                 }
-            } else {
-                return true;
+            } else if($who == 'user') {
+                if(session()->get('isAdmin')){
+                    return false;
+                } else {
+                    return true;
+                }
             }
         }
         return false;
