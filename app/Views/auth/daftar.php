@@ -101,6 +101,18 @@ $cfg = new \SConfig();
         </div>
 
         <div class="mb-3">
+          <label for="jurusan">Jurusan</label>
+          <select class="custom-select d-block w-100" name="jurusan" id="jurusan" required>
+              <option value="">--- Pilih Jurusan ---</option>
+              <option value="IPA">IPA</option>
+              <option value="IPS">IPS</option>
+            </select>
+          <div class="invalid-feedback">
+            <?=@$err['jurusan']?>
+          </div>
+        </div>
+
+        <div class="mb-3">
           <label for="email">Email</label>
           <input type="email" class="form-control" name="email" id="email" placeholder="" value="<?=@$post['email']?>" required>
           <div class="invalid-feedback">

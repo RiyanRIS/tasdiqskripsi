@@ -44,7 +44,7 @@ $routes->group('admin', function ($routes) {
     $routes->group('pendaftar', function ($routes) {
         $routes->get('/', 'Admin\Pendaftar::index');
         $routes->get('tes', 'Admin\Pendaftar::tes');
-        $routes->get('nilai/(:any)', 'Admin\Pendaftar::nilai/$1');
+        $routes->get('detail/(:any)', 'Admin\Pendaftar::detail/$1');
 
         $routes->group('ubah', function ($routes) {
             $routes->post('datamasuk', 'Admin\Pendaftar::ubahdatamasuk');

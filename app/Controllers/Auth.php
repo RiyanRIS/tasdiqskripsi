@@ -49,7 +49,20 @@ class Auth extends BaseController
 				// inisialisasi data yang akan dimasukkan ke database
 				$additionalData = $this->request->getPost();
 
+				$additionalData['id_angkatan'] = $this->angkatanAktif;
 				$additionalData['password'] =  password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
+
+				// Cek Valid Username
+				$isValidUsername = $this->pribadi->isValidUsername($additionalData['username']);
+				if(!$isValidUsername){
+					$data = [
+						'post' => $this->request->getPost(),
+						'err' => ['username' => "Username telah digunakan"]
+					];
+					session()->setFlashdata('msg', [0, "Username telah digunakan"]);
+
+					return view('auth/daftar', $data);
+				}
 
 				// Input ke database
 				$lastid = $this->pribadi->simpan($additionalData);

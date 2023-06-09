@@ -10,24 +10,24 @@ class Pendaftar extends BaseController
         if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $data = [
-            "record" => $this->pribadi->find(),
+            "record" => $this->pribadi->where('tbl_dt_pribadi.id_angkatan', $this->angkatanAktif)->join('tbl_angkatan', 'tbl_angkatan.id_angkatan = tbl_dt_pribadi.id_angkatan')->find(),
             "judul" => "Data Pendaftar"
         ];
 
         return view('admin/pendaftar/index', $data);
     }
 
-    public function nilai($id)
+    public function detail($id)
     {
         if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $data = [
             "record" => $this->pribadi->find($id),
             "nilai" => $this->nilai->find($id),
-            "judul" => "Halaman Nilai Pendaftar"
+            "judul" => "Halaman Detail Pendaftar"
         ];
 
-        return view('admin/pendaftar/nilai', $data);
+        return view('admin/pendaftar/detail', $data);
     }
 
     public function ubahdatamasuk()
@@ -269,11 +269,6 @@ class Pendaftar extends BaseController
       }
       echo json_encode($msg);
       die();
-    }
-
-    function tes()
-    {
-      var_dump($this->pribadi->isValidUsername('1234', '2'));
     }
 
 }

@@ -11,6 +11,7 @@ use Psr\Log\LoggerInterface;
 
 use \App\Models\AuthModel;
 use \App\Models\AuthUserModel;
+use \App\Models\AngkatanModel;
 use \App\Models\AdminModel;
 use \App\Models\PribadiModel;
 use \App\Models\NilaiModel;
@@ -41,9 +42,12 @@ abstract class BaseController extends Controller
 
     protected $auth;
     protected $authuser;
+    protected $angkatan;
     protected $admin;
     protected $pribadi;
     protected $nilai;
+
+    protected $angkatanAktif;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -83,9 +87,15 @@ abstract class BaseController extends Controller
         $this->auth = new AuthModel();
         $this->authuser = new AuthUserModel();
         $this->admin = new AdminModel();
+        $this->angkatan = new AngkatanModel();
         $this->pribadi = new PribadiModel();
         $this->nilai = new NilaiModel();
 
+        $this->angkatanAktif = $this->angkatan->isActive()->id_angkatan;
+    }
+
+    function angkatanAktif(){
+        return $this->angkatan->isActive()[0]->id;
     }
 
     function isAdmin():bool{
