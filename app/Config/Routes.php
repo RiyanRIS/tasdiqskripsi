@@ -43,6 +43,14 @@ $routes->group('admin', function ($routes) {
 
     $routes->group('pendaftar', function ($routes) {
         $routes->get('/', 'Admin\Pendaftar::index');
+        $routes->get('tes', 'Admin\Pendaftar::tes');
+        $routes->get('nilai/(:any)', 'Admin\Pendaftar::nilai/$1');
+
+        $routes->group('ubah', function ($routes) {
+            $routes->post('datamasuk', 'Admin\Pendaftar::ubahdatamasuk');
+            $routes->post('datanilai', 'Admin\Pendaftar::ubahdatanilai');
+            $routes->post('datapribadi', 'Admin\Pendaftar::ubahdatapribadi');
+        });
     });
 
     $routes->group('laporan', function ($routes) {

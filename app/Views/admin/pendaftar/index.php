@@ -19,7 +19,8 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">DataTable with minimal features & hover style</h3>
+              <!-- <h3 class="card-title">DataTable with minimal features & hover style</h3> -->
+              <a target="_BLANK" href="<?=site_url('daftar')?>" class="btn btn-success">Tambah Peserta</a>
             </div>
 
             <div class="card-body">
@@ -29,7 +30,6 @@
                     <th>#</th>
                     <th>NAMA</th>
                     <th>ASAL SEKOLAH</th>
-                    <th>NILAI</th>
                     <th>STATUS</th>
                   </tr>
                 </thead>
@@ -38,12 +38,14 @@
                   foreach ($record as $key => $v) { ?>
                   <tr>
                     <td>
-                      <button class="btn btn-sm btn-info ubahModal" title="Ubah data"><i class="fa fa-pencil-alt"></i></button>
+                      <a href="<?=site_url('admin/pendaftar/nilai/' . $v['id'])?>" class="btn btn-sm btn-prim ubahModal" title="Edit Nilai"><i class="fa fa-pencil-alt"></i></a>
+                      <button class="btn btn-sm btn-prim ubahModal" title="Detail"><i class="fa fa-eye"></i></button>
+                      <button class="btn btn-sm btn-prim ubahModal" title="Upload Berkas"><i class="fa fa-file-alt"></i></button>
+                      <button class="btn btn-sm btn-prim ubahModal" title="Cabut Berkas"><i class="fa fa-file-export"></i></button>
                       <button class="btn btn-sm btn-danger delete_data" title="Hapus data"><i class="fa fa-trash"></i></button>
                     </td>
                     <td><?=$v['nama']?></td>
                     <td><?=$v['asl_sekolah']?></td>
-                    <td>87</td>
                     <td>Lulus</td>
                   </tr>
                   <?php  } ?>

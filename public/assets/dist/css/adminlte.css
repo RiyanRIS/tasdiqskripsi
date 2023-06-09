@@ -2693,6 +2693,26 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0 rgba(72, 180, 97, 0.5);
 }
 
+.btn-prim {
+  color: #fff;
+  background-color: #9DC08B;
+  border-color: #8cac7c;
+  box-shadow: none;
+}
+
+.btn-prim:hover {
+  color: #fff;
+  background-color: #609966;
+  border-color: #538558;
+}
+
+.btn-prim:focus, .btn-prim.focus {
+  color: #fff;
+  background-color: #609966;
+  border-color: #538558;
+  box-shadow: 0 0 0 0 #51a159;
+}
+
 .btn-info {
   color: #fff;
   background-color: #17a2b8;

@@ -13,6 +13,7 @@ use \App\Models\AuthModel;
 use \App\Models\AuthUserModel;
 use \App\Models\AdminModel;
 use \App\Models\PribadiModel;
+use \App\Models\NilaiModel;
 /**
  * Class BaseController
  *
@@ -42,6 +43,7 @@ abstract class BaseController extends Controller
     protected $authuser;
     protected $admin;
     protected $pribadi;
+    protected $nilai;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -70,7 +72,7 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
 
-        helper(['form', 'url', 'cookie']);
+        helper(['form', 'url', 'cookie', 'ini']);
 
         $this->cfg = new \SConfig();
 
@@ -82,6 +84,7 @@ abstract class BaseController extends Controller
         $this->authuser = new AuthUserModel();
         $this->admin = new AdminModel();
         $this->pribadi = new PribadiModel();
+        $this->nilai = new NilaiModel();
 
     }
 

@@ -97,4 +97,23 @@ class PribadiModel extends Model
 											->getRow();
 	}
 
+	function isValidUsername(string $username, $isUpdate = null):bool
+	{
+		$data = $this->getByUsername($username);
+
+		if($data == null){
+			return true;
+		} else {
+			if($isUpdate == null){
+				return false;
+			} else {
+				if($data->id == $isUpdate){
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+	}
+
 }

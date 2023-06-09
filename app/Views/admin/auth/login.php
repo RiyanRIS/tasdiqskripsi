@@ -85,7 +85,7 @@ $cfg = new \SConfig();
 
 
       <p class="mb-0">
-        Belum punya akun? <a href="#" class="text-center">Daftar Sekarang</a>
+        <!-- Belum punya akun? <a href="#" class="text-center">Daftar Sekarang</a> -->
       </p>
     </div>
     <!-- /.login-card-body -->
