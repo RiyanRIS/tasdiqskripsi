@@ -45,11 +45,26 @@ $routes->group('admin', function ($routes) {
         $routes->get('/', 'Admin\Pendaftar::index');
         $routes->get('tes', 'Admin\Pendaftar::tes');
         $routes->get('detail/(:any)', 'Admin\Pendaftar::detail/$1');
+        $routes->get('berkas/(:any)', 'Admin\Pendaftar::berkas/$1');
 
         $routes->group('ubah', function ($routes) {
             $routes->post('datamasuk', 'Admin\Pendaftar::ubahdatamasuk');
             $routes->post('datanilai', 'Admin\Pendaftar::ubahdatanilai');
             $routes->post('datapribadi', 'Admin\Pendaftar::ubahdatapribadi');
+            
+            $routes->group('berkas', function ($routes) {
+                $routes->get('hapus/(:any)', 'Admin\Pendaftar::hapusberkas/$1');
+                $routes->get('cabut/(:any)', 'Admin\Pendaftar::cabutberkas/$1');
+
+                $routes->group('status', function ($routes) {
+                    $routes->get('terverifikasi/(:any)', 'Admin\Pendaftar::updstatusberkas/$1/1');
+                    $routes->get('ditolak/(:any)', 'Admin\Pendaftar::updstatusberkas/$1/2');
+                });
+            });
+        });
+
+        $routes->group('tambah', function ($routes) {
+            $routes->post('berkas', 'Admin\Pendaftar::tambahberkas');
         });
     });
 

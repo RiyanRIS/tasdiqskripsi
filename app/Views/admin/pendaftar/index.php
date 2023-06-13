@@ -40,8 +40,8 @@
                   <tr>
                     <td>
                       <a href="<?=site_url('admin/pendaftar/detail/' . $v['id'])?>" class="btn btn-sm btn-prim" title="Detail"><i class="fa fa-eye"></i></a>
-                      <button class="btn btn-sm btn-prim ubahModal" title="Upload Berkas"><i class="fa fa-file-alt"></i></button>
-                      <button class="btn btn-sm btn-danger ubahModal" title="Cabut Berkas"><i class="fa fa-file-export"></i></button>
+                      <a href="<?=site_url('admin/pendaftar/berkas/' . $v['id'])?>" class="btn btn-sm btn-prim" title="Upload Berkas"><i class="fa fa-file-alt"></i></a>
+                      <a onclick="return confirm('Cabut Berkas Untuk Peserta Ini?\nTindakan ini tidak dapat diurungkan.')" href="<?=site_url('admin/pendaftar/ubah/berkas/cabut/' . $v['id'])?>" class="btn btn-sm btn-danger" title="Cabut Berkas"><i class="fa fa-file-export"></i></a>
                       <button class="btn btn-sm btn-danger delete_data" title="Hapus data"><i class="fa fa-trash"></i></button>
                     </td>
                     <td><?=genId($v)?></td>

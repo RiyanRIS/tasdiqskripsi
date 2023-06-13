@@ -53,6 +53,7 @@ $(function(){
     var formIdN = $(this).closest("form").attr('id')
     var action = $(formId).attr('action')
     var url = $(formId).attr('data-url')
+    var refresh = $(formId).attr('data-refresh')
 
 		$('#modalnya .modal-footer #submit').prop('disabled', true);
     $.ajax({
@@ -63,9 +64,10 @@ $(function(){
       processData :false,
       contentType :false,
       cache       :false,
-      beforeSend:function(){
+      beforeSend: async function(){
         $('#loading').show()
         $( '#'+formIdN+' .card').append("<div class='overlay'><i class='fas fa-2x fa-sync-alt'></i></div>")
+        await new Promise(r => setTimeout(r, 500))
       },
       complete:function(){
         $('#loading').hide()
@@ -75,7 +77,7 @@ $(function(){
 			error:function(){
         toastr.error("Terjadi Kesalahan Pada Server!", "Error");
       },
-      success : function(data){
+      success : async function(data){
         // console.log(data)
         $('.invalid-feedback').remove()
         $('.is-invalid').removeClass('is-invalid');
@@ -95,7 +97,10 @@ $(function(){
         } else {
           if(data.status){
             toastr.success("Berhasil Memperbarui Data", "Berhasil");
-            // window.location.replace(data.url);
+            if(refresh == 'refresh'){
+              await new Promise(r => setTimeout(r, 1000))
+              window.location.replace(data.url);
+            }
           }else{
             if(data.errors){
               $.each(data.errors, function(key, value){

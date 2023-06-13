@@ -30,6 +30,19 @@ class Pendaftar extends BaseController
         return view('admin/pendaftar/detail', $data);
     }
 
+    public function berkas($id)
+    {
+        if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+
+        $data = [
+            "record" => $this->pribadi->find($id),
+            "berkas" => $this->berkas->getByUser($id),
+            "judul" => "Halaman Berkas Pendaftar"
+        ];
+
+        return view('admin/pendaftar/berkas', $data);
+    }
+
     public function ubahdatamasuk()
     {
       // Cek hak akses user
@@ -270,5 +283,128 @@ class Pendaftar extends BaseController
       echo json_encode($msg);
       die();
     }
+
+    public function tambahberkas()
+    {
+      // Cek hak akses user
+      if(!$this->isSecure()){
+        $msg = [
+          'status' => false,
+          'url' => site_url("admin/pendaftaran"),
+          'pesan'	 => 'Anda tidak berhak mengakses halaman ini',
+        ];
+        return json_encode($msg);
+      }
+
+      // Cek isian
+      $rules = [
+        'nama' => [
+          'label'  => 'Nama Berkas',
+          'rules'  => 'required',
+          'errors' => [],
+        ]
+      ];
+
+      $this->validation->setRules($rules);
+
+      if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
+        $file = $this->request->getFile('file');
+        $newName = $file->getRandomName();
+        $file->move(ROOTPATH . 'public/uploads/temp/', $newName);
+        
+        $id = $this->request->getPost('id');
+
+        $additionalData['file'] = $newName;
+        $additionalData['nama'] = $this->request->getPost('nama');
+        $additionalData['id_dt_pribadi'] = $id;
+        $additionalData['status'] = "Terverifikasi";
+
+        $lastid = $this->berkas->insert($additionalData);
+
+        if($lastid){
+            $msg = [
+                'status' => true,
+                'url' => site_url("admin/pendaftar/berkas/" . $id),
+            ];
+        } else {
+            $msg = [
+                'status' => false,
+                'url' => site_url("admin/pendaftar/berkas/" . $id),
+                'pesan'	 => 'Data gagal dirubah',
+            ];
+        }
+
+      } else {
+          $msg = [
+              'status' => false, 
+              'errors' => $this->validation->getErrors(),
+          ];
+      }
+      echo json_encode($msg);
+      die();
+    }
+
+    public function updstatusberkas(string $id, string $kode)
+    {
+      // Cek hak akses user
+      if(!$this->isSecure()){
+        $msg = [
+          'status' => false,
+          'url' => site_url("admin/pendaftaran"),
+          'pesan'	 => 'Anda tidak berhak mengakses halaman ini',
+        ];
+        return json_encode($msg);
+      }
+
+      if($kode == 1){
+        $data['status'] = "Terverifikasi";
+      } else {
+        $data['status'] = "Ditolak";
+      }
+
+      $get = $this->berkas->find($id);
+
+      $lastId = $this->berkas->update(['id_berkas' => $id], $data);
+
+      return redirect()->to(site_url('admin/pendaftar/berkas/'.$get['id_dt_pribadi']))->with('msg', [1, "Berhasil Memperbarui Data"]);
+    }
+
+    public function hapusberkas(string $id)
+    {
+      // Cek hak akses user
+      if(!$this->isSecure()){
+        $msg = [
+          'status' => false,
+          'url' => site_url("admin/pendaftaran"),
+          'pesan'	 => 'Anda tidak berhak mengakses halaman ini',
+        ];
+        return json_encode($msg);
+      }
+
+      $get = $this->berkas->find($id);
+
+      $hapus = $this->berkas->delete($id);
+
+      return redirect()->to(site_url('admin/pendaftar/berkas/'.$get['id_dt_pribadi']))->with('msg', [1, "Berhasil Menghapus Data"]);
+    }
+
+    public function cabutberkas(string $id)
+    {
+      // Cek hak akses user
+      if(!$this->isSecure()){
+        $msg = [
+          'status' => false,
+          'url' => site_url("admin/pendaftaran"),
+          'pesan'	 => 'Anda tidak berhak mengakses halaman ini',
+        ];
+        return json_encode($msg);
+      }
+
+      $hapus = $this->berkas->where('id_dt_pribadi', $id)->delete();
+
+      return redirect()->to(site_url('admin/pendaftar/'))->with('msg', [1, "Berkas Berhasil Dicabut"]);
+    }
+
+    
 
 }
