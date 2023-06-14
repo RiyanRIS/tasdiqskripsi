@@ -51,11 +51,13 @@ $(function(){
     var dataToSend  = new FormData(this)
     var formId = $(this)
     var formIdN = $(this).closest("form").attr('id')
+    var submit = $(this).closest('form').find(':submit')
     var action = $(formId).attr('action')
     var url = $(formId).attr('data-url')
     var refresh = $(formId).attr('data-refresh')
 
-		$('#modalnya .modal-footer #submit').prop('disabled', true);
+		$('#modalnya .modal-footer #submit').prop('disabled', true)
+		submit.prop('disabled', true)
     $.ajax({
       url      : url,
       dataType : 'json',
@@ -72,7 +74,8 @@ $(function(){
       complete:function(){
         $('#loading').hide()
         $('.overlay').remove()
-        $('#modalnya .modal-footer #submit').prop('disabled', false);
+        // $('#modalnya .modal-footer #submit').prop('disabled', false)
+    		// submit.prop('disabled', false)
       },
 			error:function(){
         toastr.error("Terjadi Kesalahan Pada Server!", "Error");
@@ -99,7 +102,7 @@ $(function(){
             toastr.success("Berhasil Memperbarui Data", "Berhasil");
             if(refresh == 'refresh'){
               await new Promise(r => setTimeout(r, 1000))
-              window.location.replace(data.url);
+              window.location.replace(data.url)
             }
           }else{
             if(data.errors){
@@ -111,6 +114,9 @@ $(function(){
             $('html,body').animate({scrollTop: $('body').offset().top},'fast');
           }
         }
+
+        $('#modalnya .modal-footer #submit').prop('disabled', false)
+        submit.prop('disabled', false)
       }
     })
   })

@@ -66,6 +66,16 @@ $routes->group('admin', function ($routes) {
         $routes->group('tambah', function ($routes) {
             $routes->post('berkas', 'Admin\Pendaftar::tambahberkas');
         });
+
+        $routes->get('hapus/(:any)', 'Admin\Pendaftar::hapus/$1');
+
+    });
+
+    $routes->group('angkatan', function ($routes) {
+        $routes->get('get/(:any)', 'Admin\Angkatan::get/$1');
+        $routes->post('tambah', 'Admin\Angkatan::tambah');
+        $routes->post('ubah/(:any)', 'Admin\Angkatan::tambah/$1'); // ubah
+        $routes->get('hapus/(:any)', 'Admin\Angkatan::hapus/$1');
     });
 
     $routes->group('laporan', function ($routes) {

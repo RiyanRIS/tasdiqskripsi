@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 class AngkatanModel extends Model
 {
 	protected $table = 'tbl_angkatan';
-	protected $primaryKey = 'id';
+	protected $primaryKey = 'id_angkatan';
 
 	protected $returnType     = 'array';
 
@@ -22,6 +22,8 @@ class AngkatanModel extends Model
 	{
 		return $this->db->table($this->table)
 										->where('status', '1')
+										->where('isDelete', null)
+										->orderby('tahun', 'DESC')
 										->limit(1)
 										->get()
 										->getRow();

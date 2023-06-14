@@ -37,6 +37,7 @@ abstract class BaseController extends Controller
 
     protected $session;
     protected $validation;
+    protected $db;
     // protected $image;
 
     protected $cfg;
@@ -84,6 +85,7 @@ abstract class BaseController extends Controller
 
         $this->session      = \Config\Services::session();
         $this->validation 	= \Config\Services::validation();
+        $this->db 	= \Config\Database::connect();
         // $this->image        = \Config\Services::image();
 
         $this->auth = new AuthModel();
@@ -99,6 +101,10 @@ abstract class BaseController extends Controller
 
     function angkatanAktif(){
         return $this->angkatan->isActive()[0]->id;
+    }
+
+    function angkatan(){
+        return $this->angkatan->isActive();
     }
 
     function isAdmin():bool{

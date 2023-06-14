@@ -10,7 +10,11 @@ class Pendaftar extends BaseController
         if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $data = [
-            "record" => $this->pribadi->where('tbl_dt_pribadi.id_angkatan', $this->angkatanAktif)->join('tbl_angkatan', 'tbl_angkatan.id_angkatan = tbl_dt_pribadi.id_angkatan')->find(),
+            "record" => $this->pribadi->where('tbl_dt_pribadi.id_angkatan', $this->angkatanAktif)
+                                    ->join('tbl_angkatan', 'tbl_angkatan.id_angkatan = tbl_dt_pribadi.id_angkatan')
+                                    ->join('tbl_nilai', 'tbl_nilai.id_dt_pribadi = tbl_dt_pribadi.id')
+                                    ->find(),
+            "angkatan" => $this->angkatan()->angkatan,
             "judul" => "Data Pendaftar"
         ];
 
@@ -366,7 +370,9 @@ class Pendaftar extends BaseController
 
       $lastId = $this->berkas->update(['id_berkas' => $id], $data);
 
-      return redirect()->to(site_url('admin/pendaftar/berkas/'.$get['id_dt_pribadi']))->with('msg', [1, "Berhasil Memperbarui Data"]);
+      $msg = ($lastId ? [1, "Berhasil memperbarui data"] : [0, "Gagal memperbarui data"]);
+
+      return redirect()->to(site_url('admin/pendaftar/berkas/'.$get['id_dt_pribadi']))->with('msg', $msg);
     }
 
     public function hapusberkas(string $id)
@@ -385,7 +391,9 @@ class Pendaftar extends BaseController
 
       $hapus = $this->berkas->delete($id);
 
-      return redirect()->to(site_url('admin/pendaftar/berkas/'.$get['id_dt_pribadi']))->with('msg', [1, "Berhasil Menghapus Data"]);
+      $msg = ($hapus ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
+
+      return redirect()->to(site_url('admin/pendaftar/berkas/'.$get['id_dt_pribadi']))->with('msg', $msg);
     }
 
     public function cabutberkas(string $id)
@@ -402,9 +410,37 @@ class Pendaftar extends BaseController
 
       $hapus = $this->berkas->where('id_dt_pribadi', $id)->delete();
 
-      return redirect()->to(site_url('admin/pendaftar/'))->with('msg', [1, "Berkas Berhasil Dicabut"]);
+      $msg = ($hapus ? [1, "Berhasil mencabut berkas"] : [0, "Gagal mencabut berkas"]);
+
+      return redirect()->to(site_url('admin/pendaftar/'))->with('msg', $msg);
     }
 
-    
+    public function hapus(string $id)
+    {
+      // Cek hak akses user
+      if(!$this->isSecure()){
+        $msg = [
+          'status' => false,
+          'url' => site_url("admin/pendaftaran"),
+          'pesan'	 => 'Anda tidak berhak mengakses halaman ini',
+        ];
+        return json_encode($msg);
+      }
+      
+      $this->db->transStart();
+      // Hapus nilai
+      $del_nilai = $this->nilai->where('id_dt_pribadi', $id)->delete();
+
+      // Hapus berkas
+      $del_berkas = $this->berkas->where('id_dt_pribadi', $id)->delete();
+
+      // Hapus Pendaftar
+      $del_berkas = $this->pribadi->delete($id);
+      $this->db->transComplete();
+
+      $msg = ($this->db->transStatus() ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
+
+      return redirect()->to(site_url('admin/pendaftar/'))->with('msg', $msg);
+    }
 
 }

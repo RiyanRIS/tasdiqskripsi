@@ -16,43 +16,55 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header">
-              <!-- <h3 class="card-title">DataTable with minimal features & hover style</h3> -->
-              <a target="_BLANK" href="<?=site_url('daftar')?>" class="btn btn-success">Tambah Peserta</a>
+          <div class="col-12">
+            <div class="alert alert-info alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h5><i class="icon fas fa-info"></i> Info!</h5>
+              Angkatan Aktif: <?=$angkatan?>
             </div>
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <a target="_BLANK" href="<?=site_url('daftar')?>" class="btn btn-success">Tambah Peserta</a>
+              </div>
 
-            <div class="card-body">
-              <table id="datatable" class="table table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>ID DAFTAR</th>
-                    <th>NAMA</th>
-                    <th>ASAL SEKOLAH</th>
-                    <th>STATUS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  foreach ($record as $key => $v) { ?>
-                  <tr>
-                    <td>
-                      <a href="<?=site_url('admin/pendaftar/detail/' . $v['id'])?>" class="btn btn-sm btn-prim" title="Detail"><i class="fa fa-eye"></i></a>
-                      <a href="<?=site_url('admin/pendaftar/berkas/' . $v['id'])?>" class="btn btn-sm btn-prim" title="Upload Berkas"><i class="fa fa-file-alt"></i></a>
-                      <a onclick="return confirm('Cabut Berkas Untuk Peserta Ini?\nTindakan ini tidak dapat diurungkan.')" href="<?=site_url('admin/pendaftar/ubah/berkas/cabut/' . $v['id'])?>" class="btn btn-sm btn-danger" title="Cabut Berkas"><i class="fa fa-file-export"></i></a>
-                      <button class="btn btn-sm btn-danger delete_data" title="Hapus data"><i class="fa fa-trash"></i></button>
-                    </td>
-                    <td><?=genId($v)?></td>
-                    <td><?=$v['nama']?></td>
-                    <td><?=$v['asl_sekolah']?></td>
-                    <td>Lulus</td>
-                  </tr>
-                  <?php  } ?>
-                </tbody>
-              </table>
+              <div class="card-body">
+              
+                <table id="datatable" class="table table-bordered table-hover table-pendaftar">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>ID DAFTAR</th>
+                      <th>NAMA</th>
+                      <th>ASAL SEKOLAH</th>
+                      <th>NILAI</th>
+                      <th>STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    foreach ($record as $key => $v) {
+                      $rata = ($v['nilai_un'] + $v['nilai_raport'] + $v['nilai_ps'] + $v['nilai_pa']) / 4 ;
+                      ?>
+                    <tr>
+                      <td>
+                        <a href="<?=site_url('admin/pendaftar/detail/' . $v['id'])?>" class="btn btn-sm btn-prim" title="Detail"><i class="fa fa-eye"></i></a>
+                        <a href="<?=site_url('admin/pendaftar/berkas/' . $v['id'])?>" class="btn btn-sm btn-prim" title="Upload Berkas"><i class="fa fa-file-alt"></i></a>
+                        <a onclick="return confirm('Cabut Berkas Untuk Peserta Ini?\nTindakan ini tidak dapat diurungkan.')" href="<?=site_url('admin/pendaftar/ubah/berkas/cabut/' . $v['id'])?>" class="btn btn-sm btn-danger" title="Cabut Berkas"><i class="fa fa-file-export"></i></a>
+                        <a onclick="return confirm('Hapus Peserta Ini?\nTindakan ini tidak dapat diurungkan.')" href="<?=site_url('admin/pendaftar/hapus/' . $v['id'])?>" class="btn btn-sm btn-danger" title="Hapus data"><i class="fa fa-trash"></i></a>
+                      </td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=genId($v)?></td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=$v['nama']?></td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=$v['asl_sekolah']?></td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=$rata?></td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=($rata > 75 ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>")?></td>
+                    </tr>
+                    <?php  } ?>
+                  </tbody>
+                </table>
 
+              </div>
             </div>
           </div>
         </div>
@@ -66,6 +78,11 @@
 </div>
 <!-- ./wrapper -->
 <?= view("admin/templates/script") ?>
-
+  <script>
+  $('#datatable.table-pendaftar tbody').on('click', '.cell', function () {
+    var id = $(this).data("id");
+    window.location.href = '<?=site_url('admin/pendaftar/detail/')?>' + id
+  } );
+</script>
 </body>
 </html>
