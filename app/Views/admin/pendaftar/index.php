@@ -1,3 +1,6 @@
+<?php
+  $cfg = new \SConfig();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +61,7 @@
                       <td class="cell" data-id="<?=$v['id']?>"><?=$v['nama']?></td>
                       <td class="cell" data-id="<?=$v['id']?>"><?=$v['asl_sekolah']?></td>
                       <td class="cell" data-id="<?=$v['id']?>"><?=$rata?></td>
-                      <td class="cell" data-id="<?=$v['id']?>"><?=($rata > 75 ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>")?></td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=($rata > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>")?></td>
                     </tr>
                     <?php  } ?>
                   </tbody>

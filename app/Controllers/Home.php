@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 
 class Home extends BaseController
@@ -12,6 +11,29 @@ class Home extends BaseController
 
         return "Belum jadi bre... <a href='/login'>klik disini</a>";
         // return view('welcome_message');
+    }
+
+    public function dashboard()
+    {
+        if(!$this->isSecure('user')) return redirect()->to(site_url('login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+
+        $id = session()->get('user_id');
+        $v = $this->nilai->find($id);
+        $rata = ($v['nilai_un'] + $v['nilai_raport'] + $v['nilai_ps'] + $v['nilai_pa']) / 4 ;
+        $status_peserta = false;
+
+        if($rata > $this->cfg->_nilaiminim){
+            $status_peserta = true;
+        }
+
+        $data = [
+            "nilai" => $v,
+            "berkas" => $this->berkas->getByUser($id),
+            "status_peserta" => $status_peserta,
+            "judul" => "Dashboard Peserta"
+        ];
+
+        return view('pendaftar/dashboard', $data);
     }
 
     public function pendaftar()
