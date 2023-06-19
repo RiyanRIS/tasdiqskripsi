@@ -28,7 +28,7 @@ class Auth extends BaseController
 					if(session()->isAdmin){
 						return redirect()->to(site_url("admin"))->with('msg', [1, "Selamat datang, " . $data_user->nama]);
 					} else {
-						return redirect()->to(site_url())->with('msg', [1, "Selamat datang, " . $data_user->nama]);
+						return redirect()->to(site_url("pendaftar"))->with('msg', [1, "Selamat datang, " . $data_user->nama]);
 					}
 				} else {
 					$ses = [0, "Kombinasi username dan password belum tepat"];
@@ -89,6 +89,6 @@ class Auth extends BaseController
 
 	public function logout(){
 		$this->auth->logout(session()->user_id);
-		return redirect()->to(site_url('admin/login'))->with('msg', [1, "Berhasil Logout"]);
+		return redirect()->to(site_url('login'))->with('msg', [1, "Berhasil Logout"]);
 	}
 }

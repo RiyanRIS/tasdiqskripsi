@@ -26,7 +26,7 @@
 
 $(function(){
   var pathArray = window.location.pathname.split('/');
-  var current = pathArray[2] ?? "dashboard";
+  var current = pathArray[1] ?? "pendaftar";
 
   $('#nav li a').each(function(){
       var $this = $(this);
