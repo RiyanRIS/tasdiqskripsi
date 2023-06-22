@@ -38,13 +38,21 @@ $cfg = new \SConfig();
           </div>
           <!-- Nilai -->
           <div class="col-md-6">
-            <div class="card">
+            <div class="card card-success">
+              <div class="card-header">
+                <h5 class="cart-title">Detail Pendaftar</h5>
+              </div>
               <div class="card-body">
                 <table class="table table-bordered">
                   <tr>
                     <th>Nama</th>
                     <td>:</td>
                     <td><?=session()->get('user_nama')?></td>
+                  </tr>
+                  <tr>
+                    <th>Jurusan</th>
+                    <td>:</td>
+                    <td><?=@$pribadi['jurusan']?></td>
                   </tr>
                   <tr>
                     <th>Nilai</th>
@@ -67,13 +75,15 @@ $cfg = new \SConfig();
           </div>
           <!-- Berkas -->
           <div class="col-md-6">
-            <div class="card">
+            <div class="card card-success">
               <div class="card-header">
                 <h5 class="cart-title">Detail Berkas</h5>
               </div>
               <div class="card-body">
                 <?php if($berkas == null){ ?>
-                <p>Belum ada berkas masuk</p>
+                  <div class="alert alert-danger" role="alert">
+                    <p>Belum ada berkas masuk!</p>
+                  </div>
                 <?php } else { ?>
                   <table id="datatable" class="table table-bordered table-hover">
                   <thead>

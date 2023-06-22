@@ -1,0 +1,204 @@
+INFO - 2023-06-22 07:30:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-06-22 07:30:17 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it.
+ in D:\pindahan\ci4\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 D:\pindahan\ci4\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', '', 'ci4', 3306, '', 0)
+#1 D:\pindahan\ci4\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\pindahan\ci4\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\pindahan\ci4\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\pindahan\ci4\app\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\pindahan\ci4\app\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+#6 D:\pindahan\ci4\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 D:\pindahan\ci4\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#8 D:\pindahan\ci4\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\pindahan\ci4\public\index.php(69): CodeIgniter\CodeIgniter->run()
+#10 D:\pindahan\ci4\system\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4...')
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it.
+ in D:\pindahan\ci4\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 D:\pindahan\ci4\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\pindahan\ci4\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\pindahan\ci4\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\pindahan\ci4\app\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\pindahan\ci4\app\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+#5 D:\pindahan\ci4\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#6 D:\pindahan\ci4\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#7 D:\pindahan\ci4\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\pindahan\ci4\public\index.php(69): CodeIgniter\CodeIgniter->run()
+#9 D:\pindahan\ci4\system\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4...')
+#10 {main}
+CRITICAL - 2023-06-22 07:30:17 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_angkatan`
+WHERE `status` = :status:
+AND `isDelete` IS NULL
+ORDER BY `tahun` DESC
+ LIMIT 1', [...], false)
+ 3 APPPATH\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+ 5 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 6 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4\\public\\index.php')
+INFO - 2023-06-22 07:40:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-06-22 07:40:12 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it.
+ in D:\pindahan\ci4\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 D:\pindahan\ci4\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', '', 'ci4', 3306, '', 0)
+#1 D:\pindahan\ci4\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\pindahan\ci4\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\pindahan\ci4\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\pindahan\ci4\app\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\pindahan\ci4\app\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+#6 D:\pindahan\ci4\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 D:\pindahan\ci4\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#8 D:\pindahan\ci4\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\pindahan\ci4\public\index.php(69): CodeIgniter\CodeIgniter->run()
+#10 D:\pindahan\ci4\system\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4...')
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it.
+ in D:\pindahan\ci4\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 D:\pindahan\ci4\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\pindahan\ci4\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\pindahan\ci4\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\pindahan\ci4\app\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\pindahan\ci4\app\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+#5 D:\pindahan\ci4\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#6 D:\pindahan\ci4\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#7 D:\pindahan\ci4\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\pindahan\ci4\public\index.php(69): CodeIgniter\CodeIgniter->run()
+#9 D:\pindahan\ci4\system\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4...')
+#10 {main}
+CRITICAL - 2023-06-22 07:40:12 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_angkatan`
+WHERE `status` = :status:
+AND `isDelete` IS NULL
+ORDER BY `tahun` DESC
+ LIMIT 1', [...], false)
+ 3 APPPATH\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+ 5 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 6 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4\\public\\index.php')
+INFO - 2023-06-22 07:40:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-06-22 07:40:57 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it.
+ in D:\pindahan\ci4\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 D:\pindahan\ci4\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', '', 'ci4', 3306, '', 0)
+#1 D:\pindahan\ci4\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\pindahan\ci4\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\pindahan\ci4\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\pindahan\ci4\app\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\pindahan\ci4\app\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+#6 D:\pindahan\ci4\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 D:\pindahan\ci4\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#8 D:\pindahan\ci4\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\pindahan\ci4\public\index.php(69): CodeIgniter\CodeIgniter->run()
+#10 D:\pindahan\ci4\system\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4...')
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it.
+ in D:\pindahan\ci4\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 D:\pindahan\ci4\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\pindahan\ci4\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\pindahan\ci4\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\pindahan\ci4\app\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\pindahan\ci4\app\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+#5 D:\pindahan\ci4\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#6 D:\pindahan\ci4\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#7 D:\pindahan\ci4\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\pindahan\ci4\public\index.php(69): CodeIgniter\CodeIgniter->run()
+#9 D:\pindahan\ci4\system\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4...')
+#10 {main}
+CRITICAL - 2023-06-22 07:40:57 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_angkatan`
+WHERE `status` = :status:
+AND `isDelete` IS NULL
+ORDER BY `tahun` DESC
+ LIMIT 1', [...], false)
+ 3 APPPATH\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+ 5 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 6 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4\\public\\index.php')
+INFO - 2023-06-22 08:15:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-06-22 08:15:58 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it.
+ in D:\pindahan\ci4\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 D:\pindahan\ci4\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', '', 'ci4', 3306, '', 0)
+#1 D:\pindahan\ci4\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\pindahan\ci4\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\pindahan\ci4\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\pindahan\ci4\app\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\pindahan\ci4\app\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+#6 D:\pindahan\ci4\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 D:\pindahan\ci4\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#8 D:\pindahan\ci4\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\pindahan\ci4\public\index.php(68): CodeIgniter\CodeIgniter->run()
+#10 D:\pindahan\ci4\system\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4...')
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it.
+ in D:\pindahan\ci4\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 D:\pindahan\ci4\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\pindahan\ci4\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\pindahan\ci4\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\pindahan\ci4\app\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\pindahan\ci4\app\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+#5 D:\pindahan\ci4\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#6 D:\pindahan\ci4\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#7 D:\pindahan\ci4\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\pindahan\ci4\public\index.php(68): CodeIgniter\CodeIgniter->run()
+#9 D:\pindahan\ci4\system\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4...')
+#10 {main}
+CRITICAL - 2023-06-22 08:15:58 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_angkatan`
+WHERE `status` = :status:
+AND `isDelete` IS NULL
+ORDER BY `tahun` DESC
+ LIMIT 1', [...], false)
+ 3 APPPATH\Models\AngkatanModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\BaseController.php(99): App\Models\AngkatanModel->isActive()
+ 5 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 6 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\pindahan\\ci4\\public\\index.php')
+INFO - 2023-06-22 08:17:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-22 08:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-22 08:18:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-22 08:18:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-22 08:18:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-22 08:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-22 08:18:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-22 08:18:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

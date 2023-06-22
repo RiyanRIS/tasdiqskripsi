@@ -58,7 +58,7 @@ class AuthModel extends Model
   public function setSession(\stdClass $user, $isAdmin = false): bool
 	{
 		$sessionData = [
-			'user_id'             => $user->id_admin,
+			'user_id'             => $user->id_admin ?? $user->id,
 			'user_nama'             => $user->nama,
 			// 'user_role'             => $user->role,
 			'isLogin'             => true,
