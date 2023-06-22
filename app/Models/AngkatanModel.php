@@ -18,6 +18,14 @@ class AngkatanModel extends Model
 		return $id ?? false;
 	}
 
+	public function find_active()
+	{
+		return $this->db->table($this->table)
+										->where('isDelete', null)
+										->get()
+										->getResultArray();
+	}
+
 	public function isActive()
 	{
 		return $this->db->table($this->table)
@@ -27,6 +35,11 @@ class AngkatanModel extends Model
 										->limit(1)
 										->get()
 										->getRow();
+	}
+
+	public function updateStatusOff()
+	{
+		return $this->db->table($this->table)->update(['status' => 0]);
 	}
 
 }

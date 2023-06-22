@@ -9,8 +9,7 @@ class Home extends BaseController
     {
         if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'));
 
-        $pendaftars = $this->pribadi->join('tbl_nilai', 'tbl_nilai.id_dt_pribadi = tbl_dt_pribadi.id')->find();
-        // print_r($pendaftars);die();
+        $pendaftars = $this->pribadi->find_now();
         $total = count($pendaftars);
 
         $laporan = [];
@@ -28,11 +27,6 @@ class Home extends BaseController
             'lulus' => $lulus,
             'tidak_lulus' => $tidak_lulus,
         ];
-
-        // echo "<br>Total: " . $total;
-        // echo "<br>Total Lulus: " . $lulus;
-        // echo "<br>Total Tidak Lulus: " . $tidak_lulus;
-        // die();
 
         $data = [
             "laporan" => $laporan,

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use \App\Models\AngkatanModel;
 
 class PribadiModel extends Model
 {
@@ -86,6 +87,17 @@ class PribadiModel extends Model
 			$this->db->table($this->table)->insert($data);
 			$id = $this->db->insertId($this->table);
 			return $id ?? false;
+	}
+
+	public function find_now(){
+		$angkatan = new AngkatanModel();
+		$angkatanAktif = $angkatan->isActive()->id_angkatan;
+		return $this->db->table($this->table)
+										->where('tbl_dt_pribadi.id_angkatan', $angkatanAktif)
+										->join('tbl_angkatan', 'tbl_angkatan.id_angkatan = tbl_dt_pribadi.id_angkatan')
+										->join('tbl_nilai', 'tbl_nilai.id_dt_pribadi = tbl_dt_pribadi.id')
+										->get()
+										->getResultArray();
 	}
 
 	public function getByUsername(string $username)

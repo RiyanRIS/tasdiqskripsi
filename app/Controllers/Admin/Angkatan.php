@@ -70,6 +70,9 @@ class Angkatan extends BaseController
             if($id == null){
                 $lastid = $this->angkatan->simpan($additionalData);
             } else {
+                if($additionalData['status'] == 1){
+                    $this->angkatan->updateStatusOff();
+                }
                 $lastid = $this->angkatan->update(['id_angkatan', $id], $additionalData);
             }
 

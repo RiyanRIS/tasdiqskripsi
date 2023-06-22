@@ -1,3 +1,6 @@
+<?php
+  $cfg = new \SConfig();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,71 +18,68 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
+          <div class="col-12">
+            
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header row">
+                <div class="col-md-3 col-sm-6 mb-2 mb-sm-0">
+                  <select name="angkatan" id="angkatan" class="form-control">
+                    <option value="">--Semua Angkatan--</option>
+                    <?php foreach ($angkatans as $key => $v) { ?>
+                      <option value="<?=$v['id_angkatan']?>"><?=$v['angkatan']?></option>
+                    <?php } ?>
+                  </select>
+                </div>
 
-                <p>Total Pendaftar</p>
+                <div class="col-md-3 col-sm-6 mb-2 mb-sm-0">
+                  <select name="angkatan" id="angkatan" class="form-control">
+                    <option value="">--Semua Status--</option>
+                    <option value="1">Lulus</option>
+                    <option value="0">Tidak Lulus</option>
+                  </select>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-2 mb-sm-0 mb-md-0">
+                  <input type="submit" class="btn btn-success" value="Cari">
+                </div>
               </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
+
+              <div class="card-body">
+              
+                <table id="datatable" class="table table-bordered table-hover table-pendaftar">
+                  <thead>
+                    <tr>
+                      <th>ID DAFTAR</th>
+                      <th>NAMA</th>
+                      <th>ASAL SEKOLAH</th>
+                      <th>NILAI</th>
+                      <th>STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      foreach ($record as $key => $v) {
+                        $rata = genNilai($v);
+                    ?>
+                    <tr>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=genId($v)?></td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=$v['nama']?></td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=$v['asl_sekolah']?></td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=$rata?></td>
+                      <td class="cell" data-id="<?=$v['id']?>"><?=($rata > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>")?></td>
+                    </tr>
+                    <?php  } ?>
+                  </tbody>
+                </table>
+
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Pendaftar Diterima</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>Pendaftar Belum diproses</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Pendaftar Tidak Lolos</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -89,6 +89,6 @@
 </div>
 <!-- ./wrapper -->
 <?= view("admin/templates/script") ?>
-
+ 
 </body>
 </html>
