@@ -35,7 +35,7 @@
 
               <div class="card-body">
               
-                <table id="datatable" class="table table-bordered table-hover table-pendaftar">
+                <table id="tabelexport" class="table table-bordered table-hover table-pendaftar">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -55,6 +55,7 @@
                       <td>
                         <a href="<?=site_url('admin/pendaftar/detail/' . $v['id'])?>" class="btn btn-sm btn-prim" title="Detail"><i class="fa fa-eye"></i></a>
                         <a href="<?=site_url('admin/pendaftar/berkas/' . $v['id'])?>" class="btn btn-sm btn-prim" title="Upload Berkas"><i class="fa fa-file-alt"></i></a>
+                        <a href="<?=site_url('admin/pendaftar/cetak/' . $v['id'])?>" class="btn btn-sm btn-prim" title="Cetak Data"><i class="fa fa-print"></i></a>
                         <a onclick="return confirm('Cabut Berkas Untuk Peserta Ini?\nTindakan ini tidak dapat diurungkan.')" href="<?=site_url('admin/pendaftar/ubah/berkas/cabut/' . $v['id'])?>" class="btn btn-sm btn-danger" title="Cabut Berkas"><i class="fa fa-file-export"></i></a>
                         <a onclick="return confirm('Hapus Peserta Ini?\nTindakan ini tidak dapat diurungkan.')" href="<?=site_url('admin/pendaftar/hapus/' . $v['id'])?>" class="btn btn-sm btn-danger" title="Hapus data"><i class="fa fa-trash"></i></a>
                       </td>

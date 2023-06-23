@@ -61,6 +61,7 @@ $routes->group('admin', function ($routes) {
         $routes->get('tes', 'Admin\Pendaftar::tes');
         $routes->get('detail/(:any)', 'Admin\Pendaftar::detail/$1');
         $routes->get('berkas/(:any)', 'Admin\Pendaftar::berkas/$1');
+        $routes->get('cetak/(:any)', 'Admin\Pendaftar::cetak/$1');
 
         $routes->group('ubah', function ($routes) {
             $routes->post('datamasuk', 'Admin\Pendaftar::ubahdatamasuk');

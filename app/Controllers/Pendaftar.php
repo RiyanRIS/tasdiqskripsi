@@ -117,6 +117,8 @@ class Pendaftar extends BaseController
           $id = $this->request->getPost('id');
           unset($additionalData['id']);
 
+          $additionalData['rata'] = genNilai($additionalData);
+
           // Cek Nilai Sudah Pernah Simpan
           $isSudahAda = $this->nilai->isSudahAda($id);
           if($isSudahAda){

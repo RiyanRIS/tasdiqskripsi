@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
+// use Mpdf\Mpdf;
 
 class Pendaftar extends BaseController
 {
@@ -16,6 +17,17 @@ class Pendaftar extends BaseController
         ];
 
         return view('admin/pendaftar/index', $data);
+    }
+
+    function tes()
+    {
+      $mpdf = new \Mpdf\Mpdf();
+      $html = view('htmltopdf',[]);
+      $mpdf->WriteHTML($html);
+      $this->response->setHeader('Content-Type', 'application/pdf');
+      $mpdf->Output('arjun.pdf','I'); // opens in browser
+      //$mpdf->Output('arjun.pdf','D'); // it downloads the file into the user system, with give name
+      //return view('welcome_message');
     }
 
     public function detail($id)
@@ -42,6 +54,19 @@ class Pendaftar extends BaseController
         ];
 
         return view('admin/pendaftar/berkas', $data);
+    }
+
+    public function cetak($id)
+    {
+        if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+
+        $data = [
+            "pribadi" => $this->pribadi->find($id),
+            "nilai" => $this->nilai->find($id),
+            "judul" => "Cetak Pendaftaran"
+        ];
+
+        return view('admin/pendaftar/cetak', $data);
     }
 
     public function ubahdatamasuk()
@@ -157,6 +182,8 @@ class Pendaftar extends BaseController
           $additionalData = $this->request->getPost();
           $id = $this->request->getPost('id');
           unset($additionalData['id']);
+
+          $additionalData['rata'] = genNilai($additionalData);
 
           // Cek Nilai Sudah Pernah Simpan
           $isSudahAda = $this->nilai->isSudahAda($id);
