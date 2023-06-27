@@ -1,0 +1,24 @@
+CRITICAL - 2023-06-27 13:20:29 --> require(C:\Users\Riyan Risky\My\tasdiq\public\../SConfig.php): failed to open stream: No such file or directory
+in FCPATH\index.php on line 58.
+ 1 FCPATH\index.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require(C:\\Users\\Riyan Risky\\My\\tasdiq\\public\\../SConfig.php): failed to open stream: No such file or directory', 'C:\\Users\\Riyan Risky\\My\\tasdiq\\public\\index.php', 58, [...])
+ 2 FCPATH\index.php(58): require()
+ 3 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\tasdiq\\public\\index.php')
+CRITICAL - 2023-06-27 13:20:35 --> require(C:\Users\Riyan Risky\My\tasdiq\public\../SConfig.php): failed to open stream: No such file or directory
+in FCPATH\index.php on line 58.
+ 1 FCPATH\index.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require(C:\\Users\\Riyan Risky\\My\\tasdiq\\public\\../SConfig.php): failed to open stream: No such file or directory', 'C:\\Users\\Riyan Risky\\My\\tasdiq\\public\\index.php', 58, [...])
+ 2 FCPATH\index.php(58): require()
+ 3 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\tasdiq\\public\\index.php')
+CRITICAL - 2023-06-27 13:24:42 --> Class 'App\Controllers\BaseController' not found
+in APPPATH\Controllers\Home.php on line 4.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\Riyan Risky\\My\\tasdiq\\app\\Controllers\\Home.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 5 [internal function]: spl_autoload_call('App\\Controllers\\Home')
+ 6 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\Controllers\\Home', true)
+ 7 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\tasdiq\\public\\index.php')
+INFO - 2023-06-27 13:25:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-27 13:25:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
