@@ -18,8 +18,10 @@ class Home extends BaseController
         $v = $this->nilai->find($id);
         $status_peserta = false;
 
-        if (genNilai($v) > $this->cfg->_nilaiminim) {
-            $status_peserta = true;
+        if ($v) {
+            if (genNilai($v) > $this->cfg->_nilaiminim) {
+                $status_peserta = true;
+            }
         }
 
         $data = [

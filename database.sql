@@ -128,19 +128,6 @@ CREATE TABLE `tbl_nilai` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pengumuman`
---
-
-CREATE TABLE `tbl_pengumuman` (
-  `id_pengumuman` int(11) NOT NULL,
-  `id_nilai` int(11) NOT NULL,
-  `tgl_pengumuman` datetime NOT NULL,
-  `tahun` varchar(4) NOT NULL,
-  `deskripsi` varchar(100) NOT NULL,
-  `id_admin` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
 -- Indexes for dumped tables
 --
 
@@ -174,14 +161,6 @@ ALTER TABLE `tbl_dt_pribadi`
 ALTER TABLE `tbl_nilai`
   ADD PRIMARY KEY (`id_nilai`),
   ADD KEY `nilai_dt_pribadi` (`id_dt_pribadi`);
-
---
--- Indexes for table `tbl_pengumuman`
---
-ALTER TABLE `tbl_pengumuman`
-  ADD PRIMARY KEY (`id_pengumuman`),
-  ADD KEY `pengumuman_admin` (`id_admin`),
-  ADD KEY `pengumuman_nilai` (`id_nilai`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -218,12 +197,6 @@ ALTER TABLE `tbl_nilai`
   MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tbl_pengumuman`
---
-ALTER TABLE `tbl_pengumuman`
-  MODIFY `id_pengumuman` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
 
@@ -233,13 +206,6 @@ ALTER TABLE `tbl_pengumuman`
 ALTER TABLE `tbl_nilai`
   ADD CONSTRAINT `nilai_dt_pribadi` FOREIGN KEY (`id_dt_pribadi`) REFERENCES `tbl_dt_pribadi` (`id`) ON UPDATE CASCADE;
 
---
--- Constraints for table `tbl_pengumuman`
---
-ALTER TABLE `tbl_pengumuman`
-  ADD CONSTRAINT `pengumuman_admin` FOREIGN KEY (`id_admin`) REFERENCES `tbl_admin` (`id_admin`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `pengumuman_nilai` FOREIGN KEY (`id_nilai`) REFERENCES `tbl_nilai` (`id_nilai`) ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
