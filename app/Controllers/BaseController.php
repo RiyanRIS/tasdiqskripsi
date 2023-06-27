@@ -126,10 +126,6 @@ abstract class BaseController extends Controller
         return false;
     }
 
-    function halo()
-    {
-    }
-
     function isSecure($who = 'admin')
     {
         if (session()->get('isLogin')) {

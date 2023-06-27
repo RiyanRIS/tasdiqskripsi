@@ -1,23 +1,24 @@
 <?php
+
 namespace App\Controllers;
 
 class Home extends BaseController
 {
     public function index()
     {
-        if(!$this->isSecure('user')) return redirect()->to(site_url('login'));
+        if (!$this->isSecure('user')) return redirect()->to(site_url('login'));
         return redirect()->to(site_url('dashboard'));
     }
 
     public function dashboard()
     {
-        if(!$this->isSecure('user')) return redirect()->to(site_url('login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+        if (!$this->isSecure('user')) return redirect()->to(site_url('login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $id = session()->get('user_id');
         $v = $this->nilai->find($id);
         $status_peserta = false;
 
-        if(genNilai($v) > $this->cfg->_nilaiminim){
+        if (genNilai($v) > $this->cfg->_nilaiminim) {
             $status_peserta = true;
         }
 
@@ -34,7 +35,7 @@ class Home extends BaseController
 
     public function pendaftar()
     {
-        if(!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+        if (!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $id = session()->get('user_id');
         $data = [
@@ -48,7 +49,7 @@ class Home extends BaseController
 
     public function berkas()
     {
-        if(!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+        if (!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $id = session()->get('user_id');
         $data = [
