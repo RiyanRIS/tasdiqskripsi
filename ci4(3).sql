@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2023 at 10:51 AM
+-- Generation Time: Jun 27, 2023 at 01:42 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -61,7 +61,14 @@ CREATE TABLE `tbl_angkatan` (
 
 INSERT INTO `tbl_angkatan` (`id_angkatan`, `angkatan`, `tahun`, `status`, `isDelete`) VALUES
 (1, '2022/2023', '2022', 1, NULL),
-(2, '2021/2022', '2021', 0, NULL);
+(2, '2021/2022', '2021', 0, NULL),
+(3, '2023/2024', '2023', 0, NULL),
+(4, '212312aaa', '2222', 0, 1),
+(5, '202213', '2222', 0, 1),
+(6, '202213', '2222', 0, 1),
+(7, '202213', '2222', 0, 1),
+(8, '123', '222', 0, 1),
+(9, '123', '222', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -77,6 +84,13 @@ CREATE TABLE `tbl_berkas` (
   `status` varchar(60) NOT NULL,
   `upload_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_berkas`
+--
+
+INSERT INTO `tbl_berkas` (`id_berkas`, `id_dt_pribadi`, `nama`, `file`, `status`, `upload_at`) VALUES
+(8, 1, 'Kartu Keluarga', '1687150645_84697f2eb6b7a2073217.pdf', 'Ditolak', '2023-06-19 04:57:25');
 
 -- --------------------------------------------------------
 
@@ -106,9 +120,8 @@ CREATE TABLE `tbl_dt_pribadi` (
 --
 
 INSERT INTO `tbl_dt_pribadi` (`id`, `nama`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `alamat`, `asl_sekolah`, `no_tlpn`, `email`, `id_angkatan`, `jurusan`, `username`, `password`) VALUES
-(1, 'Sulaiman Al Habsi', 'Bojonegoro', '1998-02-11', 'Laki-laki', 'Khatolik', 'Jl hedon siahaan', 'SDN 02 Manokwari', '0896772637623', 'sulaiman88@gmail.com', 1, 'IPA', '1234', ''),
-(2, 'Penampihan Usulan Dua', 'Buakai Selatan', '2006-06-08', 'Laki-laki', 'Islam', 'Jl Yusuf Bhakti No. 22A Banyuurip', 'SD 22 Banyuurip', '089677263747', 'tututururu9@gmail.com', 1, 'IPS', 'admin', '$2y$10$7iI3G4tHOU7v8XSVtp971ule7t6UNt9JNa7IZaH/ePZPg8rbVR3uC'),
-(3, 'Untah Alaudin', 'Bonbon', '1998-05-14', 'Laki-laki', 'Kristen', 'Jl Mawar Bunga melati', 'sdn 002 tlogosari', '123', 'aa@aa.a', 1, 'IPS', '12345', '$2y$10$qldo1ujUgWMwNru6U5dEquZkBSD/omlN5f3884.zkNyKFC7S44T/W');
+(1, 'Sulaiman Al Habsi', 'Bojonegoro', '1998-02-11', 'Laki-laki', 'Khatolik', 'Jl hedon siahaan', 'SDN 02 Manokwari', '0896772637623', 'sulaiman88@gmail.com', 1, 'IPA', '1234', '$2y$10$ncKYTEKKRmCdDpC6wyQOw.BNZkNoMfyXEUEjBvuFYbDBEY3QVcU62'),
+(2, 'Penampihan Usulan Dua', 'Buakai Selatan', '2006-06-08', 'Laki-laki', 'Islam', 'Jl Yusuf Bhakti No. 22A Banyuurip', 'SD 22 Banyuurip', '089677263747', 'tututururu9@gmail.com', 1, 'IPS', 'admin', '$2y$10$7iI3G4tHOU7v8XSVtp971ule7t6UNt9JNa7IZaH/ePZPg8rbVR3uC');
 
 -- --------------------------------------------------------
 
@@ -122,16 +135,17 @@ CREATE TABLE `tbl_nilai` (
   `nilai_un` int(11) NOT NULL,
   `nilai_raport` int(11) NOT NULL,
   `nilai_ps` int(11) NOT NULL,
-  `nilai_pa` int(11) NOT NULL
+  `nilai_pa` int(11) NOT NULL,
+  `rata` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_nilai`
 --
 
-INSERT INTO `tbl_nilai` (`id_nilai`, `id_dt_pribadi`, `nilai_un`, `nilai_raport`, `nilai_ps`, `nilai_pa`) VALUES
-(1, 1, 31, 25, 12, 23),
-(2, 2, 90, 91, 72, 80);
+INSERT INTO `tbl_nilai` (`id_nilai`, `id_dt_pribadi`, `nilai_un`, `nilai_raport`, `nilai_ps`, `nilai_pa`, `rata`) VALUES
+(1, 1, 50, 50, 70, 80, 0),
+(2, 2, 90, 91, 70, 80, 82);
 
 -- --------------------------------------------------------
 
@@ -205,13 +219,13 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_angkatan`
 --
 ALTER TABLE `tbl_angkatan`
-  MODIFY `id_angkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_angkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_berkas`
 --
 ALTER TABLE `tbl_berkas`
-  MODIFY `id_berkas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_berkas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_dt_pribadi`
