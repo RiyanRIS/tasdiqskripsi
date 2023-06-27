@@ -28,17 +28,23 @@ $cfg = new \SConfig();
                 <?php if ($status_peserta) { ?>
                   <div class="alert alert-success" role="alert">
                     <h4 class="alert-heading">Halo, <?= ucwords(@session()->get('user_nama')) ?></h4>
-                    <p>Selamat, kamu telah diterima menjadi siswa di <?= $cfg->_namaSekolah ?>. Silahkan datang langsung ke bagian admisi untuk melengkapi berkas dan pembayaran sebelum tgl 14 April 2023.</p>
+                    <p>Selamat, nilai kamu sudah memenuhi standar.</p>
                     <hr>
-                    <p class="mb-0">Hingga tanggal deatline berkas belum lengkap, akan dinyatakan gugur.</p>
+                    <!-- <p class="mb-0">Hingga tanggal deatline berkas belum lengkap, akan dinyatakan gugur.</p> -->
                   </div>
                 <?php } else { ?>
                   <div class="alert alert-danger" role="alert">
                     <h4 class="alert-heading">Halo, <?= ucwords(@session()->get('user_nama')) ?></h4>
-                    <p>Mohon maaf, kamu gagal menjadi siswa di <?= $cfg->_namaSekolah ?>.</p>
+                    <p>Mohon maaf, nilai kamu belum memenuhi standar.</p>
                   </div>
                 <?php } ?>
+              <?php } else { ?>
+                <div class="alert alert-warning" role="alert">
+                  <h4 class="alert-heading">Halo, <?= ucwords(@session()->get('user_nama')) ?></h4>
+                  <p>Silahkan isi nilai kamu <a href="<?= site_url('pendaftar') ?>">disini</a>.</p>
+                </div>
               <?php } ?>
+
             </div>
             <!-- Nilai -->
             <div class="col-md-6">
