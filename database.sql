@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2023 at 10:51 AM
+-- Generation Time: Jun 27, 2023 at 01:42 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -117,7 +117,8 @@ CREATE TABLE `tbl_nilai` (
   `nilai_un` int(11) NOT NULL,
   `nilai_raport` int(11) NOT NULL,
   `nilai_ps` int(11) NOT NULL,
-  `nilai_pa` int(11) NOT NULL
+  `nilai_pa` int(11) NOT NULL,
+  `rata` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
