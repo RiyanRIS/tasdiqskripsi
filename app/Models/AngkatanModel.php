@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use CodeIgniter\Model;
 
 class AngkatanModel extends Model
@@ -12,7 +13,8 @@ class AngkatanModel extends Model
 
 	protected $allowedFields = ['id', 'angkatan', 'tahun', 'status', 'isDelete'];
 
-	public function simpan($data){
+	public function simpan($data)
+	{
 		$this->db->table($this->table)->insert($data);
 		$id = $this->db->insertId($this->table);
 		return $id ?? false;
@@ -21,20 +23,20 @@ class AngkatanModel extends Model
 	public function find_active()
 	{
 		return $this->db->table($this->table)
-										->where('isDelete', null)
-										->get()
-										->getResultArray();
+			->where('isDelete', null)
+			->get()
+			->getResultArray();
 	}
 
 	public function isActive()
 	{
 		return $this->db->table($this->table)
-										->where('status', '1')
-										->where('isDelete', null)
-										->orderby('tahun', 'DESC')
-										->limit(1)
-										->get()
-										->getRow();
+			->where('status', '1')
+			->where('isDelete', null)
+			->orderby('tahun', 'DESC')
+			->limit(1)
+			->get()
+			->getRow();
 	}
 
 	public function updateStatusOff()
@@ -42,4 +44,12 @@ class AngkatanModel extends Model
 		return $this->db->table($this->table)->update(['status' => 0]);
 	}
 
+	public function cekOff($id = 1): bool
+	{
+		$angkatan = $this->find();
+		foreach ($angkatan as $key => $v) {
+		}
+		print_r($angkatan);
+		return false;
+	}
 }

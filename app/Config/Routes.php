@@ -46,14 +46,14 @@ $routes->group('tambah', function ($routes) {
     $routes->post('berkas', 'Pendaftar::tambahberkas');
 });
 
-$routes->match(['get', 'post'] ,'login', 'Auth::login');
-$routes->match(['get', 'post'] ,'daftar', 'Auth::daftar');
+$routes->match(['get', 'post'], 'login', 'Auth::login');
+$routes->match(['get', 'post'], 'daftar', 'Auth::daftar');
 $routes->get('logout', 'Auth::logout');
 
 $routes->group('admin', function ($routes) {
     $routes->get('/', 'Admin\Home::index');
 
-    $routes->match(['get', 'post'] ,'login', 'Admin\Auth::login');
+    $routes->match(['get', 'post'], 'login', 'Admin\Auth::login');
     $routes->get('logout', 'Admin\Auth::logout');
 
     $routes->group('pendaftar', function ($routes) {
@@ -67,7 +67,7 @@ $routes->group('admin', function ($routes) {
             $routes->post('datamasuk', 'Admin\Pendaftar::ubahdatamasuk');
             $routes->post('datanilai', 'Admin\Pendaftar::ubahdatanilai');
             $routes->post('datapribadi', 'Admin\Pendaftar::ubahdatapribadi');
-            
+
             $routes->group('berkas', function ($routes) {
                 $routes->get('hapus/(:any)', 'Admin\Pendaftar::hapusberkas/$1');
                 $routes->get('cabut/(:any)', 'Admin\Pendaftar::cabutberkas/$1');
@@ -84,7 +84,6 @@ $routes->group('admin', function ($routes) {
         });
 
         $routes->get('hapus/(:any)', 'Admin\Pendaftar::hapus/$1');
-
     });
 
     $routes->group('angkatan', function ($routes) {
@@ -97,7 +96,6 @@ $routes->group('admin', function ($routes) {
     $routes->group('laporan', function ($routes) {
         $routes->get('/', 'Admin\Laporan::index');
     });
-
 });
 /*
  * --------------------------------------------------------------------

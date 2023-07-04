@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers\Admin;
+
 use App\Controllers\BaseController;
 
 class Angkatan extends BaseController
@@ -17,12 +18,13 @@ class Angkatan extends BaseController
     //     return view('admin/home/index', $data);
     // }
 
-    public function get(string $id){
-        if(!$this->isSecure()){
+    public function get(string $id)
+    {
+        if (!$this->isSecure()) {
             $msg = [
-              'status' => false,
-              'url' => site_url("admin/pendaftaran"),
-              'pesan'	 => 'Anda tidak berhak mengakses halaman ini',
+                'status' => false,
+                'url' => site_url("admin/pendaftaran"),
+                'pesan'     => 'Anda tidak berhak mengakses halaman ini',
             ];
             return json_encode($msg);
         }
@@ -34,11 +36,11 @@ class Angkatan extends BaseController
 
     public function tambah(string $id = null)
     {
-        if(!$this->isSecure()){
+        if (!$this->isSecure()) {
             $msg = [
-              'status' => false,
-              'url' => site_url("admin/pendaftaran"),
-              'pesan'	 => 'Anda tidak berhak mengakses halaman ini',
+                'status' => false,
+                'url' => site_url("admin/pendaftaran"),
+                'pesan'     => 'Anda tidak berhak mengakses halaman ini',
             ];
             return json_encode($msg);
         }
@@ -67,16 +69,30 @@ class Angkatan extends BaseController
             $additionalData = $this->request->getPost();
             unset($additionalData['id']);
 
-            if($id == null){
+            if ($id == null) {
+                if ($additionalData['status'] == 1) {
+                    $this->angkatan->updateStatusOff();
+                }
                 $lastid = $this->angkatan->simpan($additionalData);
             } else {
-                if($additionalData['status'] == 1){
+                if ($additionalData['status'] == 1) {
                     $this->angkatan->updateStatusOff();
+                } else {
+                    $angkatan = $this->angkatan->find($id);
+                    if ($angkatan['status'] == 1) {
+                        $msg = [
+                            'status' => false,
+                            'url' => site_url("admin"),
+                            'pesan'     => 'Minimal satu angkatan aktif',
+                        ];
+                        echo json_encode($msg);
+                        die();
+                    }
                 }
                 $lastid = $this->angkatan->update(['id_angkatan', $id], $additionalData);
             }
 
-            if($lastid){
+            if ($lastid) {
                 $msg = [
                     'status' => true,
                     'url' => site_url("admin"),
@@ -85,13 +101,12 @@ class Angkatan extends BaseController
                 $msg = [
                     'status' => false,
                     'url' => site_url("admin"),
-                    'pesan'	 => 'Data gagal dirubah',
+                    'pesan'     => 'Data gagal dirubah',
                 ];
             }
-
         } else {
             $msg = [
-                'status' => false, 
+                'status' => false,
                 'errors' => $this->validation->getErrors(),
             ];
         }
@@ -101,27 +116,27 @@ class Angkatan extends BaseController
 
     public function hapus(string $id)
     {
-      // Cek hak akses user
-      if(!$this->isSecure()){
-        $msg = [
-          'status' => false,
-          'url' => site_url("admin/pendaftaran"),
-          'pesan'	 => 'Anda tidak berhak mengakses halaman ini',
-        ];
-        return json_encode($msg);
-      }
+        // Cek hak akses user
+        if (!$this->isSecure()) {
+            $msg = [
+                'status' => false,
+                'url' => site_url("admin/pendaftaran"),
+                'pesan'     => 'Anda tidak berhak mengakses halaman ini',
+            ];
+            return json_encode($msg);
+        }
 
-      $get = $this->angkatan->find($id);
+        $get = $this->angkatan->find($id);
 
-      if($get['status'] == 1){
-        $msg = [0, "Tidak dapat menghapus Angkatan aktif."];
+        if ($get['status'] == 1) {
+            $msg = [0, "Tidak dapat menghapus Angkatan aktif."];
+            return redirect()->to(site_url('admin'))->with('msg', $msg);
+        }
+
+        $hapus = $this->angkatan->update(['id_angkatan', $id], ['isDelete' => 1]);
+
+        $msg = ($hapus ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
+
         return redirect()->to(site_url('admin'))->with('msg', $msg);
-      }
-
-      $hapus = $this->angkatan->update(['id_angkatan', $id], ['isDelete' => 1]);
-
-      $msg = ($hapus ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
-
-      return redirect()->to(site_url('admin'))->with('msg', $msg);
     }
 }
