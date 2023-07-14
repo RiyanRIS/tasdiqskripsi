@@ -1,9 +1,9 @@
 <?php
 class SConfig
 {
-    public $_namaApp = "SIPEGA";
-    public $_namaSekolah = "SMPN 3 TULUNGAGUNG";
-    public $_logoSekolah = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrIRiGNTfuYw5wgx_vDIlQUuvGuMhQnqzGLb4p5AoaAw&s";
+    public $_namaApp = "MAN1GAYO";
+    public $_namaSekolah = "MAN 1 GAYO LUES";
+    public $_logoSekolah = "https://i.ibb.co/Bt5Cf2M/man.jpg";
 
     public $_nilaiminim = 75;
 
