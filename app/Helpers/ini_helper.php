@@ -14,5 +14,12 @@ function genNilai($v): int
 
 function genId($v)
 {
-    echo $v['tahun'] . "_" . ($v['jurusan'] == 'IPA' ? 'A' : 'B') . str_pad($v['id'], 4, "0", STR_PAD_LEFT);
+    echo $v['tahun'] . str_pad($v['id'], 4, "0", STR_PAD_LEFT);
+}
+
+function genId1($v)
+{
+    print_r($v);
+    die();
+    // echo $v['tahun'] . "_" . ($v['jurusan'] == 'IPA' ? 'A' : 'B') . str_pad($v['id'], 4, "0", STR_PAD_LEFT);
 }

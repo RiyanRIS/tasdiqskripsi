@@ -37,6 +37,7 @@ $routes->get('berkas', 'Home::berkas');
 $routes->group('ubah', function ($routes) {
     $routes->post('datamasuk', 'Pendaftar::ubahdatamasuk');
     $routes->post('datanilai', 'Pendaftar::ubahdatanilai');
+    $routes->post('datanilai2', 'Pendaftar::ubahdatanilai2');
     $routes->post('datapribadi', 'Pendaftar::ubahdatapribadi');
     $routes->get('datapribadi', 'Pendaftar::ubahdatapribadi1');
     $routes->get('berkas/hapus/(:any)', 'Pendaftar::hapusberkas/$1');

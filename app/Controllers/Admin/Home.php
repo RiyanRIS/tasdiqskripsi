@@ -1,23 +1,25 @@
 <?php
 
 namespace App\Controllers\Admin;
+
 use App\Controllers\BaseController;
 
 class Home extends BaseController
 {
     public function index()
     {
-        if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'));
+        if (!$this->isSecure()) return redirect()->to(site_url('/admin/login'));
 
         $pendaftars = $this->pribadi->find_now();
+
         $total = count($pendaftars);
 
         $laporan = [];
         $ipa = $ips = $lulus = $tidak_lulus = 0;
         foreach ($pendaftars as $key => $v) {
-            if($v['jurusan'] == 'IPA') $ipa++;
-            if($v['jurusan'] == 'IPS') $ips++;
-            ($v['rata'] > $this->cfg->_nilaiminim ? $lulus++ : $tidak_lulus++); 
+            if ($v['jurusan'] == 'IPA') $ipa++;
+            if ($v['jurusan'] == 'IPS') $ips++;
+            ($v['rata'] > $this->cfg->_nilaiminim ? $lulus++ : $tidak_lulus++);
         }
 
         $laporan = [
@@ -36,5 +38,4 @@ class Home extends BaseController
 
         return view('admin/home/index', $data);
     }
-
 }

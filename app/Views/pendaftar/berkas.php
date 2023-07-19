@@ -80,6 +80,16 @@
                 </div>
 
                 <div class="card-body">
+                  <div class="alert alert-info" role="alert">
+                    <p>Wajib Upload berkas berikut:</p>
+                    <ul>
+                      <li>Ijazah/Surat keterangan lulus</li>
+                      <li>FC Akta kelahiran</li>
+                      <li>FC Kartu Keluarga</li>
+                    </ul>
+                    <p><strong>Mohon upload berkas dalam bentuk PDF</strong></p>
+                    <!-- <p class="mb-0">Hingga tanggal deatline berkas belum lengkap, akan dinyatakan gugur.</p> -->
+                  </div>
                   <div class="form-group" id="notifikasi_nama">
                     <label for="nama">Nama Berkas</label>
                     <input type="hidden" name="id" value="<?= @$record['id'] ?>">
