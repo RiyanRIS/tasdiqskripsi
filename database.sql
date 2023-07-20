@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2023 at 01:42 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 7.4.30
+-- Generation Time: Jul 20, 2023 at 04:28 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,8 +60,9 @@ CREATE TABLE `tbl_angkatan` (
 --
 
 INSERT INTO `tbl_angkatan` (`id_angkatan`, `angkatan`, `tahun`, `status`, `isDelete`) VALUES
-(1, '2022/2023', '2022', 1, NULL),
-(2, '2021/2022', '2021', 0, NULL);
+(1, '2022/2023', '2022', 0, NULL),
+(2, '2021/2022', '2021', 0, NULL),
+(3, '2023/2024', '2023', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,6 @@ CREATE TABLE `tbl_dt_pribadi` (
 -- Dumping data for table `tbl_dt_pribadi`
 --
 
--- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_nilai`
@@ -125,7 +125,6 @@ CREATE TABLE `tbl_nilai` (
 -- Dumping data for table `tbl_nilai`
 --
 
--- --------------------------------------------------------
 
 --
 -- Indexes for dumped tables
@@ -147,13 +146,15 @@ ALTER TABLE `tbl_angkatan`
 -- Indexes for table `tbl_berkas`
 --
 ALTER TABLE `tbl_berkas`
-  ADD PRIMARY KEY (`id_berkas`);
+  ADD PRIMARY KEY (`id_berkas`),
+  ADD KEY `berkas_peserta` (`id_dt_pribadi`);
 
 --
 -- Indexes for table `tbl_dt_pribadi`
 --
 ALTER TABLE `tbl_dt_pribadi`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `angkatan_peserta` (`id_angkatan`);
 
 --
 -- Indexes for table `tbl_nilai`
@@ -176,7 +177,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_angkatan`
 --
 ALTER TABLE `tbl_angkatan`
-  MODIFY `id_angkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_angkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_berkas`
@@ -194,18 +195,30 @@ ALTER TABLE `tbl_dt_pribadi`
 -- AUTO_INCREMENT for table `tbl_nilai`
 --
 ALTER TABLE `tbl_nilai`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `tbl_berkas`
+--
+ALTER TABLE `tbl_berkas`
+  ADD CONSTRAINT `berkas_peserta` FOREIGN KEY (`id_dt_pribadi`) REFERENCES `tbl_dt_pribadi` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_dt_pribadi`
+--
+ALTER TABLE `tbl_dt_pribadi`
+  ADD CONSTRAINT `angkatan_peserta` FOREIGN KEY (`id_angkatan`) REFERENCES `tbl_angkatan` (`id_angkatan`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `tbl_nilai`
 --
 ALTER TABLE `tbl_nilai`
   ADD CONSTRAINT `nilai_dt_pribadi` FOREIGN KEY (`id_dt_pribadi`) REFERENCES `tbl_dt_pribadi` (`id`) ON UPDATE CASCADE;
-
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

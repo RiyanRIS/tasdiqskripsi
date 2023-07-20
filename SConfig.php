@@ -3,7 +3,8 @@ class SConfig
 {
     public $_namaApp = "MAN1GAYO";
     public $_namaSekolah = "MAN 1 GAYO LUES";
-    public $_logoSekolah = "https://i.ibb.co/Bt5Cf2M/man.jpg";
+    // public $_logoSekolah = "https://i.ibb.co/bXdStNj/LOGO-MAN.png";
+    public $_logoSekolah = "http://localhost:8080/assets/images/logo.png";
 
     public $_nilaiminim = 75;
 
