@@ -19,7 +19,7 @@ class Home extends BaseController
         foreach ($pendaftars as $key => $v) {
             if ($v['jurusan'] == 'IPA') $ipa++;
             if ($v['jurusan'] == 'IPS') $ips++;
-            ($v['rata'] > $this->cfg->_nilaiminim ? $lulus++ : $tidak_lulus++);
+            (genNilai($v) > $this->cfg->_nilaiminim ? $lulus++ : $tidak_lulus++);
         }
 
         $laporan = [

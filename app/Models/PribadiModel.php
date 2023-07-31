@@ -12,7 +12,7 @@ class PribadiModel extends Model
 
 	protected $returnType     = 'array';
 
-	protected $allowedFields = ['id', 'nama', 'tmpt_lahir', 'tgl_lahir', 'jenis_kelamin', 'agama', 'alamat', 'asl_sekolah', 'no_tlpn', 'email', 'username', 'password'];
+	protected $allowedFields = ['id', 'nama', 'tmpt_lahir', 'tgl_lahir', 'jenis_kelamin', 'alamat', 'asl_sekolah', 'no_tlpn', 'email', 'username', 'password'];
 
 	public $rules_tambah_ubah = [
 		'nama' => [
@@ -32,11 +32,6 @@ class PribadiModel extends Model
 		],
 		'jenis_kelamin' => [
 			'label'  => 'Jenis Kelamin',
-			'rules'  => 'required',
-			'errors' => [],
-		],
-		'agama' => [
-			'label'  => 'Agama',
 			'rules'  => 'required',
 			'errors' => [],
 		],

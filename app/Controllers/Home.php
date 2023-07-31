@@ -15,7 +15,7 @@ class Home extends BaseController
         if (!$this->isSecure('user')) return redirect()->to(site_url('login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $id = session()->get('user_id');
-        $v = $this->nilai->find($id);
+        $v = $this->nilai->getBySiswa($id)[0];
         $status_peserta = false;
 
         if ($v) {
@@ -42,7 +42,7 @@ class Home extends BaseController
         $id = session()->get('user_id');
         $data = [
             "record" => $this->pribadi->find($id),
-            "nilai" => $this->nilai->find($id),
+            "nilai" => $this->nilai->getBySiswa($id)[0],
             "judul" => "Halaman Pendaftar"
         ];
 

@@ -74,23 +74,6 @@ $cfg = new \SConfig();
             </div>
           </div>
 
-          <!-- <div class="mb-3">
-          <label for="agama">Agama</label>
-          <select class="custom-select d-block w-100" name="agama" id="agama" required>
-              <option value="">--- Pilih Agama ---</option>
-              <option value="Islam">Islam</option>
-              <option value="Kristen">Kristen</option>
-              <option value="Khatolik">Khatolik</option>
-              <option value="Hindu">Hindu</option>
-              <option value="Budha">Budha</option>
-              <option value="Konghuchu">Konghuchu</option>
-            </select>
-          <div class="invalid-feedback">
-            <?= @$err['agama'] ?>
-          </div>
-        </div> -->
-          <input type="hidden" name="agama" value="Islam">
-
           <div class="mb-3">
             <label for="alamat">Alamat</label>
             <input type="text" class="form-control" name="alamat" id="alamat" placeholder="jl. kuhajidewo" value="<?= @$post['alamat'] ?>" required>

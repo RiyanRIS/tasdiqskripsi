@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use CodeIgniter\Model;
 
 class NilaiModel extends Model
@@ -10,7 +11,7 @@ class NilaiModel extends Model
 
 	protected $returnType     = 'array';
 
-	protected $allowedFields = ['id_nilai', 'id_dt_pribadi', 'nilai_un', 'nilai_raport', 'nilai_ps', 'nilai_pa'];
+	protected $allowedFields = ['id_nilai', 'id_dt_pribadi', 'nilai_un', 'nilai_raport', 'nilai_ps', 'nilai_pa', 'nilai_wawancara'];
 
 	// public $rules_tambah_ubah = [
 	// 		'nama' => [
@@ -81,32 +82,33 @@ class NilaiModel extends Model
 	// 		],
 	// ];
 
-	public function simpan($data){
+	public function simpan($data)
+	{
 		$this->db->table($this->table)->insert($data);
 		$id = $this->db->insertId($this->table);
 		return $id ?? false;
 	}
 
-	public function updateS($where, $data){
+	public function updateS($where, $data)
+	{
 		return $this->db->table($this->table)->where($where)->update($data);
 	}
 
 	public function getBySiswa(string $param)
 	{
 		return $this->db->table($this->table)
-											->where('id_dt_pribadi', $param)
-											->limit(1)
-											->get()
-											->getRow();
+			->where('id_dt_pribadi', $param)
+			->limit(1)
+			->get()
+			->getResult('array');
 	}
 
-	public function isSudahAda(string $id):bool
+	public function isSudahAda(string $id): bool
 	{
 		$data = $this->getBySiswa($id);
-		if($data == null){
+		if ($data == null) {
 			return false;
 		}
 		return true;
 	}
-
 }

@@ -55,18 +55,6 @@
                     </select>
                   </div>
 
-                  <div class="form-group" id="notifikasi_agama">
-                    <label for="agama">Agama</label>
-                    <select class="custom-select d-block w-100" name="agama" id="agama" required>
-                      <option value="Islam" <?= is_selected(@$record['agama'], "Islam") ?>>Islam</option>
-                      <option value="Kristen" <?= is_selected(@$record['agama'], "Kristen") ?>>Kristen</option>
-                      <option value="Khatolik" <?= is_selected(@$record['agama'], "Khatolik") ?>>Khatolik</option>
-                      <option value="Hindu" <?= is_selected(@$record['agama'], "Hindu") ?>>Hindu</option>
-                      <option value="Budha" <?= is_selected(@$record['agama'], "Budha") ?>>Budha</option>
-                      <option value="Konghuchu" <?= is_selected(@$record['agama'], "Konghuchu") ?>>Konghuchu</option>
-                    </select>
-                  </div>
-
                   <div class="form-group" id="notifikasi_alamat">
                     <label for="alamat">Alamat</label>
                     <input type="text" class="form-control" id="alamat" value="<?= @$record['alamat'] ?>" name="alamat" placeholder="Masukkan " required="true" autocomplete="off">
@@ -193,7 +181,21 @@
                           <div class="form-group col-12" id="notifikasi_nilai_pa">
                             <label for="nilai_pa">Nilai PA</label>
                             <input type="hidden" name="id" value="<?= session()->user_id ?>">
-                            <input type="number" class="form-control" id="nilai_pa" value="<?= @$nilai['nilai_pa'] ?>" name="nilai_ps" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
+                            <input type="number" class="form-control" id="nilai_pa" value="<?= @$nilai['nilai_pa'] ?>" name="nilai_pa" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
+                          </div>
+                        </form>
+                      </td>
+                      <td>
+                        <a href="<?= site_url('berkas') ?>" class="mt-1 ml-5 btn btn-default"><i class="fa fa-upload fa-3x"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <form method="post" action="edit" data-url="<?= site_url("ubah/datanilai2") ?>" id="myForm6" enctype="multipart/form-data" accept-charset="utf-8">
+                          <div class="form-group col-12" id="notifikasi_nilai_wawancara">
+                            <label for="nilai_wawancara">Nilai Wawancara</label>
+                            <input type="hidden" name="id" value="<?= session()->user_id ?>">
+                            <input type="number" class="form-control" id="nilai_wawancara" value="<?= @$nilai['nilai_wawancara'] ?>" name="nilai_wawancara" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
                           </div>
                         </form>
                       </td>

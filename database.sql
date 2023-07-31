@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2023 at 04:28 PM
+-- Generation Time: Jul 31, 2023 at 08:12 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ci4`
+-- Database: `ci4_tasdiq`
 --
 
 -- --------------------------------------------------------
@@ -91,13 +91,12 @@ CREATE TABLE `tbl_dt_pribadi` (
   `tmpt_lahir` varchar(50) NOT NULL,
   `tgl_lahir` date NOT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan','','') NOT NULL,
-  `agama` enum('Islam','Kristen','Khatolik','Hindu','Budha','Konghuchu') NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `asl_sekolah` varchar(50) NOT NULL,
   `no_tlpn` varchar(16) NOT NULL,
   `email` varchar(50) NOT NULL,
   `id_angkatan` int(1) NOT NULL,
-  `jurusan` varchar(5) NOT NULL,
+  `jurusan` enum('IPA','IPS','','') NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -118,6 +117,7 @@ CREATE TABLE `tbl_nilai` (
   `nilai_raport` int(11) NOT NULL,
   `nilai_ps` int(11) NOT NULL,
   `nilai_pa` int(11) NOT NULL,
+  `nilai_wawancara` int(11) NOT NULL,
   `rata` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -189,7 +189,7 @@ ALTER TABLE `tbl_berkas`
 -- AUTO_INCREMENT for table `tbl_dt_pribadi`
 --
 ALTER TABLE `tbl_dt_pribadi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_nilai`

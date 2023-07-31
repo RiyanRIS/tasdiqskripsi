@@ -145,7 +145,21 @@ $cfg = new \SConfig();
                       <div class="form-group col-12" id="notifikasi_nilai_pa">
                         <label for="nilai_pa">Nilai PA</label>
                         <input type="hidden" name="id" value="<?= session()->user_id ?>">
-                        <input type="number" class="form-control" id="nilai_pa" value="<?= @$nilai['nilai_pa'] ?>" name="nilai_ps" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
+                        <input type="number" class="form-control" id="nilai_pa" value="<?= @$nilai['nilai_pa'] ?>" name="nilai_pa" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
+                      </div>
+                    </form>
+                  </td>
+                  <td>
+                    <a href="<?= site_url('berkas') ?>" class="mt-1 ml-5 btn btn-default"><i class="fa fa-upload fa-3x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <form method="post" action="edit" data-url="<?= site_url("ubah/datanilai2") ?>" id="myForm6" enctype="multipart/form-data" accept-charset="utf-8">
+                      <div class="form-group col-12" id="notifikasi_nilai_wawancara">
+                        <label for="nilai_wawancara">Nilai Wawancara</label>
+                        <input type="hidden" name="id" value="<?= session()->user_id ?>">
+                        <input type="number" class="form-control" id="nilai_wawancara" value="<?= @$nilai['nilai_wawancara'] ?>" name="nilai_wawancara" placeholder="Masukkan Nilai Wawancara" required="true" autocomplete="off" min="1" max="100">
                       </div>
                     </form>
                   </td>

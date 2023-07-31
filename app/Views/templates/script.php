@@ -44,7 +44,7 @@
 
     $('#datatable').DataTable()
 
-    $('#myForm, #myForm1, #myForm2, #myForm3, #myForm4, #myForm5').submit(function(e) {
+    $('#myForm, #myForm1, #myForm2, #myForm3, #myForm4, #myForm5, #myForm6, #myForm7').submit(function(e) {
       e.preventDefault()
       var dataToSend = new FormData(this)
       var formId = $(this)

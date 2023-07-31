@@ -108,6 +108,11 @@ class Pendaftar extends BaseController
         'rules'  => 'required|less_than[100]|greater_than[1]',
         'errors' => [],
       ],
+      'nilai_wawancara' => [
+        'label'  => 'Nilai Wawancara',
+        'rules'  => 'required|less_than[100]|greater_than[1]',
+        'errors' => [],
+      ],
     ];
     $this->validation->setRules($rules);
 
@@ -232,11 +237,6 @@ class Pendaftar extends BaseController
       ],
       'jenis_kelamin' => [
         'label'  => 'Jenis Kelamin',
-        'rules'  => 'required',
-        'errors' => [],
-      ],
-      'agama' => [
-        'label'  => 'Agama',
         'rules'  => 'required',
         'errors' => [],
       ],
