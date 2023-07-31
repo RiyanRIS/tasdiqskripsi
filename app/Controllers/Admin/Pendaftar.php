@@ -37,7 +37,7 @@ class Pendaftar extends BaseController
 
     $data = [
       "record" => $this->pribadi->find($id),
-      "nilai" => $this->nilai->getBySiswa($id)[0],
+      "nilai" => @$this->nilai->getBySiswa($id)[0],
       "judul" => "Halaman Detail Pendaftar"
     ];
 

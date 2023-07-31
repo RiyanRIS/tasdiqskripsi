@@ -15,7 +15,7 @@ class Home extends BaseController
         if (!$this->isSecure('user')) return redirect()->to(site_url('login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $id = session()->get('user_id');
-        $v = $this->nilai->getBySiswa($id)[0];
+        $v = @$this->nilai->getBySiswa($id)[0];
         $status_peserta = false;
 
         if ($v) {
