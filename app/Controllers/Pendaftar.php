@@ -179,6 +179,9 @@ class Pendaftar extends BaseController
       if ($isSudahAda) {
         // Proses Update
         $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], $additionalData);
+        $nilais = $this->nilai->getBySiswa($id)[0];
+        $rata = genNilai($nilais);
+        $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], ['rata' => $rata]);
       } else {
         $additionalData['id_dt_pribadi'] = $id;
         $lastid = $this->nilai->simpan($additionalData);
