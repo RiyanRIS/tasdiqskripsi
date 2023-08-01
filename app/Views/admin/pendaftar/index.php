@@ -56,7 +56,7 @@ $cfg = new \SConfig();
                         <tr>
                           <td>
                             <a href="<?= site_url('admin/pendaftar/detail/' . $v['id']) ?>" class="btn btn-sm btn-success" title="Detail"><i class="fa fa-eye"></i> Detail</a>
-                            <!-- <a href="<?= site_url('admin/pendaftar/berkas/' . $v['id']) ?>" class="btn btn-sm btn-success" title="Upload Berkas"><i class="fa fa-file-alt"></i></a> -->
+                            <a href="<?= site_url('admin/pendaftar/berkas/' . $v['id']) ?>" class="btn btn-sm btn-success" title="Upload Berkas"><i class="fa fa-file-alt"></i> Berkas</a>
                             <a href="<?= site_url('admin/pendaftar/cetak/' . $v['id']) ?>" class="btn btn-sm btn-success" title="Cetak Data"><i class="fa fa-print"></i> Cetak</a>
                             <a onclick="return confirm('Cabut Berkas Untuk Peserta Ini?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/pendaftar/ubah/berkas/cabut/' . $v['id']) ?>" class="btn btn-sm btn-danger" title="Cabut Berkas"><i class="fa fa-file-export"></i> Cabut Berkas</a>
                             <!-- <a onclick="return confirm('Hapus Peserta Ini?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/pendaftar/hapus/' . $v['id']) ?>" class="btn btn-sm btn-danger" title="Hapus data"><i class="fa fa-trash"></i> Hapus</a> -->

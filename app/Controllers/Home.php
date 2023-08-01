@@ -42,7 +42,7 @@ class Home extends BaseController
         $id = session()->get('user_id');
         $data = [
             "record" => $this->pribadi->find($id),
-            "nilai" => $this->nilai->getBySiswa($id)[0],
+            "nilai" => @$this->nilai->getBySiswa($id)[0],
             "judul" => "Halaman Pendaftar"
         ];
 
