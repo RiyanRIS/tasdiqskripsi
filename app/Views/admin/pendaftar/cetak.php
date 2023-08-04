@@ -64,6 +64,7 @@ $cfg = new \SConfig();
                         <td>:</td>
                         <td><?= $pribadi['jurusan'] ?></td>
                       </tr>
+                      <?php $nilai = $nilai[0]; ?>
                       <tr>
                         <td>UN</td>
                         <td>:</td>

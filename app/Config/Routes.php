@@ -53,6 +53,7 @@ $routes->get('logout', 'Auth::logout');
 
 $routes->group('admin', function ($routes) {
     $routes->get('/', 'Admin\Home::index');
+    $routes->get('berkastercabut', 'Admin\Pendaftar::berkas_tercabut');
 
     $routes->match(['get', 'post'], 'login', 'Admin\Auth::login');
     $routes->get('logout', 'Admin\Auth::logout');

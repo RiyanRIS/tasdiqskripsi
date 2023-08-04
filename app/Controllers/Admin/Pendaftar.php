@@ -57,13 +57,25 @@ class Pendaftar extends BaseController
     return view('admin/pendaftar/berkas', $data);
   }
 
+  public function berkas_tercabut()
+  {
+    if (!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+
+    $data = [
+      "berkas" => $this->berkas->getTercabut(),
+      "judul" => "Halaman Berkas Tercabut"
+    ];
+
+    return view('admin/pendaftar/berkas_tercabut', $data);
+  }
+
   public function cetak($id)
   {
     if (!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
     $data = [
       "pribadi" => $this->pribadi->find($id),
-      "nilai" => $this->nilai->find($id),
+      "nilai" => $this->nilai->getBySiswa($id),
       "judul" => "Cetak Pendaftaran"
     ];
 

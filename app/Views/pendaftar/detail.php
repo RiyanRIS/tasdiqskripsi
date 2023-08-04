@@ -4,6 +4,11 @@
 <head>
   <?= view("templates/head") ?>
   <!-- CSS -->
+  <style>
+    .image-upload>input {
+      display: none;
+    }
+  </style>
   <!-- TUTUP CSS -->
 </head>
 
@@ -19,7 +24,7 @@
         <div class="container-fluid">
           <div class="row">
             <!-- FORM Data Diri -->
-            <form method="post" action="edit" data-url="<?= site_url("ubah/datapribadi") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-6">
+            <form method="post" action="edit" data-url="<?= site_url(" ubah/datapribadi") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-6">
               <div class="card card-success">
 
                 <div class="card-header">
@@ -50,8 +55,10 @@
                   <div class="form-group" id="notifikasi_jenis_kelamin">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
                     <select class="custom-select d-block w-100" name="jenis_kelamin" id="jenis_kelamin" required>
-                      <option value="Laki-laki" <?= is_selected(@$record['jenis_kelamin'], "Laki-laki") ?>>Laki-Laki</option>
-                      <option value="Perempuan" <?= is_selected(@$record['jenis_kelamin'], "Perempuan") ?>>Perempuan</option>
+                      <option value="Laki-laki" <?= is_selected(@$record['jenis_kelamin'], "Laki-laki") ?>>Laki-Laki
+                      </option>
+                      <option value="Perempuan" <?= is_selected(@$record['jenis_kelamin'], "Perempuan") ?>>Perempuan
+                      </option>
                     </select>
                   </div>
 
@@ -77,7 +84,7 @@
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Data Pribadi</button>
+                  <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                 </div>
               </div>
             </form>
@@ -85,131 +92,56 @@
             <div class="col-6">
               <div class="row">
 
-                <!-- FORM Data Nilai -->
-                <!-- <form method="post" action="edit" data-url="<?= site_url("ubah/datanilai") ?>" id="myForm2" enctype="multipart/form-data" accept-charset="utf-8" class="col-12">
-                  <div class="card card-success">
-                    <div class="card-header">
-                      <h3 class="card-title">Data Nilai</h3>
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                    </div>
+                <!-- FORM Nilai -->
+                <form method="post" action="edit" data-url="<?= site_url(" ubah/datanilai2") ?>" id="myForm2" enctype="multipart/form-data" accept-charset="utf-8" class="col-md-12">
+                  <?php
+                  $berkasnya = json_decode(@$nilai['berkas']);
+                  ?>
+                  <input type="hidden" name="id" value="<?= session()->user_id ?>">
 
-                    <div class="card-body">
-                      <div class="form-group" id="notifikasi_nilai_un">
-                        <label for="nilai_un">Nilai UN</label>
-                        <input type="hidden" name="id" value="<?= @$record['id'] ?>">
-                        <input type="number" class="form-control" id="nilai_un" value="<?= @$nilai['nilai_un'] ?>" name="nilai_un" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
-                      </div>
-
-                      <div class="form-group" id="notifikasi_nilai_raport">
-                        <label for="nilai_raport">Nilai Raport</label>
-                        <input type="number" class="form-control" id="nilai_raport" value="<?= @$nilai['nilai_raport'] ?>" name="nilai_raport" placeholder="Masukkan Nilai Raport" required="true" autocomplete="off" min="1" max="100">
-                      </div>
-
-                      <div class="form-group" id="notifikasi_nilai_ps">
-                        <label for="nilai_ps">Nilai PS</label>
-                        <input type="number" class="form-control" id="nilai_ps" value="<?= @$nilai['nilai_ps'] ?>" name="nilai_ps" placeholder="Masukkan Nilai PS" required="true" autocomplete="off" min="1" max="100">
-                      </div>
-
-                      <div class="form-group" id="notifikasi_nilai_pa">
-                        <label for="nilai_pa">Nilai PA</label>
-                        <input type="number" class="form-control" id="nilai_pa" value="<?= @$nilai['nilai_pa'] ?>" name="nilai_pa" placeholder="Masukkan Nilai PA" required="true" autocomplete="off" min="1" max="100">
-                        <small class="text-muted small rata-rata">Rata-rata: </small>
-                      </div>
-                    </div>
-
-                    <div class="card-footer">
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Data Nilai</button>
-                    </div>
-
-                  </div>
-                </form> -->
-
-                <div class="col-md-12">
                   <table class="table table-bordered">
                     <tr style="background-color: #28a745;color: #fff;">
                       <th>Data Nilai</th>
                       <th>Upload Bukti</th>
                     </tr>
-                    <tr>
-                      <td>
-                        <form method="post" action="edit" data-url="<?= site_url("ubah/datanilai2") ?>" id="myForm2" enctype="multipart/form-data" accept-charset="utf-8">
-                          <div class="form-group col-12" id="notifikasi_nilai_un">
-                            <label for="nilai_un">Nilai UN</label>
-                            <input type="hidden" name="id" value="<?= session()->user_id ?>">
-                            <input type="number" class="form-control" id="nilai_un" value="<?= @$nilai['nilai_un'] ?>" name="nilai_un" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
+                    <?php
+                    $jenis_nilai = ['nilai_un', 'nilai_raport', 'nilai_ps', 'nilai_pa', 'nilai_wawancara'];
+                    foreach ($jenis_nilai as $key => $value) {
+                      $jenis = $value ?>
+                      <tr>
+                        <td>
+                          <div class="form-group col-12" id="notifikasi_<?= $jenis ?>">
+                            <label for="<?= $jenis ?>"><?= ucwords(str_replace('_', ' ', $jenis)) ?></label>
+                            <input type="number" class="form-control" id="<?= $jenis ?>" value="<?= @$nilai[$jenis] ?>" name="<?= $jenis ?>" placeholder="Masukkan <?= ucwords(str_replace('_', ' ', $jenis)) ?>" required="true" autocomplete="off" min="1" max="100">
                           </div>
-                        </form>
-                      </td>
-                      <td>
-                        <a href="<?= site_url('berkas') ?>" class="mt-1 ml-5 btn btn-default"><i class="fa fa-upload fa-3x"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <form method="post" action="edit" data-url="<?= site_url("ubah/datanilai2") ?>" id="myForm3" enctype="multipart/form-data" accept-charset="utf-8">
-                          <div class="form-group col-12" id="notifikasi_nilai_raport">
-                            <label for="nilai_raport">Nilai Raport</label>
-                            <input type="hidden" name="id" value="<?= session()->user_id ?>">
-                            <input type="number" class="form-control" id="nilai_raport" value="<?= @$nilai['nilai_raport'] ?>" name="nilai_raport" placeholder="Masukkan Nilai Raport" required="true" autocomplete="off" min="1" max="100">
+                        </td>
+                        <td>
+                          <div id="pilihan-<?= $jenis ?>">
+                            <p>File: <?php if (isset($berkasnya->$jenis)) {
+                                      ?><a target="BLANK" href="<?= site_url('uploads/temp/' . $berkasnya->$jenis) ?>">klik disini</a><?php } ?></p>
                           </div>
-                        </form>
-                      </td>
-                      <td>
-                        <a href="<?= site_url('berkas') ?>" class="mt-1 ml-5 btn btn-default"><i class="fa fa-upload fa-3x"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <form method="post" action="edit" data-url="<?= site_url("ubah/datanilai2") ?>" id="myForm4" enctype="multipart/form-data" accept-charset="utf-8">
-                          <div class="form-group col-12" id="notifikasi_nilai_ps">
-                            <label for="nilai_ps">Nilai PS</label>
-                            <input type="hidden" name="id" value="<?= session()->user_id ?>">
-                            <input type="number" class="form-control" id="nilai_ps" value="<?= @$nilai['nilai_ps'] ?>" name="nilai_ps" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
+                          <div class="image-upload">
+                            <label for="file-<?= $jenis ?>">
+                              <i class="mt-1 ml-5 fa fa-upload fa-3x"></i>
+                            </label>
+
+                            <input id="file-<?= $jenis ?>" type="file" name="file<?= $jenis ?>" />
                           </div>
-                        </form>
-                      </td>
-                      <td>
-                        <a href="<?= site_url('berkas') ?>" class="mt-1 ml-5 btn btn-default"><i class="fa fa-upload fa-3x"></i></a>
-                      </td>
-                    </tr>
+                        </td>
+                      </tr>
+                    <?php } ?>
                     <tr>
-                      <td>
-                        <form method="post" action="edit" data-url="<?= site_url("ubah/datanilai2") ?>" id="myForm5" enctype="multipart/form-data" accept-charset="utf-8">
-                          <div class="form-group col-12" id="notifikasi_nilai_pa">
-                            <label for="nilai_pa">Nilai PA</label>
-                            <input type="hidden" name="id" value="<?= session()->user_id ?>">
-                            <input type="number" class="form-control" id="nilai_pa" value="<?= @$nilai['nilai_pa'] ?>" name="nilai_pa" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
-                          </div>
-                        </form>
-                      </td>
-                      <td>
-                        <a href="<?= site_url('berkas') ?>" class="mt-1 ml-5 btn btn-default"><i class="fa fa-upload fa-3x"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <form method="post" action="edit" data-url="<?= site_url("ubah/datanilai2") ?>" id="myForm6" enctype="multipart/form-data" accept-charset="utf-8">
-                          <div class="form-group col-12" id="notifikasi_nilai_wawancara">
-                            <label for="nilai_wawancara">Nilai Wawancara</label>
-                            <input type="hidden" name="id" value="<?= session()->user_id ?>">
-                            <input type="number" class="form-control" id="nilai_wawancara" value="<?= @$nilai['nilai_wawancara'] ?>" name="nilai_wawancara" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
-                          </div>
-                        </form>
-                      </td>
-                      <td>
-                        <a href="<?= site_url('berkas') ?>" class="mt-1 ml-5 btn btn-default"><i class="fa fa-upload fa-3x"></i></a>
+                      <td colspan='2'>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                       </td>
                     </tr>
                   </table>
-                </div>
+                </form>
                 <!-- FORM Data Masuk -->
-                <form method="post" action="edit" data-url="<?= site_url("ubah/datamasuk") ?>" id="myForm3" enctype="multipart/form-data" accept-charset="utf-8" class="col-12">
+                <form method="post" action="edit" data-url="<?= site_url(" ubah/datamasuk") ?>" id="myForm3" enctype="multipart/form-data" accept-charset="utf-8" class="col-12">
                   <div class="card card-success">
                     <div class="card-header">
-                      <h3 class="card-title">Data Masuk</h3>
+                      <h3 class="card-title">Ubah Password</h3>
                       <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                         </button>
@@ -230,7 +162,7 @@
                     </div>
 
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Data Masuk</button>
+                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                     </div>
                   </div>
                 </form>
@@ -249,6 +181,21 @@
   <!-- ./wrapper -->
   <?= view("templates/script") ?>
   <script>
+    <?php foreach ($jenis_nilai as $key => $value) { ?>
+      const file_<?= $value ?> = document.getElementById("file-<?= $value ?>");
+
+      file_<?= $value ?>.addEventListener("change", function() {
+        const selectedFiles = file_<?= $value ?>.files;
+        if (selectedFiles.length > 0) {
+          html = "<p>File: " + selectedFiles[0].name + "</p>";
+          $('#pilihan-<?= $value ?>').html(html)
+        } else {
+          html = "<p>File: - </p>";
+          $('#pilihan-<?= $value ?>').html(html)
+        }
+      });
+    <?php } ?>
+
     function update_nilai() {
       var nil1 = Number($('#nilai_un').val())
       var nil2 = Number($('#nilai_raport').val())

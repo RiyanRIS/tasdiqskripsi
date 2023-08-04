@@ -170,22 +170,45 @@ class Pendaftar extends BaseController
     // Cek isian ngga boleh kosong dan nilai minimal 1 dan maksimal 100
 
     if ($this->request->getPost()) {
-      $additionalData = $this->request->getPost();
       $id = $this->request->getPost('id');
+      $additionalData = $this->request->getPost();
       unset($additionalData['id']);
-
       // Cek Nilai Sudah Pernah Simpan
       $isSudahAda = $this->nilai->isSudahAda($id);
+
+      $berkass = [];
+      // $nilais = $isSudahAda ? $this->nilai->getBySiswa($id)[0] : [];
+      // $berkasnya = $isSudahAda ? (array)json_decode(@$nilais['berkas']) : [];
+
+      $jenis_nilai = ['nilai_un', 'nilai_raport', 'nilai_ps', 'nilai_pa', 'nilai_wawancara'];
+
+      foreach ($jenis_nilai as $k => $v) {
+        $file = $this->request->getFile('file' . $v);
+        if ($file->isValid()) {
+          $newName = $file->getRandomName();
+          $file->move(ROOTPATH . 'public/uploads/temp/', $newName);
+          $berkass[$v] = $newName;
+        }
+        // } else {
+        //   if ($isSudahAda) {
+        //     $berkass[$v] = $berkasnya[$v];
+        //   }
+        // }
+      }
+
+      $additionalData['berkas'] = json_encode($berkass);
+
       if ($isSudahAda) {
         // Proses Update
         $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], $additionalData);
-        $nilais = $this->nilai->getBySiswa($id)[0];
-        $rata = genNilai($nilais);
-        $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], ['rata' => $rata]);
       } else {
         $additionalData['id_dt_pribadi'] = $id;
         $lastid = $this->nilai->simpan($additionalData);
       }
+
+      $nilais = $this->nilai->getBySiswa($id)[0];
+      $rata = genNilai($nilais);
+      $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], ['rata' => $rata]);
 
       if ($lastid) {
         $msg = [

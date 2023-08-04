@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2023 at 08:12 AM
+-- Generation Time: Aug 04, 2023 at 09:59 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -32,7 +32,7 @@ CREATE TABLE `tbl_admin` (
   `nama` varchar(40) NOT NULL,
   `username` varchar(40) NOT NULL,
   `password` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_admin`
@@ -53,7 +53,7 @@ CREATE TABLE `tbl_angkatan` (
   `tahun` varchar(5) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `isDelete` int(1) DEFAULT NULL COMMENT 'null = belum kehapus, 1 sudah kehapus'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_angkatan`
@@ -76,8 +76,9 @@ CREATE TABLE `tbl_berkas` (
   `nama` varchar(64) NOT NULL,
   `file` varchar(255) NOT NULL,
   `status` varchar(60) NOT NULL,
-  `upload_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `upload_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -99,12 +100,9 @@ CREATE TABLE `tbl_dt_pribadi` (
   `jurusan` enum('IPA','IPS','','') NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_dt_pribadi`
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_nilai`
@@ -118,13 +116,9 @@ CREATE TABLE `tbl_nilai` (
   `nilai_ps` int(11) NOT NULL,
   `nilai_pa` int(11) NOT NULL,
   `nilai_wawancara` int(11) NOT NULL,
-  `rata` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_nilai`
---
-
+  `rata` int(11) NOT NULL,
+  `berkas` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables

@@ -62,7 +62,7 @@ $get = @$_GET;
                         <th rowspan="2">ID DAFTAR</th>
                         <th rowspan="2">NAMA</th>
                         <th rowspan="2">ASAL SEKOLAH</th>
-                        <th colspan="5">NILAI</th>
+                        <th colspan="6">NILAI</th>
                         <th rowspan="2">STATUS</th>
                       </tr>
                       <tr>

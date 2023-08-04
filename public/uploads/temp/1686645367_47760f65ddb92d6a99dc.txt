@@ -1,9 +1,0 @@
-DETAILBILHD
-INSERT INTO dbRSHARJO.dbo.DetailBilHD
-(NoTran, Tanggal, Regno, KdTarif, NmTarif, Qty, Sarana, Pelayanan, Discount, JumlahBiaya, JasaRS, JasaDokter, JasaPerawat, KdDoc, Shift, ValidUser, TanggalData, is_posted)
-VALUES(N'HDI04230574', '2023-04-11 00:00:00.000', N'01570809', N'010041000', N'HEMODIALISA (CUCI DARAH) Tidak Reuse', 1, 0.0, 920000.0, 0.0, 920000.0, NULL, NULL, NULL, N'073', N'1', N'hd_dessy 11/04/2023 07:55:56', NULL, 0);
-
-HEADBILHD
-INSERT INTO dbRSHARJO.dbo.HeadBilHD
-(NoTran, Tanggal, Jam, Regno, RegDate, MedRec, Firstname, Sex, KdBangsal, KdKelas, KdDoc, KdPoli, KdCbayar, KdJaminan, TotalBiaya, Shift, ValidUser, Kategori, TanggalData, VCode, Verifikasi, UmurThn, UmurBln, UmurHari, is_posted)
-VALUES(N'HDI04230574', '2023-04-11 00:00:00.000', '2023-04-11 07:55:00.000', N'01570809', '2023-04-11 00:00:00.000', N'177378', N'SITI ASFIATUN,NY', N'Perempuan', N'', N'', N'073', N'29', N'20', N'', 920000.0, N'1', N'hd_dessy 11/04/2023 07:55:56', N'2', NULL, 0, NULL, N'76', N'5', N'7', 0);
