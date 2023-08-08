@@ -64,36 +64,36 @@ $cfg = new \SConfig();
                         <td>:</td>
                         <td><?= $pribadi['jurusan'] ?></td>
                       </tr>
-                      <?php $nilai = $nilai[0]; ?>
+                      <?php $nilai = @$nilai[0]; ?>
                       <tr>
                         <td>UN</td>
                         <td>:</td>
-                        <td><?= $nilai['nilai_un'] ?></td>
+                        <td><?= $nilai['nilai_un'] ?? 0 ?></td>
                       </tr>
                       <tr>
                         <td>Raport</td>
                         <td>:</td>
-                        <td><?= $nilai['nilai_raport'] ?></td>
+                        <td><?= $nilai['nilai_raport'] ?? 0 ?></td>
                       </tr>
                       <tr>
                         <td>PS</td>
                         <td>:</td>
-                        <td><?= $nilai['nilai_ps'] ?></td>
+                        <td><?= $nilai['nilai_ps'] ?? 0 ?></td>
                       </tr>
                       <tr>
                         <td>PA</td>
                         <td>:</td>
-                        <td><?= $nilai['nilai_pa'] ?></td>
+                        <td><?= $nilai['nilai_pa'] ?? 0 ?></td>
                       </tr>
                       <tr>
                         <td>Wawancara</td>
                         <td>:</td>
-                        <td><?= $nilai['nilai_wawancara'] ?></td>
+                        <td><?= $nilai['nilai_wawancara'] ?? 0 ?></td>
                       </tr>
                       <tr>
                         <td>Rata-rata</td>
                         <td>:</td>
-                        <td><?= $nilai['rata'] ?></td>
+                        <td><?= $nilai['rata'] ?? 0 ?></td>
                       </tr>
                     </tbody>
                   </table>
