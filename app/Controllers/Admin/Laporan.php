@@ -22,6 +22,8 @@ class Laporan extends BaseController
             $record = $record->where('tbl_nilai.rata <', $this->cfg->_nilaiminim);
         }
 
+        $record = $record->where('tbl_dt_pribadi.deleted_at', null);
+
         $record = $record->join('tbl_angkatan', 'tbl_angkatan.id_angkatan = tbl_dt_pribadi.id_angkatan')
             ->join('tbl_nilai', 'tbl_nilai.id_dt_pribadi = tbl_dt_pribadi.id')
             ->orderby('tbl_nilai.rata', 'DESC')

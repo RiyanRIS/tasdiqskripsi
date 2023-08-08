@@ -62,11 +62,12 @@ class Pendaftar extends BaseController
     if (!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
     $data = [
-      "berkas" => $this->berkas->getTercabut(),
+      "record" => $this->pribadi->find_tercabut(),
+      "angkatan" => $this->angkatan()->angkatan,
       "judul" => "Halaman Berkas Tercabut"
     ];
 
-    return view('admin/pendaftar/berkas_tercabut', $data);
+    return view('admin/pendaftar/tercabut', $data);
   }
 
   public function cetak($id)
@@ -441,11 +442,49 @@ class Pendaftar extends BaseController
       return json_encode($msg);
     }
 
-    $hapus = $this->berkas->where('id_dt_pribadi', $id)->delete();
+    $hapus = $this->pribadi->where('id', $id)->delete();
 
     $msg = ($hapus ? [1, "Berhasil mencabut berkas"] : [0, "Gagal mencabut berkas"]);
 
     return redirect()->to(site_url('admin/pendaftar/'))->with('msg', $msg);
+  }
+
+  public function balikberkas(string $id)
+  {
+    // Cek hak akses user
+    if (!$this->isSecure()) {
+      $msg = [
+        'status' => false,
+        'url' => site_url("admin/pendaftaran"),
+        'pesan'   => 'Anda tidak berhak mengakses halaman ini',
+      ];
+      return json_encode($msg);
+    }
+
+    $hapus = $this->pribadi->update(['id' => $id], ['deleted_at' => null]);
+
+    $msg = ($hapus ? [1, "Berhasil mengembalikan peserta"] : [0, "Gagal mengembalikan peserta"]);
+
+    return redirect()->to(site_url('admin/berkastercabut/'))->with('msg', $msg);
+  }
+
+  public function cabutberkas_permanen(string $id)
+  {
+    // Cek hak akses user
+    if (!$this->isSecure()) {
+      $msg = [
+        'status' => false,
+        'url' => site_url("admin/pendaftaran"),
+        'pesan'   => 'Anda tidak berhak mengakses halaman ini',
+      ];
+      return json_encode($msg);
+    }
+
+    $hapus = $this->pribadi->purgeDeleted();
+
+    $msg = ($hapus ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
+
+    return redirect()->to(site_url('admin/berkastercabut/'))->with('msg', $msg);
   }
 
   public function hapus(string $id)

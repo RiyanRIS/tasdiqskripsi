@@ -22,17 +22,9 @@ $cfg = new \SConfig();
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              <div class="alert alert-info alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h5><i class="icon fas fa-info"></i> Info!</h5>
-                Angkatan Aktif: <?= $angkatan ?> <br>
-                Total Pendaftar: <?= count($record) ?> orang
-              </div>
-            </div>
-            <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <a target="_BLANK" href="<?= site_url('daftar') ?>" class="btn btn-success">Tambah Peserta</a>
+                  <a onclick="return confirm('Kosongkan sampah?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/pendaftar/ubah/berkas/cabutpermanen/') ?>" class="btn btn-sm btn-danger" title="Cabut Berkas"><i class="fa fa-trash"></i> Kosongkan Sampah</a>
                 </div>
 
                 <div class="card-body">
@@ -55,11 +47,7 @@ $cfg = new \SConfig();
                       ?>
                         <tr>
                           <td>
-                            <a href="<?= site_url('admin/pendaftar/detail/' . $v['id']) ?>" class="btn btn-sm btn-success" title="Detail"><i class="fa fa-eye"></i> Detail</a>
-                            <a href="<?= site_url('admin/pendaftar/berkas/' . $v['id']) ?>" class="btn btn-sm btn-success" title="Upload Berkas"><i class="fa fa-file-alt"></i> Berkas</a>
-                            <a href="<?= site_url('admin/pendaftar/cetak/' . $v['id']) ?>" class="btn btn-sm btn-success" title="Cetak Data"><i class="fa fa-print"></i> Cetak</a>
-                            <a onclick="return confirm('Cabut Berkas Untuk Peserta Ini?')" href="<?= site_url('admin/pendaftar/ubah/berkas/cabut/' . $v['id']) ?>" class="btn btn-sm btn-danger" title="Cabut Berkas"><i class="fa fa-file-export"></i> Cabut Berkas</a>
-                            <!-- <a onclick="return confirm('Hapus Peserta Ini?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/pendaftar/hapus/' . $v['id']) ?>" class="btn btn-sm btn-danger" title="Hapus data"><i class="fa fa-trash"></i> Hapus</a> -->
+                            <a onclick="return confirm('Kembalikan Peserta Ini?')" href="<?= site_url('admin/pendaftar/ubah/berkas/balik/' . $v['id']) ?>" class="btn btn-sm btn-success" title="Cabut Berkas"><i class="fa fa-recycle"></i> Kembalikan</a>
                           </td>
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= genId($v) ?></td>
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['nama'] ?></td>
@@ -85,12 +73,6 @@ $cfg = new \SConfig();
   </div>
   <!-- ./wrapper -->
   <?= view("admin/templates/script") ?>
-  <script>
-    $('#datatable.table-pendaftar tbody').on('click', '.cell', function() {
-      var id = $(this).data("id");
-      window.location.href = '<?= site_url('admin/pendaftar/detail/') ?>' + id
-    });
-  </script>
 </body>
 
 </html>

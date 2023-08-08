@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2023 at 09:59 AM
+-- Generation Time: Aug 08, 2023 at 09:51 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -76,8 +76,7 @@ CREATE TABLE `tbl_berkas` (
   `nama` varchar(64) NOT NULL,
   `file` varchar(255) NOT NULL,
   `status` varchar(60) NOT NULL,
-  `upload_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `deleted_at` datetime DEFAULT NULL
+  `upload_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -99,7 +98,8 @@ CREATE TABLE `tbl_dt_pribadi` (
   `id_angkatan` int(1) NOT NULL,
   `jurusan` enum('IPA','IPS','','') NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(64) NOT NULL
+  `password` varchar(64) NOT NULL,
+  `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -177,19 +177,19 @@ ALTER TABLE `tbl_angkatan`
 -- AUTO_INCREMENT for table `tbl_berkas`
 --
 ALTER TABLE `tbl_berkas`
-  MODIFY `id_berkas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_berkas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_dt_pribadi`
 --
 ALTER TABLE `tbl_dt_pribadi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_nilai`
 --
 ALTER TABLE `tbl_nilai`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

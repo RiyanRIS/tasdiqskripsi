@@ -11,8 +11,10 @@ class PribadiModel extends Model
 	protected $primaryKey = 'id';
 
 	protected $returnType     = 'array';
+	protected $useSoftDeletes = true;
+	protected $deletedField  = 'deleted_at';
 
-	protected $allowedFields = ['id', 'nama', 'tmpt_lahir', 'tgl_lahir', 'jenis_kelamin', 'alamat', 'asl_sekolah', 'no_tlpn', 'email', 'username', 'password'];
+	protected $allowedFields = ['id', 'nama', 'tmpt_lahir', 'tgl_lahir', 'jenis_kelamin', 'alamat', 'asl_sekolah', 'no_tlpn', 'email', 'username', 'password', 'deleted_at'];
 
 	public $rules_tambah_ubah = [
 		'nama' => [
@@ -80,6 +82,20 @@ class PribadiModel extends Model
 		$angkatanAktif = $angkatan->isActive()->id_angkatan;
 		return $this->db->table($this->table)
 			->where('tbl_dt_pribadi.id_angkatan', $angkatanAktif)
+			->where('tbl_dt_pribadi.deleted_at', null)
+			->join('tbl_angkatan', 'tbl_angkatan.id_angkatan = tbl_dt_pribadi.id_angkatan')
+			->join('tbl_nilai', 'tbl_nilai.id_dt_pribadi = tbl_dt_pribadi.id', 'left')
+			->get()
+			->getResultArray();
+	}
+
+	public function find_tercabut()
+	{
+		$angkatan = new AngkatanModel();
+		$angkatanAktif = $angkatan->isActive()->id_angkatan;
+		return $this->db->table($this->table)
+			->where('tbl_dt_pribadi.id_angkatan', $angkatanAktif)
+			->where('tbl_dt_pribadi.deleted_at is not null')
 			->join('tbl_angkatan', 'tbl_angkatan.id_angkatan = tbl_dt_pribadi.id_angkatan')
 			->join('tbl_nilai', 'tbl_nilai.id_dt_pribadi = tbl_dt_pribadi.id', 'left')
 			->get()

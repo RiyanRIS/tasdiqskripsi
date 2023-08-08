@@ -30,7 +30,12 @@ class Auth extends BaseController
 				if (session()->isAdmin) {
 					return redirect()->to(site_url("admin"))->with('msg', [1, "Selamat datang, " . $data_user->nama]);
 				} else {
-					return redirect()->to(site_url("dashboard"))->with('msg', [1, "Selamat datang, " . $data_user->nama]);
+					if ($data_user->deleted_at == null) {
+						return redirect()->to(site_url("dashboard"))->with('msg', [1, "Selamat datang, " . $data_user->nama]);
+					} else {
+						$ses = [0, "Hubungi admin untuk mengurus akun anda"];
+						session()->setFlashdata(['msg' => $ses]);
+					}
 				}
 			} else {
 				$ses = [0, "Kombinasi username dan password belum tepat"];

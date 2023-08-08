@@ -73,6 +73,8 @@ $routes->group('admin', function ($routes) {
             $routes->group('berkas', function ($routes) {
                 $routes->get('hapus/(:any)', 'Admin\Pendaftar::hapusberkas/$1');
                 $routes->get('cabut/(:any)', 'Admin\Pendaftar::cabutberkas/$1');
+                $routes->get('cabutpermanen', 'Admin\Pendaftar::cabutberkas_permanen');
+                $routes->get('balik/(:any)', 'Admin\Pendaftar::balikberkas/$1');
 
                 $routes->group('status', function ($routes) {
                     $routes->get('terverifikasi/(:any)', 'Admin\Pendaftar::updstatusberkas/$1/1');
