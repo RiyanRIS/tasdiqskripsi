@@ -14,7 +14,7 @@ $cfg = new \SConfig();
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <!-- Notifications css -->
-  <link href="<?= site_url('assets/') ?>plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?= base_url('assets/') ?>plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
   <link href="//getbootstrap.com/docs/4.6/examples/checkout/form-validation.css" rel="stylesheet">
 </head>
 
@@ -152,9 +152,9 @@ $cfg = new \SConfig();
 
   <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
   <!-- jQuery -->
-  <script src="<?= site_url('assets/') ?>plugins/jquery/jquery.min.js"></script>
+  <script src="<?= base_url('assets/') ?>plugins/jquery/jquery.min.js"></script>
   <!-- Notifications Plugin -->
-  <script src="<?= site_url('assets/') ?>plugins/toastr/toastr.min.js"></script>
+  <script src="<?= base_url('assets/') ?>plugins/toastr/toastr.min.js"></script>
 
   <script>
     <?php if (session()->has('msg')) {

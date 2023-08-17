@@ -79,7 +79,7 @@ $cfg = new \SConfig();
                       <td>
                         <div id="pilihan-<?= $jenis ?>">
                           <p>File: <?php if (isset($berkasnya->$jenis)) {
-                                    ?><a target="BLANK" href="<?= site_url('uploads/temp/' . $berkasnya->$jenis) ?>">klik disini</a><?php } ?></p>
+                                    ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->$jenis) ?>">klik disini</a><?php } ?></p>
                         </div>
                         <div class="image-upload">
                           <label for="file-<?= $jenis ?>">
@@ -124,7 +124,7 @@ $cfg = new \SConfig();
                           foreach ($berkas as $key => $v) { ?>
                             <tr>
                               <td><?= ++$key ?></td>
-                              <td><a target="_BLANK" href="<?= site_url('uploads/temp/' . $v->file) ?>"><?= $v->nama ?></a></td>
+                              <td><a target="_BLANK" href="<?= base_url('uploads/temp/' . $v->file) ?>"><?= $v->nama ?></a></td>
                               <td>
                                 <?php if ($v->status == "Terverifikasi") { ?>
                                   <span class='badge badge-success'>Terverifikasi<span>

@@ -51,7 +51,6 @@ $cfg = new \SConfig();
                     <tbody>
                       <?php
                       foreach ($record as $key => $v) {
-                        $rata = ($v['nilai_un'] + $v['nilai_raport'] + $v['nilai_ps'] + $v['nilai_pa']) / 4;
                       ?>
                         <tr>
                           <td>
@@ -64,8 +63,8 @@ $cfg = new \SConfig();
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= genId($v) ?></td>
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['nama'] ?></td>
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['asl_sekolah'] ?></td>
-                          <td class="cell" data-id="<?= $v['id'] ?>"><?= $rata ?></td>
-                          <td class="cell" data-id="<?= $v['id'] ?>"><?= ($rata > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>") ?></td>
+                          <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['rata'] ?></td>
+                          <td class="cell" data-id="<?= $v['id'] ?>"><?= ($v['rata'] > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>") ?></td>
                         </tr>
                       <?php  } ?>
                     </tbody>

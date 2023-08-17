@@ -52,8 +52,8 @@ $cfg = new \SConfig();
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= genId($v) ?></td>
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['nama'] ?></td>
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['asl_sekolah'] ?></td>
-                          <td class="cell" data-id="<?= $v['id'] ?>"><?= $rata ?></td>
-                          <td class="cell" data-id="<?= $v['id'] ?>"><?= ($rata > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>") ?></td>
+                          <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['rata'] ?? 0 ?></td>
+                          <td class="cell" data-id="<?= $v['id'] ?>"><?= ($v['rata'] > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>") ?></td>
                         </tr>
                       <?php  } ?>
                     </tbody>

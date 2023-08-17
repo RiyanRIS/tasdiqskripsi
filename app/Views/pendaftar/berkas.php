@@ -44,7 +44,7 @@
                         foreach ($berkas as $key => $v) { ?>
                           <tr>
                             <td><?= ++$key ?></td>
-                            <td><a target="_BLANK" href="<?= site_url('uploads/temp/' . $v->file) ?>"><?= $v->nama ?></a></td>
+                            <td><a target="_BLANK" href="<?= base_url('uploads/temp/' . $v->file) ?>"><?= $v->nama ?></a></td>
                             <td>
                               <?php if ($v->status == "Terverifikasi") { ?>
                                 <span class='badge badge-success'>Terverifikasi<span>

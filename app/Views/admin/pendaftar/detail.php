@@ -111,31 +111,31 @@
                       <div class="form-group" id="notifikasi_nilai_un">
                         <label for="nilai_un">Nilai UN</label>
                         <input type="number" class="form-control" id="nilai_un" value="<?= @$nilai['nilai_un'] ?>" name="nilai_un" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_un)) { ?><a target="BLANK" href="<?= site_url('uploads/temp/' . $berkasnya->nilai_un) ?>">klik disini</a><?php } ?></span>
+                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_un)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_un) ?>">klik disini</a><?php } ?></span>
                       </div>
 
                       <div class="form-group" id="notifikasi_nilai_raport">
                         <label for="nilai_raport">Nilai Raport</label>
                         <input type="number" class="form-control" id="nilai_raport" value="<?= @$nilai['nilai_raport'] ?>" name="nilai_raport" placeholder="Masukkan Nilai Raport" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_raport)) { ?><a target="BLANK" href="<?= site_url('uploads/temp/' . $berkasnya->nilai_raport) ?>">klik disini</a><?php } ?></span>
+                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_raport)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_raport) ?>">klik disini</a><?php } ?></span>
                       </div>
 
                       <div class="form-group" id="notifikasi_nilai_ps">
                         <label for="nilai_ps">Nilai PS</label>
                         <input type="number" class="form-control" id="nilai_ps" value="<?= @$nilai['nilai_ps'] ?>" name="nilai_ps" placeholder="Masukkan Nilai PS" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_ps)) { ?><a target="BLANK" href="<?= site_url('uploads/temp/' . $berkasnya->nilai_ps) ?>">klik disini</a><?php } ?></span>
+                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_ps)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_ps) ?>">klik disini</a><?php } ?></span>
                       </div>
 
                       <div class="form-group" id="notifikasi_nilai_pa">
                         <label for="nilai_pa">Nilai PA</label>
                         <input type="number" class="form-control" id="nilai_pa" value="<?= @$nilai['nilai_pa'] ?>" name="nilai_pa" placeholder="Masukkan Nilai PA" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_pa)) { ?><a target="BLANK" href="<?= site_url('uploads/temp/' . $berkasnya->nilai_pa) ?>">klik disini</a><?php } ?></span>
+                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_pa)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_pa) ?>">klik disini</a><?php } ?></span>
                       </div>
 
                       <div class="form-group" id="notifikasi_nilai_wawancara">
                         <label for="nilai_wawancara">Nilai Wawancara</label>
                         <input type="number" class="form-control" id="nilai_wawancara" value="<?= @$nilai['nilai_wawancara'] ?>" name="nilai_wawancara" placeholder="Masukkan Nilai Wawancara" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_wawancara)) { ?><a target="BLANK" href="<?= site_url('uploads/temp/' . $berkasnya->nilai_wawancara) ?>">klik disini</a><?php } ?></span>
+                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_wawancara)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_wawancara) ?>">klik disini</a><?php } ?></span> <br>
                         <small class="text-muted small rata-rata">Rata-rata: </small>
                       </div>
                     </div>
@@ -196,6 +196,7 @@
       var nil2 = Number($('#nilai_raport').val())
       var nil3 = Number($('#nilai_ps').val())
       var nil4 = Number($('#nilai_pa').val())
+      var nil4 = Number($('#nilai_wawancara').val())
       rata = (nil1 + nil2 + nil3 + nil4) / 4
       $('.rata-rata').html("Rata-rata: " + rata)
     }

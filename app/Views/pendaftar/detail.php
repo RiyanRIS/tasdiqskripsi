@@ -24,7 +24,7 @@
         <div class="container-fluid">
           <div class="row">
             <!-- FORM Data Diri -->
-            <form method="post" action="edit" data-url="<?= site_url(" ubah/datapribadi") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-6">
+            <form method="post" action="edit" data-url="<?= site_url("ubah/datapribadi") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-6">
               <div class="card card-success">
 
                 <div class="card-header">
@@ -118,7 +118,7 @@
                         <td>
                           <div id="pilihan-<?= $jenis ?>">
                             <p>File: <?php if (isset($berkasnya->$jenis)) {
-                                      ?><a target="BLANK" href="<?= site_url('uploads/temp/' . $berkasnya->$jenis) ?>">klik disini</a><?php } ?></p>
+                                      ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->$jenis) ?>">klik disini</a><?php } ?></p>
                           </div>
                           <div class="image-upload">
                             <label for="file-<?= $jenis ?>">
