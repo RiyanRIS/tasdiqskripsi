@@ -90,7 +90,7 @@
                   <?php
                   $berkasnya = json_decode(@$nilai['berkas']);
                   ?>
-                  <input type="hidden" name="id" value="<?= session()->user_id ?>">
+                  <input type="hidden" name="id" value="<?= $nilai['id_dt_pribadi'] ?>">
 
                   <table class="table table-bordered">
                     <tr style="background-color: #28a745;color: #fff;">

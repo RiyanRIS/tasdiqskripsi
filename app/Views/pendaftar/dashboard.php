@@ -31,7 +31,7 @@ $cfg = new \SConfig();
             <div class="col-12">
               <!-- <h4 class="alert-heading">Selamat datang, <?= ucwords(@session()->get('user_nama')) ?></h4> -->
 
-              <?php if ($nilai['nilai_ps'] == 0 || $nilai['nilai_pa'] == 0 || $nilai['nilai_wawancara'] == 0) { ?>
+              <?php if (@$nilai['nilai_ps'] == 0 || @$nilai['nilai_pa'] == 0 || @$nilai['nilai_wawancara'] == 0) { ?>
                 <div class="alert alert-danger" role="alert">
                   <p>Harap hadir ke MAN 1 GAYO LUES untuk melakukan tes baca Alquran, sholat dan wawancara.</p>
                 </div>
@@ -43,7 +43,7 @@ $cfg = new \SConfig();
                 </div>
               <?php } ?>
 
-              <?php if ($nilai['berkas'] == '[]') { ?>
+              <?php if (@$nilai['berkas'] == '[]') { ?>
                 <div class="alert alert-danger" role="alert">
                   <p>Mohon untuk mengupload <a href="<?= site_url('pendaftar') ?>">bukti nilai</a> ujian nasional.</p>
                 </div>
