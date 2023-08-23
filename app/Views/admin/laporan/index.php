@@ -54,47 +54,51 @@ $get = @$_GET;
                 </div>
 
                 <div class="card-body">
-
-                  <table id="tabelexport" class="table table-bordered table-hover table-pendaftar">
-                    <thead>
-                      <tr>
-                        <th rowspan="2">NO</th>
-                        <th rowspan="2">ID DAFTAR</th>
-                        <th rowspan="2">NAMA</th>
-                        <th rowspan="2">ASAL SEKOLAH</th>
-                        <th colspan="6">NILAI</th>
-                        <th rowspan="2">STATUS</th>
-                      </tr>
-                      <tr>
-                        <th>UN</th>
-                        <th>RAPORT</th>
-                        <th>PS</th>
-                        <th>PA</th>
-                        <th>WAWANCARA</th>
-                        <th>RATA RATA</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      foreach ($record as $key => $v) {
-                      ?>
+                  <div class="table-responsive">
+                    <table id="tabelexport" class="table table-bordered table-hover table-pendaftar">
+                      <thead>
                         <tr>
-                          <td><?= ++$key ?></td>
-                          <td><?= genId($v) ?></td>
-                          <td><?= $v['nama'] ?></td>
-                          <td><?= $v['asl_sekolah'] ?></td>
-                          <td><?= $v['nilai_un'] ?></td>
-                          <td><?= $v['nilai_raport'] ?></td>
-                          <td><?= $v['nilai_ps'] ?></td>
-                          <td><?= $v['nilai_pa'] ?></td>
-                          <td><?= $v['nilai_wawancara'] ?></td>
-                          <td><?= $v['rata'] ?></td>
-                          <td><?= ($v['rata'] > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>") ?></td>
+                          <th rowspan="2">NO</th>
+                          <th rowspan="2">ID DAFTAR</th>
+                          <th rowspan="2">NAMA</th>
+                          <th rowspan="2">ASAL SEKOLAH</th>
+                          <th colspan="8">NILAI</th>
+                          <th rowspan="2">STATUS</th>
                         </tr>
-                      <?php  } ?>
-                    </tbody>
-                  </table>
-
+                        <tr>
+                          <th>UN B INDONESIA</th>
+                          <th>UN MATEMATIKA</th>
+                          <th>UN IPA</th>
+                          <th>UN B INGGRIS</th>
+                          <th>PRAKTIK SHOLAT</th>
+                          <th>PRAKTIK AL QURAN</th>
+                          <th>WAWANCARA</th>
+                          <th>RATA RATA</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        foreach ($record as $key => $v) {
+                        ?>
+                          <tr>
+                            <td><?= ++$key ?></td>
+                            <td><?= genId($v) ?></td>
+                            <td><?= $v['nama'] ?></td>
+                            <td><?= $v['asl_sekolah'] ?></td>
+                            <td><?= $v['un_bi'] ?></td>
+                            <td><?= $v['un_mat'] ?></td>
+                            <td><?= $v['un_ipa'] ?></td>
+                            <td><?= $v['un_bing'] ?></td>
+                            <td><?= $v['nilai_ps'] ?></td>
+                            <td><?= $v['nilai_pa'] ?></td>
+                            <td><?= $v['nilai_wawancara'] ?></td>
+                            <td><?= $v['rata'] ?></td>
+                            <td><?= ($v['rata'] > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>") ?></td>
+                          </tr>
+                        <?php  } ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>

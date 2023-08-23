@@ -6,18 +6,6 @@ use App\Controllers\BaseController;
 
 class Angkatan extends BaseController
 {
-  // public function index()
-  // {
-  //     if(!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
-
-  //     $data = [
-  //         "angkatans" => $this->angkatan->orderby('tahun', 'DESC')->find(),
-  //         "judul" => "Dashboard"
-  //     ];
-
-  //     return view('admin/home/index', $data);
-  // }
-
   public function get(string $id)
   {
     if (!$this->isSecure()) {

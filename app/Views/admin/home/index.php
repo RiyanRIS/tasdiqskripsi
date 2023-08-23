@@ -69,6 +69,9 @@
                         <th>#</th>
                         <th>TAHUN AJARAN</th>
                         <th>STATUS</th>
+                        <th>TGL BUKA</th>
+                        <th>TGL TUTUP</th>
+                        <th>TGL PENGUMUMAN</th>
                         <th>AKSI</th>
                       </tr>
                     </thead>
@@ -79,6 +82,12 @@
                           <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= ++$key ?></td>
                           <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= $v['angkatan'] ?></td>
                           <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= ($v['status'] ? "<span class='badge badge-success'>Aktif<span>" : "<span class='badge badge-danger'>Tidak Aktif<span>") ?></td>
+                          <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_buka'])) ?></td>
+
+                          <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_tutup'])) ?></td>
+
+                          <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_pengumuman'])) ?></td>
+
                           <td>
                             <a onclick="return confirm('Hapus data angkatan ini?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/angkatan/hapus/' . $v['id_angkatan']) ?>" class="btn btn-sm btn-danger" title="Hapus data"><i class="fa fa-trash"></i> Hapus</a>
                           </td>
@@ -117,6 +126,15 @@
                 <label for="tahun">Tahun<small style="color:red;vertical-align: top;">*</small></label>
                 <input type="text" class="form-control" id="tahun" name="tahun" placeholder="2022" required="true" autocomplete="off">
               </div>
+              <?php
+              $form_date = ['tgl_buka', 'tgl_tutup', 'tgl_pengumuman'];
+              ?>
+              <?php foreach ($form_date as $v) { ?>
+                <div class="form-group" id="notifikasi_<?= $v ?>">
+                  <label for="<?= $v ?>"><?= ucwords(str_replace("_", " ", $v)); ?></label>
+                  <input type="date" class="form-control" id="<?= $v ?>" name="<?= $v ?>" required="true" autocomplete="off">
+                </div>
+              <?php } ?>
               <div class="form-group" id="notifikasi_status">
                 <label for="status">Status<small style="color:red;vertical-align: top;">*</small></label>
                 <select name="status" class="form-control form-select mb-3" id="status" required="true">

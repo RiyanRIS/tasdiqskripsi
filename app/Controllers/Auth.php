@@ -87,7 +87,9 @@ class Auth extends BaseController
 			$find_now = $this->pribadi->find_now();
 			$tot = count($find_now) + 1;
 			$kode = date('Y') . str_pad($tot, 4, "0", STR_PAD_LEFT);
+			$smp = $this->smp->find();
 			$data = [
+				'smp' => $smp,
 				'kode' => $kode,
 				'post' => $this->request->getPost(),
 				'err' => $this->validation->getErrors()

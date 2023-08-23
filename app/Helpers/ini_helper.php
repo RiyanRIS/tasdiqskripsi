@@ -9,7 +9,7 @@ function is_selected($a, $b)
 
 function genNilai($v): int
 {
-    return ($v['nilai_un'] + $v['nilai_raport'] + $v['nilai_ps'] + $v['nilai_pa'] + $v['nilai_wawancara']) / 5;
+    return ($v['un_mat'] + $v['un_bi'] + $v['un_ipa'] + $v['un_bing'] + $v['nilai_ps'] + $v['nilai_pa'] + $v['nilai_wawancara']) / 7;
 }
 
 function genId($v)

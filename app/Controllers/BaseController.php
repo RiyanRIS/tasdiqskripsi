@@ -16,6 +16,7 @@ use \App\Models\AdminModel;
 use \App\Models\PribadiModel;
 use \App\Models\NilaiModel;
 use \App\Models\BerkasModel;
+use App\Models\SmpModel;
 
 /**
  * Class BaseController
@@ -50,6 +51,7 @@ abstract class BaseController extends Controller
     protected $pribadi;
     protected $nilai;
     protected $berkas;
+    protected $smp;
 
     protected $angkatanAktif;
 
@@ -96,6 +98,7 @@ abstract class BaseController extends Controller
         $this->pribadi = new PribadiModel();
         $this->nilai = new NilaiModel();
         $this->berkas = new BerkasModel();
+        $this->smp = new SmpModel();
 
         $this->angkatanAktif = $this->angkatan->isActive()->id_angkatan;
     }

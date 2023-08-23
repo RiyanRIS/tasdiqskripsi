@@ -168,16 +168,6 @@ class Pendaftar extends BaseController
 
     // Cek isian ngga boleh kosong dan nilai minimal 1 dan maksimal 100
     $rules = [
-      'nilai_un' => [
-        'label'  => 'Nilai Un',
-        'rules'  => 'required|less_than[100]|greater_than[1]',
-        'errors' => [],
-      ],
-      'nilai_raport' => [
-        'label'  => 'Nilai Raport',
-        'rules'  => 'required|less_than[100]|greater_than[1]',
-        'errors' => [],
-      ],
       'nilai_ps' => [
         'label'  => 'Nilai PS',
         'rules'  => 'required|less_than[100]|greater_than[1]',
@@ -195,8 +185,6 @@ class Pendaftar extends BaseController
       $additionalData = $this->request->getPost();
       $id = $this->request->getPost('id');
       unset($additionalData['id']);
-
-      $additionalData['rata'] = genNilai($additionalData);
 
       // Cek Nilai Sudah Pernah Simpan
       $isSudahAda = $this->nilai->isSudahAda($id);
@@ -218,6 +206,61 @@ class Pendaftar extends BaseController
         $msg = [
           'status' => false,
           'url' => site_url("admin/pendaftar/nilai/" . $id),
+          'pesan'   => 'Data gagal dirubah',
+        ];
+      }
+    } else {
+      $msg = [
+        'status' => false,
+        'errors' => $this->validation->getErrors(),
+      ];
+    }
+    echo json_encode($msg);
+    die();
+  }
+
+  public function ubahdatanilai2()
+  {
+    // Cek hak akses user
+    if (!$this->isSecure()) {
+      $msg = [
+        'status' => false,
+        'url' => site_url("login"),
+        'pesan'   => 'Anda tidak berhak mengakses halaman ini',
+      ];
+      return json_encode($msg);
+    }
+
+    // Cek isian ngga boleh kosong dan nilai minimal 1 dan maksimal 100
+
+    if ($this->request->getPost()) {
+      $id = $this->request->getPost('id');
+      $additionalData = $this->request->getPost();
+      unset($additionalData['id']);
+      // Cek Nilai Sudah Pernah Simpan
+      $isSudahAda = $this->nilai->isSudahAda($id);
+
+      if ($isSudahAda) {
+        // Proses Update
+        $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], $additionalData);
+      } else {
+        $additionalData['id_dt_pribadi'] = $id;
+        $lastid = $this->nilai->simpan($additionalData);
+      }
+
+      $nilais = $this->nilai->getBySiswa($id)[0];
+      $rata = genNilai($nilais);
+      $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], ['rata' => $rata]);
+
+      if ($lastid) {
+        $msg = [
+          'status' => true,
+          'url' => site_url("pendaftar"),
+        ];
+      } else {
+        $msg = [
+          'status' => false,
+          'url' => site_url("pendaftar"),
           'pesan'   => 'Data gagal dirubah',
         ];
       }

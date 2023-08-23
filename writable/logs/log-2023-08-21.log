@@ -1,0 +1,61 @@
+INFO - 2023-08-21 04:27:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-08-21 04:28:00 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it.
+ in C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', '', 'ci4_tasdiq', 3306, '', 0)
+#1 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\app\Models\AngkatanModel.php(38): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\app\Controllers\BaseController.php(100): App\Models\AngkatanModel->isActive()
+#6 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#8 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\public\index.php(68): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Commands\Server\rewrite.php(47): require_once('C:\\Users\\riyan\\...')
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it.
+ in C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\app\Models\AngkatanModel.php(38): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\app\Controllers\BaseController.php(100): App\Models\AngkatanModel->isActive()
+#5 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#6 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+#7 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\public\index.php(68): CodeIgniter\CodeIgniter->run()
+#9 C:\Users\riyan\Documents\My\ci4\tasdiqskripsi\system\Commands\Server\rewrite.php(47): require_once('C:\\Users\\riyan\\...')
+#10 {main}
+CRITICAL - 2023-08-21 04:28:00 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_angkatan`
+WHERE `status` = :status:
+AND `isDelete` IS NULL
+ORDER BY `tahun` DESC
+ LIMIT 1', [...], false)
+ 3 APPPATH\Models\AngkatanModel.php(38): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\BaseController.php(100): App\Models\AngkatanModel->isActive()
+ 5 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 6 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\riyan\\Documents\\My\\ci4\\tasdiqskripsi\\public\\index.php')
+INFO - 2023-08-21 04:30:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:30:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:30:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:30:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:30:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:30:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:30:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:31:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:31:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:31:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:31:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-21 04:31:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

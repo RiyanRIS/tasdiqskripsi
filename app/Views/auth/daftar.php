@@ -84,7 +84,12 @@ $cfg = new \SConfig();
 
           <div class="mb-3">
             <label for="asl_sekolah">Asal Sekolah</label>
-            <input type="text" class="form-control" name="asl_sekolah" id="asl_sekolah" placeholder="SMP/MTS/sederajat" value="<?= @$post['asl_sekolah'] ?>" required>
+            <select class="custom-select d-block w-100" name="asl_sekolah" id="asl_sekolah" required>
+              <option value="">--- ASAL SEKOLAH ---</option>
+              <?php foreach ($smp as $val) { ?>
+                <option value="<?= $val['nama'] ?>"><?= $val['nama'] ?></option>
+              <?php } ?>
+            </select>
             <div class="invalid-feedback">
               <?= @$err['asl_sekolah'] ?>
             </div>

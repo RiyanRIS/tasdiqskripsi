@@ -86,65 +86,62 @@
               <div class="row">
 
                 <!-- FORM Data Nilai -->
-                <form method="post" action="edit" data-url="<?= site_url("admin/pendaftar/ubah/datanilai") ?>" id="myForm2" enctype="multipart/form-data" accept-charset="utf-8" class="col-12">
-                  <input type="hidden" name="id" value="<?= @$record['id'] ?>">
+                <form method="post" action="edit" data-url="<?= site_url("admin/pendaftar/ubah/datanilai2") ?>" id="myForm2" enctype="multipart/form-data" accept-charset="utf-8" class="col-md-12">
+                  <?php
+                  $berkasnya = json_decode(@$nilai['berkas']);
+                  ?>
+                  <input type="hidden" name="id" value="<?= session()->user_id ?>">
 
-                  <div class="card card-success">
-                    <div class="card-header">
-                      <h3 class="card-title">Data Nilai</h3>
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                    </div>
+                  <table class="table table-bordered">
+                    <tr style="background-color: #28a745;color: #fff;">
+                      <th>Data Nilai</th>
+                      <th>Upload Bukti</th>
+                    </tr>
+                    <?php
+                    $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
+                    $nama_nilai = ['Nilai UN Matematika', 'Nilai UN Bahasa Indonesia', 'Nilai UN Ilmu Pengetahuan Alam', 'Nilai UN Bahasa Inggris'];
+                    foreach ($jenis_nilai as $key => $value) {
+                      $jenis = $value;
+                      $nama = $nama_nilai[$key]; ?>
+                      <tr>
+                        <td>
+                          <div class="form-group col-12" id="notifikasi_<?= $jenis ?>">
+                            <label for="<?= $jenis ?>"><?= $nama ?></label>
+                            <input disabled type="number" class="form-control" id="<?= $jenis ?>" value="<?= @$nilai[$jenis] ?>" name="<?= $jenis ?>" placeholder="Masukkan <?= $nama ?>" required="true" autocomplete="off" min="1" max="100">
+                          </div>
+                        </td>
+                        <td>
+                          <div id="pilihan-<?= $jenis ?>">
+                            <p>File: <?php if (isset($berkasnya->$jenis)) {
+                                      ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->$jenis) ?>">klik disini</a><?php } ?></p>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php } ?>
 
                     <?php
-                    $berkasnya = json_decode($nilai['berkas']);
-                    ?>
+                    $jenis_nilai2 = ['nilai_pa', 'nilai_ps', 'nilai_wawancara'];
+                    $nama_nilai2 = ['Nilai Baca Alquran', 'Nilai Praktik Sholat Indonesia', 'Nilai Wawancara'];
+                    foreach ($jenis_nilai2 as $key => $value) {
+                      $jenis = $value;
+                      $nama = $nama_nilai2[$key]; ?>
 
-                    <div class="card-body">
-                      <?php if (count((array)$berkasnya) != 5) { ?>
-                        <div class="alert alert-warning" role="alert">
-                          <p>Berkas peserta belum lengkap.</p>
-                        </div>
+                      <tr>
+                        <td colspan="2">
+                          <div class="form-group col-12" id="notifikasi_<?= $jenis ?>">
+                            <label for="<?= $jenis ?>"><?= $nama ?></label>
+                            <input title="Diisi Oleh Admin" type="number" class="form-control" id="<?= $jenis ?>" value="<?= @$nilai[$jenis] ?>" name="<?= $jenis ?>" placeholder="Masukkan <?= $nama ?>" required="true" autocomplete="off" min="1" max="100">
+                          </div>
+                        </td>
+                      <tr>
+
                       <?php } ?>
-                      <div class="form-group" id="notifikasi_nilai_un">
-                        <label for="nilai_un">Nilai UN</label>
-                        <input type="number" class="form-control" id="nilai_un" value="<?= @$nilai['nilai_un'] ?>" name="nilai_un" placeholder="Masukkan Nilai UN" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_un)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_un) ?>">klik disini</a><?php } ?></span>
-                      </div>
-
-                      <div class="form-group" id="notifikasi_nilai_raport">
-                        <label for="nilai_raport">Nilai Raport</label>
-                        <input type="number" class="form-control" id="nilai_raport" value="<?= @$nilai['nilai_raport'] ?>" name="nilai_raport" placeholder="Masukkan Nilai Raport" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_raport)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_raport) ?>">klik disini</a><?php } ?></span>
-                      </div>
-
-                      <div class="form-group" id="notifikasi_nilai_ps">
-                        <label for="nilai_ps">Nilai PS</label>
-                        <input type="number" class="form-control" id="nilai_ps" value="<?= @$nilai['nilai_ps'] ?>" name="nilai_ps" placeholder="Masukkan Nilai PS" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_ps)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_ps) ?>">klik disini</a><?php } ?></span>
-                      </div>
-
-                      <div class="form-group" id="notifikasi_nilai_pa">
-                        <label for="nilai_pa">Nilai PA</label>
-                        <input type="number" class="form-control" id="nilai_pa" value="<?= @$nilai['nilai_pa'] ?>" name="nilai_pa" placeholder="Masukkan Nilai PA" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_pa)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_pa) ?>">klik disini</a><?php } ?></span>
-                      </div>
-
-                      <div class="form-group" id="notifikasi_nilai_wawancara">
-                        <label for="nilai_wawancara">Nilai Wawancara</label>
-                        <input type="number" class="form-control" id="nilai_wawancara" value="<?= @$nilai['nilai_wawancara'] ?>" name="nilai_wawancara" placeholder="Masukkan Nilai Wawancara" required="true" autocomplete="off" min="1" max="100">
-                        <span class="text-disabled">File: <?php if (isset($berkasnya->nilai_wawancara)) { ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->nilai_wawancara) ?>">klik disini</a><?php } ?></span> <br>
-                        <small class="text-muted small rata-rata">Rata-rata: </small>
-                      </div>
-                    </div>
-
-                    <div class="card-footer">
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-                    </div>
-
-                  </div>
+                      <tr>
+                        <td colspan='2'>
+                          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                        </td>
+                      </tr>
+                  </table>
                 </form>
 
                 <!-- FORM Data Masuk -->

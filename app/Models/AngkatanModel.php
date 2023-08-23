@@ -11,7 +11,7 @@ class AngkatanModel extends Model
 
 	protected $returnType     = 'array';
 
-	protected $allowedFields = ['id', 'angkatan', 'tahun', 'status', 'isDelete'];
+	protected $allowedFields = ['id', 'angkatan', 'tahun', 'tgl_buka', 'tgl_tutup', 'tgl_pengumuman', 'status', 'isDelete'];
 
 	public function simpan($data)
 	{

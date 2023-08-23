@@ -180,7 +180,7 @@ class Pendaftar extends BaseController
       // $nilais = $isSudahAda ? $this->nilai->getBySiswa($id)[0] : [];
       // $berkasnya = $isSudahAda ? (array)json_decode(@$nilais['berkas']) : [];
 
-      $jenis_nilai = ['nilai_un', 'nilai_raport', 'nilai_ps', 'nilai_pa', 'nilai_wawancara'];
+      $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
 
       foreach ($jenis_nilai as $k => $v) {
         $file = $this->request->getFile('file' . $v);

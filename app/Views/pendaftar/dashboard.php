@@ -29,31 +29,30 @@ $cfg = new \SConfig();
           <div class="row">
             <!-- Status Diterima -->
             <div class="col-12">
-              <?php if ($nilai) { ?>
-                <?php if ($status_peserta) { ?>
-                  <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Selamat datang, <?= ucwords(@session()->get('user_nama')) ?></h4>
-                    <p>Selamat, nilai kamu sudah memenuhi standar.</p>
-                    <hr>
-                    <!-- <p class="mb-0">Hingga tanggal deatline berkas belum lengkap, akan dinyatakan gugur.</p> -->
-                  </div>
-                <?php } else { ?>
-                  <div class="alert alert-danger" role="alert">
-                    <h4 class="alert-heading">Selamat datang, <?= ucwords(@session()->get('user_nama')) ?></h4>
-                    <p>Mohon maaf, nilai kamu belum memenuhi standar.</p>
-                  </div>
-                <?php } ?>
-              <?php } else { ?>
-                <div class="alert alert-warning" role="alert">
-                  <h4 class="alert-heading">Halo, <?= ucwords(@session()->get('user_nama')) ?></h4>
-                  <p>Silahkan lengkapi data diri anda <a href="<?= site_url('pendaftar') ?>">disini</a>.</p>
+              <!-- <h4 class="alert-heading">Selamat datang, <?= ucwords(@session()->get('user_nama')) ?></h4> -->
+
+              <?php if ($nilai['nilai_ps'] == 0 || $nilai['nilai_pa'] == 0 || $nilai['nilai_wawancara'] == 0) { ?>
+                <div class="alert alert-danger" role="alert">
+                  <p>Harap hadir ke MAN 1 GAYO LUES untuk melakukan tes baca Alquran, sholat dan wawancara.</p>
                 </div>
               <?php } ?>
 
+              <?php if (!$nilai) { ?>
+                <div class="alert alert-danger" role="alert">
+                  <p>Mohon untuk melengkapi <a href="<?= site_url('pendaftar') ?>">form berikut</a> terlebih dahulu.</p>
+                </div>
+              <?php } ?>
+
+              <?php if ($nilai['berkas'] == '[]') { ?>
+                <div class="alert alert-danger" role="alert">
+                  <p>Mohon untuk mengupload <a href="<?= site_url('pendaftar') ?>">bukti nilai</a> ujian nasional.</p>
+                </div>
+              <?php } ?>
             </div>
             <!-- Nilai -->
+            <!-- FORM Nilai -->
+
             <div class="col-md-6">
-              <!-- FORM Nilai -->
               <form method="post" action="edit" data-url="<?= site_url(" ubah/datanilai2") ?>" id="myForm2" enctype="multipart/form-data" accept-charset="utf-8" class="col-md-12">
                 <?php
                 $berkasnya = json_decode(@$nilai['berkas']);
@@ -66,14 +65,16 @@ $cfg = new \SConfig();
                     <th>Upload Bukti</th>
                   </tr>
                   <?php
-                  $jenis_nilai = ['nilai_un', 'nilai_raport', 'nilai_ps', 'nilai_pa', 'nilai_wawancara'];
+                  $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
+                  $nama_nilai = ['Nilai UN Matematika', 'Nilai UN Bahasa Indonesia', 'Nilai UN Ilmu Pengetahuan Alam', 'Nilai UN Bahasa Inggris'];
                   foreach ($jenis_nilai as $key => $value) {
-                    $jenis = $value ?>
+                    $jenis = $value;
+                    $nama = $nama_nilai[$key]; ?>
                     <tr>
                       <td>
                         <div class="form-group col-12" id="notifikasi_<?= $jenis ?>">
-                          <label for="<?= $jenis ?>"><?= ucwords(str_replace('_', ' ', $jenis)) ?></label>
-                          <input type="number" class="form-control" id="<?= $jenis ?>" value="<?= @$nilai[$jenis] ?>" name="<?= $jenis ?>" placeholder="Masukkan <?= ucwords(str_replace('_', ' ', $jenis)) ?>" required="true" autocomplete="off" min="1" max="100">
+                          <label for="<?= $jenis ?>"><?= $nama ?></label>
+                          <input type="number" class="form-control" id="<?= $jenis ?>" value="<?= @$nilai[$jenis] ?>" name="<?= $jenis ?>" placeholder="Masukkan <?= $nama ?>" required="true" autocomplete="off" min="1" max="100">
                         </div>
                       </td>
                       <td>
@@ -91,11 +92,29 @@ $cfg = new \SConfig();
                       </td>
                     </tr>
                   <?php } ?>
-                  <tr>
-                    <td colspan='2'>
-                      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-                    </td>
-                  </tr>
+
+                  <?php
+                  $jenis_nilai2 = ['nilai_pa', 'nilai_ps', 'nilai_wawancara'];
+                  $nama_nilai2 = ['Nilai Baca Alquran', 'Nilai Praktik Sholat Indonesia', 'Nilai Wawancara'];
+                  foreach ($jenis_nilai2 as $key => $value) {
+                    $jenis = $value;
+                    $nama = $nama_nilai2[$key]; ?>
+
+                    <tr>
+                      <td colspan="2">
+                        <div class="form-group col-12" id="notifikasi_<?= $jenis ?>">
+                          <label for="<?= $jenis ?>"><?= $nama ?></label>
+                          <input disabled title="Diisi Oleh Admin" type="number" class="form-control" id="<?= $jenis ?>" value="<?= @$nilai[$jenis] ?>" name="<?= $jenis ?>" placeholder="Masukkan <?= $nama ?>" required="true" autocomplete="off" min="1" max="100">
+                        </div>
+                      </td>
+                    <tr>
+
+                    <?php } ?>
+                    <tr>
+                      <td colspan='2'>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                      </td>
+                    </tr>
                 </table>
               </form>
             </div>
@@ -108,7 +127,7 @@ $cfg = new \SConfig();
                 <div class="card-body">
                   <?php if ($berkas == null) { ?>
                     <div class="alert alert-danger" role="alert">
-                      <p>Belum ada berkas masuk!</p>
+                      <p>Mohon untuk melengkapi <a href="<?= site_url('berkas') ?>">berkas</a> yang dibutuhkan!</p>
                     </div>
                   <?php } else { ?>
                     <table id="datatable" class="table table-bordered table-hover">

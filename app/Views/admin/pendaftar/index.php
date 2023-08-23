@@ -45,13 +45,12 @@ $cfg = new \SConfig();
                         <th>NAMA</th>
                         <th>ASAL SEKOLAH</th>
                         <th>NILAI</th>
-                        <th>STATUS</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
                       foreach ($record as $key => $v) {
-                      ?>
+                        $rata = $v['rata']; ?>
                         <tr>
                           <td>
                             <a href="<?= site_url('admin/pendaftar/detail/' . $v['id']) ?>" class="btn btn-sm btn-success" title="Detail"><i class="fa fa-eye"></i> Detail</a>
@@ -63,8 +62,7 @@ $cfg = new \SConfig();
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= genId($v) ?></td>
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['nama'] ?></td>
                           <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['asl_sekolah'] ?></td>
-                          <td class="cell" data-id="<?= $v['id'] ?>"><?= $v['rata'] ?></td>
-                          <td class="cell" data-id="<?= $v['id'] ?>"><?= ($v['rata'] > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>") ?></td>
+                          <td class="cell" data-id="<?= $v['id'] ?>"><?= ($rata > $cfg->_nilaiminim ? "<span class='badge badge-success'>$rata<span>" : "<span class='badge badge-danger'>$rata<span>") ?></td>
                         </tr>
                       <?php  } ?>
                     </tbody>

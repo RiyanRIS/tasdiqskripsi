@@ -18,7 +18,7 @@ class Laporan extends BaseController
 
         if (@$_GET['status'] == 1) {
             $record = $record->where('tbl_nilai.rata >', $this->cfg->_nilaiminim);
-        } else if (@$_GET['status'] == 2) {
+        } else if (@$_GET['status'] == 0) {
             $record = $record->where('tbl_nilai.rata <', $this->cfg->_nilaiminim);
         }
 

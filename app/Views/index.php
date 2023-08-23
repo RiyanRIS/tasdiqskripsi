@@ -1,3 +1,6 @@
+<?php
+$cfg = new \SConfig();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -5,89 +8,110 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="author" content="">
-  <!-- <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico"> -->
-
-  <title>Pendaftaran Siswa Baru</title>
+  <title>Pendaftaran MAN 1 Gayo Lues | <?= (@$cfg->_namaApp ?? "") ?></title>
 
   <!-- Bootstrap core CSS -->
-  <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?= site_url('assets/') ?>dist/css/adminlte.min.css">
-
-  <!-- Custom styles for this template -->
-  <style>
-    html {
-      position: relative;
-      min-height: 100%;
-    }
-
-    body {
-      /* Margin bottom by footer height */
-      margin-bottom: 60px;
-    }
-
-    .footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      /* Set the fixed height of the footer here */
-      height: 60px;
-      line-height: 60px;
-      /* Vertically center the text there */
-      background-color: #f5f5f5;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <!-- Notifications css -->
+  <link href="<?= base_url('assets/') ?>plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?= base_url('assets/') ?>plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <link href="//getbootstrap.com/docs/4.6/examples/checkout/form-validation.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-light">
 
-  <header>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Fixed navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Begin page content -->
-  <main role="main" class="container">
-    <h1 class="mt-5">Sticky footer with fixed navbar</h1>
-    <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
-    <p>Back to <a href="../sticky-footer/">the default sticky footer</a> minus the navbar.</p>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted">Place sticky footer content here.</span>
+  <div class="container">
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="<?= (@$cfg->_logoSekolah ?? "") ?>" alt="" width="72" height="72">
+      <h2>PPDB MAN 1 GAYO LUES TAHUN <?= $angkatan->tahun ?></h2>
+      <!-- <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
     </div>
-  </footer>
 
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
-  <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+    <div class="row">
+      <div class="col-12">
+        <h3>Informasi Pendaftaran</h3>
+        <ul>
+          <li>Pendaftaran mulai dibuka tanggal <?= date('d F Y', strtotime($angkatan->tgl_buka)) ?> s/d <?= date('d F Y', strtotime($angkatan->tgl_tutup)) ?></li>
+          <li>Pengumuman kelulusan tanggal <?= date('d F Y', strtotime($angkatan->tgl_pengumuman)) ?></li>
+        </ul>
+        <h3>Syarat Pendaftaram</h3>
+        <ol>
+          <li>Tercatat sebagai peserta didik kelas IX Mts/SMP pada tahun pelajaran 2022/2023</li>
+          <li>Berusia maksimal 21 tahun pada 1 juli 2023</li>
+          <li>memiliki NISN dan terdaftar pada EMIS(bagi Mts) dan DAPODIK(bagi SMP)</li>
+          <li>Scan Kartu Keluarga</li>
+          <li>Scan Akta Kelahiran</li>
+          <li>Pas foto ukuran 3x4</li>
+          <li>Scan Kartu Bantuan Sosial</li>
+          <li>Scan Surat Keterangan Telah mengikuti Ujian Akhir Nasional/Surat Keterangan Berstatus Kelas IX dari sekolah/madrasah</li>
+        </ol>
+        <h3>Alur Pendaftaran</h3>
+        <ol>
+          <li>Daftar melalui tautan <a href="<?= site_url('daftar') ?>">berikut</a>.</li>
+          <li>Masuk/login menggunakan username password yang telah dibuat.</li>
+          <li>Lengkapi formulir data diri dan nilai.</li>
+          <li>Upload Berkas seperti Scan Kartu Keluarga, Akta kelahiran, Foto 3x4 dll.</li>
+          <li>Setelah itu datang langsung ke MAN 1 Gayo Lues untuk melakukan tes praktik.</li>
+          <li>Jika semua sudah dilakukan tunggu tanggal pengumuman</li>
+          <li>Pengumuman akan disebarkan melalui akun masing-masing atau dapat langsung ke MAN 1 Gayo Lues</li>
+        </ol>
+        <h3>Kontak Person</h3>
+        <ul>
+          <li>0813 7538 3840 (Rahma Daini. S.Psi.,)</li>
+          <li>0822 6744 2009 (Drs. Sulaiman Daud)</li>
+          <li>0852 7657 8683 (Fatimah Syam. S.Pd)</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2017-2022 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+
+  </div>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+  <!-- jQuery -->
+  <script src="<?= base_url('assets/') ?>plugins/jquery/jquery.min.js"></script>
+  <!-- Notifications Plugin -->
+  <script src="<?= base_url('assets/') ?>plugins/toastr/toastr.min.js"></script>
+
+  <script>
+    <?php if (session()->has('msg')) {
+      if (session()->get('msg')[0] == 1) { ?>
+        toastr.success("<?= session()->get('msg')[1] ?>", 'Berhasil');
+      <?php } elseif (session()->get('msg')[0] == 0) { ?>
+        toastr.error("<?= session()->get('msg')[1] ?>", 'Gagal');
+    <?php }
+    } ?>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+  <script src="<?= base_url('assets/') ?>plugins/sweetalert2/sweetalert2.all.js"></script>
+  <script>
+    <?php if ($status == 0) { ?>
+      Swal.fire({
+        icon: 'error',
+        title: 'Tidak Dalam Masa Pendaftaran.',
+        confirmButtonText: "Oke"
+        // text: 'Something went wrong!',
+        // footer: '<a href="">Why do I have this issue?</a>'
+      })
+    <?php } ?>
+    <?php if ($status == 2) { ?>
+      Swal.fire({
+        icon: 'success',
+        title: 'Pendaftaran sudah selesai.',
+        confirmButtonText: "Oke",
+        text: 'Silahkan cek akun masing masing atau datang langsung ke sekolah!',
+        // footer: '<a href="">Why do I have this issue?</a>'
+      })
+    <?php } ?>
+  </script>
 </body>
 
 </html>
