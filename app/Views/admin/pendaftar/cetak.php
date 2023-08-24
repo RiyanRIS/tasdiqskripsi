@@ -66,27 +66,37 @@ $cfg = new \SConfig();
                       </tr>
                       <?php $nilai = @$nilai[0]; ?>
                       <tr>
-                        <td>UN</td>
+                        <td>NILAI UN MATEMATIKA</td>
                         <td>:</td>
-                        <td><?= $nilai['nilai_un'] ?? 0 ?></td>
+                        <td><?= $nilai['un_mat'] ?? 0 ?></td>
                       </tr>
                       <tr>
-                        <td>Raport</td>
+                        <td>NILAI UN B. INDONESIA</td>
                         <td>:</td>
-                        <td><?= $nilai['nilai_raport'] ?? 0 ?></td>
+                        <td><?= $nilai['un_bi'] ?? 0 ?></td>
                       </tr>
                       <tr>
-                        <td>PS</td>
+                        <td>NILAI UN IPA</td>
+                        <td>:</td>
+                        <td><?= $nilai['un_ipa'] ?? 0 ?></td>
+                      </tr>
+                      <tr>
+                        <td>NILAI UN B. INGGRIS</td>
+                        <td>:</td>
+                        <td><?= $nilai['un_bing'] ?? 0 ?></td>
+                      </tr>
+                      <tr>
+                        <td>PRAKTIK SHOLAT</td>
                         <td>:</td>
                         <td><?= $nilai['nilai_ps'] ?? 0 ?></td>
                       </tr>
                       <tr>
-                        <td>PA</td>
+                        <td>PRAKTIK AL QURAN</td>
                         <td>:</td>
                         <td><?= $nilai['nilai_pa'] ?? 0 ?></td>
                       </tr>
                       <tr>
-                        <td>Wawancara</td>
+                        <td>WAWANCARA</td>
                         <td>:</td>
                         <td><?= $nilai['nilai_wawancara'] ?? 0 ?></td>
                       </tr>

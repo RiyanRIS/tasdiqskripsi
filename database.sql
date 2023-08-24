@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2023 at 09:51 AM
+-- Generation Time: Aug 24, 2023 at 04:27 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -51,6 +51,9 @@ CREATE TABLE `tbl_angkatan` (
   `id_angkatan` int(11) NOT NULL,
   `angkatan` varchar(10) NOT NULL,
   `tahun` varchar(5) NOT NULL,
+  `tgl_buka` date DEFAULT NULL,
+  `tgl_tutup` date DEFAULT NULL,
+  `tgl_pengumuman` date DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `isDelete` int(1) DEFAULT NULL COMMENT 'null = belum kehapus, 1 sudah kehapus'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -59,10 +62,10 @@ CREATE TABLE `tbl_angkatan` (
 -- Dumping data for table `tbl_angkatan`
 --
 
-INSERT INTO `tbl_angkatan` (`id_angkatan`, `angkatan`, `tahun`, `status`, `isDelete`) VALUES
-(1, '2022/2023', '2022', 0, NULL),
-(2, '2021/2022', '2021', 0, NULL),
-(3, '2023/2024', '2023', 1, NULL);
+INSERT INTO `tbl_angkatan` (`id_angkatan`, `angkatan`, `tahun`, `tgl_buka`, `tgl_tutup`, `tgl_pengumuman`, `status`, `isDelete`) VALUES
+(1, '2022/2023', '2022', NULL, NULL, NULL, 0, NULL),
+(2, '2021/2022', '2021', NULL, NULL, NULL, 0, NULL),
+(3, '2023/2024', '2023', '2023-08-01', '2023-08-30', '2023-09-04', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -111,14 +114,76 @@ CREATE TABLE `tbl_dt_pribadi` (
 CREATE TABLE `tbl_nilai` (
   `id_nilai` int(11) NOT NULL,
   `id_dt_pribadi` int(11) NOT NULL,
-  `nilai_un` int(11) NOT NULL,
-  `nilai_raport` int(11) NOT NULL,
+  `un_mat` int(11) DEFAULT NULL,
+  `un_bi` int(11) DEFAULT NULL,
+  `un_ipa` int(11) DEFAULT NULL,
+  `un_bing` int(11) DEFAULT NULL,
   `nilai_ps` int(11) NOT NULL,
   `nilai_pa` int(11) NOT NULL,
   `nilai_wawancara` int(11) NOT NULL,
   `rata` int(11) NOT NULL,
-  `berkas` text NOT NULL
+  `berkas` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_smp`
+--
+
+CREATE TABLE `tbl_smp` (
+  `id_smp` int(11) NOT NULL,
+  `nama` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_smp`
+--
+
+INSERT INTO `tbl_smp` (`id_smp`, `nama`) VALUES
+(2, 'SMP NEGERI 1 BLANGKEJEREN'),
+(3, 'SMP NEGERI 2 BLANGKEJEREN'),
+(4, 'SMP NEGERI 3 BLANGKEJEREN'),
+(5, 'SMP NEGERI 4 PERSIAPAN BLANGKEJEREN'),
+(6, 'SMP NEGERI SATU ATAP AGUSEN'),
+(7, 'SMP TERPADU MUHAMMADIYAH GAYO LUES'),
+(8, 'SMPIT BUNAYYA'),
+(9, 'SMPIT RAUDLATUL JANNAH'),
+(10, 'SMPS SHALAHUDDIIN'),
+(11, 'SMP NEGERI 2 KUTAPANJANG'),
+(12, 'SMP NEGERI 1 KUTAPANJANG'),
+(13, 'SMP RAUDHATUL QURAN'),
+(14, 'SMPIT LADIA GALASKA'),
+(15, 'SMP NEGERI 1 RIKIT GAIP'),
+(16, 'SMP NEGERI 1 TERANGUN'),
+(17, 'SMP NEGERI 2 TERANGUN'),
+(18, 'SMP NEGERI 3 TERANGUN'),
+(19, 'SMP NEGERI 4 TERANGUN'),
+(20, 'SMPIT NURUL HIKMAH'),
+(21, 'SMPN SATUU ATAP TERANGUN'),
+(22, 'SMP NEGERI 1 PINING'),
+(23, 'SMP NEGERI 2 PINING'),
+(24, 'SMPN SATU ATAP LESTEN'),
+(25, 'SMPN SATU ATAP PASIR PUTIH'),
+(26, 'SMP NEGERI 1 BELANGJERANGO'),
+(27, 'SMP NEGERI 2 BELANGJERANGO'),
+(28, 'SMPS TERPADU BUSTANUL ARIFIN'),
+(29, 'SMP NEGERI 1 PUTRI BETUNG'),
+(30, 'SMP NEGERI 2 PUTRI BETUNG'),
+(31, 'SMP NEGERI 1 DABUN GELANG'),
+(32, 'SMP NEGERI SATU ATAP BLANGTEMUNG'),
+(33, 'SMP NEGERI SATU ATAP KENDAWI'),
+(34, 'SMPIT SERAMBI DARUSSALAM'),
+(35, 'SMP NEGERI 1 BLANGPEGAYON'),
+(36, 'SMPIT BADRUL ULUM'),
+(37, 'SMP NEGERI 1 PANTAN CUACA'),
+(38, 'SMPN SATU ATAP PANTAN CUACA'),
+(39, 'SMP NEGERI 1 TRIPE JAYA'),
+(40, 'SMP NEGERI 2 TRIPE JAYA'),
+(41, 'MTSN 1 GAYO LUES'),
+(42, 'MTS RUHUL A\'ZHAM'),
+(43, 'MTSS UJUNG BARO'),
+(44, 'MTS NURSSALAM');
 
 --
 -- Indexes for dumped tables
@@ -158,6 +223,12 @@ ALTER TABLE `tbl_nilai`
   ADD KEY `nilai_dt_pribadi` (`id_dt_pribadi`);
 
 --
+-- Indexes for table `tbl_smp`
+--
+ALTER TABLE `tbl_smp`
+  ADD PRIMARY KEY (`id_smp`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -190,6 +261,12 @@ ALTER TABLE `tbl_dt_pribadi`
 --
 ALTER TABLE `tbl_nilai`
   MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_smp`
+--
+ALTER TABLE `tbl_smp`
+  MODIFY `id_smp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Constraints for dumped tables

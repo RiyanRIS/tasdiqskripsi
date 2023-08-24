@@ -48,7 +48,7 @@ $cfg = new \SConfig();
         <h3>Alur Pendaftaran</h3>
         <ol>
           <li>Daftar melalui tautan <a href="<?= site_url('daftar') ?>">berikut</a>.</li>
-          <li>Masuk/login menggunakan username password yang telah dibuat.</li>
+          <li><a href="<?= site_url('login') ?>">Masuk/login</a> menggunakan username password yang telah dibuat.</li>
           <li>Lengkapi formulir data diri dan nilai.</li>
           <li>Upload Berkas seperti Scan Kartu Keluarga, Akta kelahiran, Foto 3x4 dll.</li>
           <li>Setelah itu datang langsung ke MAN 1 Gayo Lues untuk melakukan tes praktik.</li>
