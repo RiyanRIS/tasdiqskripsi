@@ -11,7 +11,7 @@ class NilaiModel extends Model
 
 	protected $returnType     = 'array';
 
-	protected $allowedFields = ['id_nilai', 'id_dt_pribadi', 'nilai_un', 'nilai_raport', 'nilai_ps', 'nilai_pa', 'nilai_wawancara', 'rata', 'berkas'];
+	protected $allowedFields = ['id_nilai', 'id_dt_pribadi', 'nilai_un', 'nilai_raport', 'nilai_ps', 'nilai_pa', 'nilai_wawancara', 'rata', 'berkas', 'status'];
 
 	public function simpan($data)
 	{

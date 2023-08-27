@@ -82,6 +82,10 @@ $routes->group('admin', function ($routes) {
                     $routes->get('ditolak/(:any)', 'Admin\Pendaftar::updstatusberkas/$1/2');
                 });
             });
+
+            $routes->group('nilai', function ($routes) {
+                $routes->get('status/(:any)/(:any)/(:any)', 'Admin\Pendaftar::updstatusnilai/$1/$2/$3');
+            });
         });
 
         $routes->group('tambah', function ($routes) {

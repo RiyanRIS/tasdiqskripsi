@@ -66,10 +66,10 @@ $get = @$_GET;
                           <th rowspan="2">STATUS</th>
                         </tr>
                         <tr>
-                          <th>UN B INDONESIA</th>
-                          <th>UN MATEMATIKA</th>
-                          <th>UN IPA</th>
-                          <th>UN B INGGRIS</th>
+                          <th>Ujian Nasional BAHASA INDONESIA</th>
+                          <th>Ujian Nasional MATEMATIKA</th>
+                          <th>Ujian Nasional IPA</th>
+                          <th>Ujian Nasional BAHASA INGGRIS</th>
                           <th>PRAKTIK SHOLAT</th>
                           <th>PRAKTIK AL QURAN</th>
                           <th>WAWANCARA</th>

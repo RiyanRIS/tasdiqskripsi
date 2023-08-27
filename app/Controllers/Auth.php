@@ -85,12 +85,14 @@ class Auth extends BaseController
 			}
 		} else { // kondisi validasi error
 			$find_now = $this->pribadi->find_now();
+			$sisa = 200 - count($find_now);
 			$tot = count($find_now) + 1;
 			$kode = date('Y') . str_pad($tot, 4, "0", STR_PAD_LEFT);
 			$smp = $this->smp->find();
 			$data = [
 				'smp' => $smp,
 				'kode' => $kode,
+				'sisa' => $sisa,
 				'post' => $this->request->getPost(),
 				'err' => $this->validation->getErrors()
 			];

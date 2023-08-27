@@ -74,87 +74,6 @@ class Pendaftar extends BaseController
     die();
   }
 
-  public function ubahdatanilai()
-  {
-    // Cek hak akses user
-    if (!$this->isSecure('user')) {
-      $msg = [
-        'status' => false,
-        'url' => site_url("login"),
-        'pesan'   => 'Anda tidak berhak mengakses halaman ini',
-      ];
-      return json_encode($msg);
-    }
-
-    // Cek isian ngga boleh kosong dan nilai minimal 1 dan maksimal 100
-    $rules = [
-      'nilai_un' => [
-        'label'  => 'Nilai Un',
-        'rules'  => 'required|less_than[100]|greater_than[1]',
-        'errors' => [],
-      ],
-      'nilai_raport' => [
-        'label'  => 'Nilai Raport',
-        'rules'  => 'required|less_than[100]|greater_than[1]',
-        'errors' => [],
-      ],
-      'nilai_ps' => [
-        'label'  => 'Nilai PS',
-        'rules'  => 'required|less_than[100]|greater_than[1]',
-        'errors' => [],
-      ],
-      'nilai_pa' => [
-        'label'  => 'Nilai PA',
-        'rules'  => 'required|less_than[100]|greater_than[1]',
-        'errors' => [],
-      ],
-      'nilai_wawancara' => [
-        'label'  => 'Nilai Wawancara',
-        'rules'  => 'required|less_than[100]|greater_than[1]',
-        'errors' => [],
-      ],
-    ];
-    $this->validation->setRules($rules);
-
-    if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
-      $additionalData = $this->request->getPost();
-      $id = $this->request->getPost('id');
-      unset($additionalData['id']);
-
-      $additionalData['rata'] = genNilai($additionalData);
-
-      // Cek Nilai Sudah Pernah Simpan
-      $isSudahAda = $this->nilai->isSudahAda($id);
-      if ($isSudahAda) {
-        // Proses Update
-        $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], $additionalData);
-      } else {
-        $additionalData['id_dt_pribadi'] = $id;
-        $lastid = $this->nilai->simpan($additionalData);
-      }
-
-      if ($lastid) {
-        $msg = [
-          'status' => true,
-          'url' => site_url("pendaftar"),
-        ];
-      } else {
-        $msg = [
-          'status' => false,
-          'url' => site_url("pendaftar"),
-          'pesan'   => 'Data gagal dirubah',
-        ];
-      }
-    } else {
-      $msg = [
-        'status' => false,
-        'errors' => $this->validation->getErrors(),
-      ];
-    }
-    echo json_encode($msg);
-    die();
-  }
-
   public function ubahdatanilai2()
   {
     // Cek hak akses user
@@ -184,22 +103,33 @@ class Pendaftar extends BaseController
 
       foreach ($jenis_nilai as $k => $v) {
         $file = $this->request->getFile('file' . $v);
+        $maxSize = 2 * 1024;
         if ($file->isValid()) {
-          $newName = $file->getRandomName();
-          $file->move(ROOTPATH . 'public/uploads/temp/', $newName);
-          $berkass[$v] = $newName;
+          $msg = [
+            'status' => false,
+            'url' => site_url("pendaftar"),
+            'pesan'   => 'Ada berkas yang belum terupload',
+          ];
+          return json_encode($msg);
+        } else {
+          if ($file->getSize() > $maxSize) {
+            $newName = $file->getRandomName();
+            $file->move(ROOTPATH . 'public/uploads/temp/', $newName);
+            $berkass[$v] = $newName;
+          } else {
+            $msg = [
+              'status' => false,
+              'url' => site_url("pendaftar"),
+              'pesan'   => 'File maksimal 2 mb!',
+            ];
+            return json_encode($msg);
+          }
         }
-        // } else {
-        //   if ($isSudahAda) {
-        //     $berkass[$v] = $berkasnya[$v];
-        //   }
-        // }
       }
 
       $additionalData['berkas'] = json_encode($berkass);
 
       if ($isSudahAda) {
-        // Proses Update
         $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], $additionalData);
       } else {
         $additionalData['id_dt_pribadi'] = $id;

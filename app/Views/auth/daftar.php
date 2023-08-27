@@ -15,6 +15,7 @@ $cfg = new \SConfig();
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <!-- Notifications css -->
   <link href="<?= base_url('assets/') ?>plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?= base_url('assets/') ?>plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
   <link href="//getbootstrap.com/docs/4.6/examples/checkout/form-validation.css" rel="stylesheet">
 </head>
 
@@ -30,6 +31,7 @@ $cfg = new \SConfig();
     <div class="row justify-content-center">
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Data Diri</h4>
+        <p>Sisa kuota pendaftar: <?= $sisa ?></p>
         <form method="post" action="">
           <div class="mb-3">
             <label for="firstName">No Pendaftaran</label>
@@ -161,6 +163,8 @@ $cfg = new \SConfig();
   <!-- Notifications Plugin -->
   <script src="<?= base_url('assets/') ?>plugins/toastr/toastr.min.js"></script>
 
+  <script src="<?= base_url('assets/') ?>plugins/sweetalert2/sweetalert2.all.js"></script>
+
   <script>
     <?php if (session()->has('msg')) {
       if (session()->get('msg')[0] == 1) { ?>
@@ -170,6 +174,17 @@ $cfg = new \SConfig();
     <?php }
     } ?>
   </script>
+  <?php if ($sisa <= 0) {
+  ?>
+    <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Informasi',
+        confirmButtonText: "Oke",
+        html: 'Kuota pendaftaran sudah habis.',
+      })
+    </script>
+  <?php } ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 </body>

@@ -66,22 +66,22 @@ $cfg = new \SConfig();
                       </tr>
                       <?php $nilai = @$nilai[0]; ?>
                       <tr>
-                        <td>NILAI UN MATEMATIKA</td>
+                        <td>NILAI Ujian Nasional MATEMATIKA</td>
                         <td>:</td>
                         <td><?= $nilai['un_mat'] ?? 0 ?></td>
                       </tr>
                       <tr>
-                        <td>NILAI UN B. INDONESIA</td>
+                        <td>NILAI Ujian Nasional B. INDONESIA</td>
                         <td>:</td>
                         <td><?= $nilai['un_bi'] ?? 0 ?></td>
                       </tr>
                       <tr>
-                        <td>NILAI UN IPA</td>
+                        <td>NILAI Ujian Nasional IPA</td>
                         <td>:</td>
                         <td><?= $nilai['un_ipa'] ?? 0 ?></td>
                       </tr>
                       <tr>
-                        <td>NILAI UN B. INGGRIS</td>
+                        <td>NILAI Ujian Nasional B. INGGRIS</td>
                         <td>:</td>
                         <td><?= $nilai['un_bing'] ?? 0 ?></td>
                       </tr>

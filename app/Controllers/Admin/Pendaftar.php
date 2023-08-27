@@ -425,6 +425,31 @@ class Pendaftar extends BaseController
     die();
   }
 
+  public function updstatusnilai(string $jenis, string $status, $id)
+  {
+    // Cek hak akses user
+    if (!$this->isSecure()) {
+      $msg = [
+        'status' => false,
+        'url' => site_url("admin/pendaftaran"),
+        'pesan'   => 'Anda tidak berhak mengakses halaman ini',
+      ];
+      return json_encode($msg);
+    }
+
+    $nilai = $this->nilai->find($id);
+    $nilai_res = json_decode($nilai['status']);
+    $nilai_res->$jenis = $status;
+
+    $data['status'] = json_encode($nilai_res);
+
+    $lastId = $this->nilai->update(['id_nilai' => $id], $data);
+
+    $msg = ($lastId ? [1, "Berhasil memperbarui data"] : [0, "Gagal memperbarui data"]);
+
+    return redirect()->to(site_url('admin/pendaftar/detail/' . $nilai['id_dt_pribadi']))->with('msg', $msg);
+  }
+
   public function updstatusberkas(string $id, string $kode)
   {
     // Cek hak akses user

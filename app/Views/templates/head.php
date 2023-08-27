@@ -20,6 +20,7 @@ $cfg = new \SConfig();
 <!-- overlayScrollbars -->
 <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css" />
 <!-- Notifications css -->
+<link href="<?= base_url('assets/') ?>plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/toastr/toastr.min.css" type="text/css" />
 <!-- Daterange picker -->
 <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/daterangepicker/daterangepicker.css" />

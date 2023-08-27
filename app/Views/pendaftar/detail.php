@@ -93,6 +93,7 @@
               <form method="post" action="edit" data-url="<?= site_url(" ubah/datanilai2") ?>" id="myForm2" enctype="multipart/form-data" accept-charset="utf-8" class="col-md-12">
                 <?php
                 $berkasnya = json_decode(@$nilai['berkas']);
+                $status = json_decode(@$nilai['status']);
                 ?>
                 <input type="hidden" name="id" value="<?= session()->user_id ?>">
 
@@ -100,10 +101,11 @@
                   <tr style="background-color: #28a745;color: #fff;">
                     <th>Data Nilai</th>
                     <th>Upload Bukti</th>
+                    <th>Status</th>
                   </tr>
                   <?php
                   $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
-                  $nama_nilai = ['Nilai UN Matematika', 'Nilai UN Bahasa Indonesia', 'Nilai UN Ilmu Pengetahuan Alam', 'Nilai UN Bahasa Inggris'];
+                  $nama_nilai = ['Nilai Ujian Nasional Matematika', 'Nilai Ujian Nasional Bahasa Indonesia', 'Nilai Ujian Nasional Ilmu Pengetahuan Alam', 'Nilai Ujian Nasional Bahasa Inggris'];
                   foreach ($jenis_nilai as $key => $value) {
                     $jenis = $value;
                     $nama = $nama_nilai[$key]; ?>
@@ -127,6 +129,26 @@
                           <input id="file-<?= $jenis ?>" type="file" name="file<?= $jenis ?>" />
                         </div>
                       </td>
+                      <td>
+                        <?php $jenisnya = 'status_' . $value; ?>
+                        <div id="pilihan-<?= $jenisnya ?>">
+                          <p><?php
+                              if (isset($berkasnya->$jenis)) {
+                                $stat_nil = $status->$jenisnya ?? null;
+                                if ($stat_nil) {
+                                  if ($stat_nil ==  'terverifikasi') {
+                                    echo "<span class='badge badge-success'>" . $stat_nil . "<span>";
+                                  } else {
+                                    echo "<span class='badge badge-danger'>" . $stat_nil . "<span>";
+                                  }
+                                } else {
+                                  echo "Belum verifikasi";
+                                } ?></p>
+                        <?php } else {
+                                echo "<span class='badge badge-danger'>Belum upload berkas<span>";
+                              } ?>
+                        </div>
+                      </td>
                     </tr>
                   <?php } ?>
 
@@ -138,7 +160,7 @@
                     $nama = $nama_nilai2[$key]; ?>
 
                     <tr>
-                      <td colspan="2">
+                      <td colspan="3">
                         <div class="form-group col-12" id="notifikasi_<?= $jenis ?>">
                           <label for="<?= $jenis ?>"><?= $nama ?></label>
                           <input disabled title="Diisi Oleh Admin" type="number" class="form-control" id="<?= $jenis ?>" value="<?= @$nilai[$jenis] ?>" name="<?= $jenis ?>" placeholder="Masukkan <?= $nama ?>" required="true" autocomplete="off" min="1" max="100">
@@ -148,11 +170,40 @@
 
                     <?php } ?>
                     <tr>
-                      <td colspan='2'>
+                      <td colspan='3'>
                         <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                       </td>
                     </tr>
                 </table>
+              </form>
+
+              <form method="post" action="edit" data-url="<?= site_url("ubah/datamasuk") ?>" id="myForm3" enctype="multipart/form-data" accept-charset="utf-8" class="col-12">
+                <div class="card card-success">
+                  <div class="card-header">
+                    <h3 class="card-title">Ubah Password</h3>
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <div class="form-group" id="notifikasi_username">
+                      <label for="username">Username</label>
+                      <input type="hidden" name="id" value="<?= @$record['id'] ?>">
+                      <input type="text" class="form-control" id="username" value="<?= @$record['username'] ?>" name="username" placeholder="Masukkan Username" required="true" autocomplete="off">
+                    </div>
+
+                    <div class="form-group" id="notifikasi_password">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Jika Merubah Password*">
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                  </div>
+                </div>
               </form>
             </div>
 
