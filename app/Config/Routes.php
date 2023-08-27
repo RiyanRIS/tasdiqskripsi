@@ -32,6 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('tes', 'Home::tes');
 $routes->get('dashboard', 'Home::dashboard');
+$routes->get('pengumuman', 'Home::pengumuman');
 $routes->get('pendaftar', 'Home::pendaftar');
 $routes->get('berkas', 'Home::berkas');
 

@@ -42,9 +42,17 @@ $cfg = new \SConfig();
         </li>
         <li class="nav-item">
           <a href="<?= site_url('berkas') ?>" data-nav="berkas" class="nav-link">
-            <i class="nav-icon fas fa-calendar-alt"></i>
+            <i class="nav-icon fas fa-address-book"></i>
             <p>
               Data Berkas
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= site_url('pengumuman') ?>" data-nav="pengumuman" class="nav-link">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+            <p>
+              Pengumuman
             </p>
           </a>
         </li>

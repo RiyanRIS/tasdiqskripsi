@@ -49,6 +49,43 @@ class Home extends BaseController
         return view('pendaftar/dashboard', $data);
     }
 
+    public function pengumuman()
+    {
+        if (!$this->isSecure('user')) return redirect()->to(site_url('login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+
+        $id = session()->get('user_id');
+        $v = @$this->nilai->getBySiswa($id)[0];
+        $status_peserta = false;
+
+        if ($v) {
+            if (genNilai($v) > $this->cfg->_nilaiminim) {
+                $status_peserta = true;
+            }
+        }
+
+        $status = "Belum waktunya pengumuman";
+
+        $angkatan = $this->angkatan->isActive();
+        $tgl_now = date("Y-m-d");
+        if ($angkatan->tgl_pengumuman <= $tgl_now) {
+            if ($status_peserta) {
+                $status = "Anda lulus";
+            } else {
+                $status = "Anda tidak lulus";
+            }
+        }
+
+        $data = [
+            "nilai" => $v,
+            "pribadi" => $this->pribadi->find($id),
+            "berkas" => $this->berkas->getByUser($id),
+            "status_peserta" => $status_peserta,
+            "judul" => $status
+        ];
+
+        return view('pendaftar/pengumuman', $data);
+    }
+
     public function pendaftar()
     {
         if (!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
