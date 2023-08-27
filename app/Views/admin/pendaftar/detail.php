@@ -134,7 +134,7 @@
                                   } else {
                                     echo "Belum verifikasi";
                                   } ?></p>
-                            <a href="<?= site_url('admin/pendaftar/ubah/nilai/status/' . $jenis . '/terverifikasi/' . $nilai['id_nilai']) ?>">verifikasi</a> || <a href="<?= site_url('admin/pendaftar/ubah/nilai/status/' . $jenis . '/ditolak/' . $nilai['id_nilai']) ?>">tolak</a>
+                            <a href="<?= site_url('admin/pendaftar/ubah/nilai/status/' . $jenisnya . '/terverifikasi/' . $nilai['id_nilai']) ?>">verifikasi</a> || <a href="<?= site_url('admin/pendaftar/ubah/nilai/status/' . $jenisnya . '/ditolak/' . $nilai['id_nilai']) ?>">tolak</a>
                           <?php } else {
                                   echo "<span class='badge badge-danger'>Belum upload berkas<span>";
                                 } ?>

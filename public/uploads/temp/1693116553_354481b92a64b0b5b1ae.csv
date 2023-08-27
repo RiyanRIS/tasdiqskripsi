@@ -1,0 +1,88 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 27, 2023 at 08:00 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `ci4`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_dt_pribadi`
+--
+
+CREATE TABLE `tbl_dt_pribadi` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `tmpt_lahir` varchar(50) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `jenis_kelamin` enum('Laki-laki','Perempuan','','') NOT NULL,
+  `alamat` varchar(50) NOT NULL,
+  `asl_sekolah` varchar(50) NOT NULL,
+  `no_tlpn` varchar(16) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `id_angkatan` int(1) NOT NULL,
+  `jurusan` enum('IPA','IPS','','') NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_dt_pribadi`
+--
+
+INSERT INTO `tbl_dt_pribadi` (`id`, `nama`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `alamat`, `asl_sekolah`, `no_tlpn`, `email`, `id_angkatan`, `jurusan`, `username`, `password`, `deleted_at`) VALUES
+(1, '123', '123', '1222-12-12', 'Laki-laki', '123', 'SMP NEGERI 1 TERANGUN', '123', 'aa@aa.a', 3, 'IPA', '123', '$2y$10$hvsEXlS5/v6sCOTQgh.BMuLKUItihDlcyNd/jirGJgzDuWr3o5xwG', NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_dt_pribadi`
+--
+ALTER TABLE `tbl_dt_pribadi`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `angkatan_peserta` (`id_angkatan`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_dt_pribadi`
+--
+ALTER TABLE `tbl_dt_pribadi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_dt_pribadi`
+--
+ALTER TABLE `tbl_dt_pribadi`
+  ADD CONSTRAINT `angkatan_peserta` FOREIGN KEY (`id_angkatan`) REFERENCES `tbl_angkatan` (`id_angkatan`) ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

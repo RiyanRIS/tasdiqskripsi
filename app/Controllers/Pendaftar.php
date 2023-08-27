@@ -103,8 +103,8 @@ class Pendaftar extends BaseController
 
       foreach ($jenis_nilai as $k => $v) {
         $file = $this->request->getFile('file' . $v);
-        $maxSize = 2 * 1024;
-        if ($file->isValid()) {
+        $maxSize = 2 * 1024 * 1000;
+        if (!$file->isValid()) {
           $msg = [
             'status' => false,
             'url' => site_url("pendaftar"),
@@ -113,16 +113,16 @@ class Pendaftar extends BaseController
           return json_encode($msg);
         } else {
           if ($file->getSize() > $maxSize) {
-            $newName = $file->getRandomName();
-            $file->move(ROOTPATH . 'public/uploads/temp/', $newName);
-            $berkass[$v] = $newName;
-          } else {
             $msg = [
               'status' => false,
               'url' => site_url("pendaftar"),
-              'pesan'   => 'File maksimal 2 mb!',
+              'pesan'   => 'File maksimal 2 mb',
             ];
             return json_encode($msg);
+          } else {
+            $newName = $file->getRandomName();
+            $file->move(ROOTPATH . 'public/uploads/temp/', $newName);
+            $berkass[$v] = $newName;
           }
         }
       }
