@@ -122,7 +122,8 @@ CREATE TABLE `tbl_nilai` (
   `nilai_pa` int(11) NOT NULL,
   `nilai_wawancara` int(11) NOT NULL,
   `rata` int(11) NOT NULL,
-  `berkas` text DEFAULT NULL
+  `berkas` text DEFAULT NULL,
+  `status` text NOT NULL DEFAULT '[]'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
