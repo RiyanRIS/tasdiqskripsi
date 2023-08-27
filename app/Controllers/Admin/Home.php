@@ -32,6 +32,7 @@ class Home extends BaseController
 
         $data = [
             "laporan" => $laporan,
+            'sisa' => 200 - count($pendaftars),
             "angkatans" => $this->angkatan->where('isDelete', null)->orderby('tahun', 'DESC')->find(),
             "judul" => "Dashboard"
         ];

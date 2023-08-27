@@ -208,6 +208,42 @@ $cfg = new \SConfig();
     </script>
   <?php } ?>
 
+  <?php if (!$berkas) { ?>
+    <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Informasi',
+        confirmButtonText: "Oke",
+        html: 'Mohon untuk melengkapi <a href="<?= site_url('berkas') ?>">berkas</a> terlebih dahulu.',
+      })
+    </script>
+  <?php } ?>
+
+  <?php
+  $status = json_decode(@$nilai['status']);
+  $statu_res = true;
+  if ($status) {
+    $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
+    foreach ($jenis_nilai as $key => $value) {
+      $jenisnya = 'status_' . $value;
+      $stat_nil = $status->$jenisnya ?? null;
+      if ($stat_nil ==  'ditolak') {
+        $statu_res = false;
+      }
+    }
+  }
+  ?>
+  <?php if (!$statu_res) { ?>
+    <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Informasi',
+        confirmButtonText: "Oke",
+        html: 'Ada berkas nilai yang ditolak, harap periksa kembali <a href="<?= site_url('pendaftar') ?>">halaman ini</a>',
+      })
+    </script>
+  <?php } ?>
+
   <?php if (!$nilai) { ?>
     <script>
       Swal.fire({

@@ -22,8 +22,8 @@
             <div class="col-sm-4 col-12">
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3><?= $laporan['total'] ?></h3>
-                  <p>Total Pendaftar</p>
+                  <h3><?= $laporan['total'] ?>/<?= $sisa ?></h3>
+                  <p>Total Pendaftar/Sisa Kuota</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>
@@ -79,16 +79,18 @@
                       <?php
                       foreach ($angkatans as $key => $v) { ?>
                         <tr>
-                          <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= ++$key ?></td>
-                          <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= $v['angkatan'] ?></td>
-                          <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= ($v['status'] ? "<span class='badge badge-success'>Aktif<span>" : "<span class='badge badge-danger'>Tidak Aktif<span>") ?></td>
-                          <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_buka'])) ?></td>
+                          <td data-id=" <?= $v['id_angkatan'] ?>"><?= ++$key ?></td>
+                          <td><?= $v['angkatan'] ?></td>
+                          <td data-id="<?= $v['id_angkatan'] ?>"><?= ($v['status'] ? "<span class='badge badge-success'>Aktif<span>" : "<span class='badge badge-danger'>Tidak Aktif<span>") ?></td>
+                          <td data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_buka'])) ?></td>
 
-                          <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_tutup'])) ?></td>
+                          <td data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_tutup'])) ?></td>
 
-                          <td class="cell" data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_pengumuman'])) ?></td>
+                          <td data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_pengumuman'])) ?></td>
 
                           <td>
+                            <a class="btn btn-sm btn-info cell" data-id="<?= $v['id_angkatan'] ?>" title="Edit data"><i class="fa fa-pencil-alt"></i> Edit</a>
+
                             <a onclick="return confirm('Hapus data angkatan ini?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/angkatan/hapus/' . $v['id_angkatan']) ?>" class="btn btn-sm btn-danger" title="Hapus data"><i class="fa fa-trash"></i> Hapus</a>
                           </td>
                         </tr>
