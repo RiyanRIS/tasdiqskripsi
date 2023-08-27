@@ -33,6 +33,9 @@ $routes->get('/', 'Home::index');
 $routes->get('tes', 'Home::tes');
 $routes->get('dashboard', 'Home::dashboard');
 $routes->get('pengumuman', 'Home::pengumuman');
+$routes->get('alur', 'Home::alur');
+$routes->get('jadwal', 'Home::jadwal');
+$routes->get('persyaratan', 'Home::persyaratan');
 $routes->get('pendaftar', 'Home::pendaftar');
 $routes->get('berkas', 'Home::berkas');
 

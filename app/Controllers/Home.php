@@ -24,6 +24,36 @@ class Home extends BaseController
         return view('index', $data);
     }
 
+    public function alur()
+    {
+        return view('alur');
+    }
+
+    public function jadwal()
+    {
+        $angkatan = $this->angkatan->isActive();
+        $date_now = date('Y-m-d');
+        // $date_now = "2023-03-20"; // ubah ini untuk tes
+        $status = 0; // 1=masa pendaftaran, 2=pengumuman
+
+        if ($date_now >= $angkatan->tgl_buka && $date_now <= $angkatan->tgl_tutup) {
+            $status = 1;
+        }
+        if ($date_now >= $angkatan->tgl_pengumuman) {
+            $status = 2;
+        }
+        $data = [
+            'status' => $status,
+            'angkatan' => $angkatan,
+        ];
+        return view('jadwal', $data);
+    }
+
+    public function persyaratan()
+    {
+        return view('persyaratan');
+    }
+
     public function dashboard()
     {
         if (!$this->isSecure('user')) return redirect()->to(site_url('login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
