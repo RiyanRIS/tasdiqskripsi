@@ -17,5 +17,8 @@
 Tulisanya di ubah kaya gini mas done
 Data Diri Ubah = Data Saya done
 Data Berkas Ubah = Upload Berkas done
+Logo man Sama Tulisan Selamat Datang
 nama bulanya di ganti pake Bahasa Indonesia done
+Untuk fitur tgl tutupnya belum berfungsi
 Fitur Cabut berkasnya masi error done
+Tampilan Laporanya diganti seperti gambar done

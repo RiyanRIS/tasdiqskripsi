@@ -51,6 +51,13 @@ class Auth extends BaseController
 
 	public function daftar()
 	{
+		$angkatan = $this->angkatan->isActive();
+		$date_now = date('Y-m-d');
+
+		if ($date_now >= $angkatan->tgl_tutup) {
+			return redirect()->to(site_url())->with('msg', [0, "Maaf, pendaftaran sudah ditutup"]);
+		}
+
 		$this->validation->setRules($this->pribadi->rules_tambah_ubah);
 		if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
 			// inisialisasi data yang akan dimasukkan ke database

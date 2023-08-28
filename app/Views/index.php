@@ -44,19 +44,26 @@ $cfg = new \SConfig();
   <!-- Notifications Plugin -->
   <script src="<?= base_url('assets/') ?>plugins/toastr/toastr.min.js"></script>
 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+  <script src="<?= base_url('assets/') ?>plugins/sweetalert2/sweetalert2.all.js"></script>
   <script>
     <?php if (session()->has('msg')) {
       if (session()->get('msg')[0] == 1) { ?>
         toastr.success("<?= session()->get('msg')[1] ?>", 'Berhasil');
       <?php } elseif (session()->get('msg')[0] == 0) { ?>
-        toastr.error("<?= session()->get('msg')[1] ?>", 'Gagal');
+        Swal.fire({
+          icon: 'error',
+          title: '<?= session()->get('msg')[1] ?>',
+          confirmButtonText: "Oke"
+          // text: 'Something went wrong!',
+          // footer: '<a href="">Why do I have this issue?</a>'
+        })
+        // toastr.error("<?= session()->get('msg')[1] ?>", 'Gagal');
     <?php }
     } ?>
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-  <script src="<?= base_url('assets/') ?>plugins/sweetalert2/sweetalert2.all.js"></script>
-
 </body>
 
 </html>
