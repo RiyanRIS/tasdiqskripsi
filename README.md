@@ -24,4 +24,6 @@ Fitur Cabut berkasnya masi error done
 Tampilan Laporanya diganti seperti gambar done
 Tampilan Pengumuman Seperti ini done
 Ini kan admin sudah verifikasi, tapi kalau [agak rumit kalau cek mana yang tadi dirubah]
-Ini kan ada 2 peserta ,gia sudah ada nilai
+Ini kan ada 2 peserta ,gia sudah ada nilai done
+Ini kan nilai siswanya tinggi done
+Untuk tampilan kop print [ndak usah ditampilin nanti waktu demo, lama bikinya mas bisa 2-3 hari bikin cetakan kop surat]

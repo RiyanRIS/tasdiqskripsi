@@ -105,10 +105,41 @@ class Home extends BaseController
             }
         }
 
+        $berkas = $this->berkas->getByUser($id);
+
+        if (@$v['nilai_ps'] == 0 || @$v['nilai_pa'] == 0 || @$v['nilai_wawancara'] == 0) {
+            $status = "Periksa";
+        }
+        if (!$berkas) {
+            $status = "Periksa";
+        }
+
+        $status = json_decode(@$v['status']);
+        $statu_res = true;
+        if ($status) {
+            $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
+            foreach ($jenis_nilai as $key => $value) {
+                $jenisnya = 'status_' . $value;
+                $stat_nil = $status->$jenisnya ?? null;
+                if ($stat_nil ==  'ditolak') {
+                    $statu_res = false;
+                }
+            }
+        }
+        if (!$statu_res) {
+            $status = "Periksa";
+        }
+        if (!$v) {
+            $status = "Periksa";
+        }
+        if (@$v['berkas'] == '[]') {
+            $status = "Periksa";
+        }
+
         $data = [
             "nilai" => $v,
             "pribadi" => $this->pribadi->find_noww($id)[0],
-            "berkas" => $this->berkas->getByUser($id),
+            "berkas" => $berkas,
             "status_peserta" => $status_peserta,
             "judul" => "Pengumuman Seleksi",
             "status" => $status
