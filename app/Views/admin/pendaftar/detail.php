@@ -145,7 +145,7 @@
 
                     <?php
                     $jenis_nilai2 = ['nilai_pa', 'nilai_ps', 'nilai_wawancara'];
-                    $nama_nilai2 = ['Nilai Baca Alquran', 'Nilai Praktik Sholat Indonesia', 'Nilai Wawancara'];
+                    $nama_nilai2 = ['Nilai Tes Praktek pembacaan al quran', 'Nilai Tes Praktik Sholat', 'Nilai Tes Wawancara'];
                     foreach ($jenis_nilai2 as $key => $value) {
                       $jenis = $value;
                       $nama = $nama_nilai2[$key]; ?>

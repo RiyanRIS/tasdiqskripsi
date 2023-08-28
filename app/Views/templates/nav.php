@@ -36,7 +36,7 @@ $cfg = new \SConfig();
           <a href="<?= site_url('pendaftar') ?>" data-nav="pendaftar" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>
-              Data Diri
+              Data Saya
             </p>
           </a>
         </li>
@@ -44,7 +44,7 @@ $cfg = new \SConfig();
           <a href="<?= site_url('berkas') ?>" data-nav="berkas" class="nav-link">
             <i class="nav-icon fas fa-address-book"></i>
             <p>
-              Data Berkas
+              Upload Berkas
             </p>
           </a>
         </li>
