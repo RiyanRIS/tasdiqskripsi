@@ -92,7 +92,7 @@
                   $status = json_decode(@$nilai['status']);
 
                   ?>
-                  <input type="hidden" name="id" value="<?= $nilai['id_dt_pribadi'] ?>">
+                  <input type="hidden" name="id" value="<?= @$nilai['id_dt_pribadi'] ?>">
 
                   <table class="table table-bordered">
                     <tr style="background-color: #28a745;color: #fff;">

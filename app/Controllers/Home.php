@@ -107,10 +107,11 @@ class Home extends BaseController
 
         $data = [
             "nilai" => $v,
-            "pribadi" => $this->pribadi->find($id),
+            "pribadi" => $this->pribadi->find_noww($id)[0],
             "berkas" => $this->berkas->getByUser($id),
             "status_peserta" => $status_peserta,
-            "judul" => $status
+            "judul" => "Pengumuman Seleksi",
+            "status" => $status
         ];
 
         return view('pendaftar/pengumuman', $data);

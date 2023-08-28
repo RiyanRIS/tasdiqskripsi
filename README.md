@@ -17,8 +17,11 @@
 Tulisanya di ubah kaya gini mas done
 Data Diri Ubah = Data Saya done
 Data Berkas Ubah = Upload Berkas done
-Logo man Sama Tulisan Selamat Datang
+Logo man Sama Tulisan Selamat Datang [ga terlalu urgen]
 nama bulanya di ganti pake Bahasa Indonesia done
-Untuk fitur tgl tutupnya belum berfungsi
+Untuk fitur tgl tutupnya belum berfungsi done
 Fitur Cabut berkasnya masi error done
 Tampilan Laporanya diganti seperti gambar done
+Tampilan Pengumuman Seperti ini done
+Ini kan admin sudah verifikasi, tapi kalau [agak rumit kalau cek mana yang tadi dirubah]
+Ini kan ada 2 peserta ,gia sudah ada nilai

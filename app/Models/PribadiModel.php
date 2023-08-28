@@ -89,6 +89,19 @@ class PribadiModel extends Model
 			->getResultArray();
 	}
 
+	public function find_noww($a)
+	{
+		$angkatan = new AngkatanModel();
+		$angkatanAktif = $angkatan->isActive()->id_angkatan;
+		return $this->db->table($this->table)
+			->where('tbl_dt_pribadi.deleted_at', null)
+			->where('tbl_dt_pribadi.id', $a)
+			->join('tbl_angkatan', 'tbl_angkatan.id_angkatan = tbl_dt_pribadi.id_angkatan')
+			->join('tbl_nilai', 'tbl_nilai.id_dt_pribadi = tbl_dt_pribadi.id', 'left')
+			->get()
+			->getResultArray();
+	}
+
 	public function find_tercabut()
 	{
 		$angkatan = new AngkatanModel();
