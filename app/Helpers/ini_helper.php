@@ -17,6 +17,39 @@ function genId($v)
     echo $v['tahun'] . str_pad($v['id'], 4, "0", STR_PAD_LEFT);
 }
 
+function ubahFormatTanggal($tanggal)
+{
+    $bulanIndonesia = array(
+        1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+        5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+        9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
+    );
+
+    $tanggalArray = explode('-', $tanggal);
+
+    if (count($tanggalArray) === 3) {
+        $tahun = $tanggalArray[0];
+        $bulan =  (int)$tanggalArray[1];
+        $hari = $tanggalArray[2];
+
+        $bulanIndo = $bulanIndonesia[$bulan];
+
+        $tanggalFormatIndo = "$hari $bulanIndo $tahun";
+        return $tanggalFormatIndo;
+    }
+    return "-";
+}
+
+function hilangkanNolDiDepan($angka)
+{
+    if ($angka === '0') {
+        return $angka;
+    }
+
+    return ltrim($angka, '0');
+}
+
+
 function genId1($v)
 {
     print_r($v);

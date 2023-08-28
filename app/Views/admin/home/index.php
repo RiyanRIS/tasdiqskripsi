@@ -82,11 +82,11 @@
                           <td data-id=" <?= $v['id_angkatan'] ?>"><?= ++$key ?></td>
                           <td><?= $v['angkatan'] ?></td>
                           <td data-id="<?= $v['id_angkatan'] ?>"><?= ($v['status'] ? "<span class='badge badge-success'>Aktif<span>" : "<span class='badge badge-danger'>Tidak Aktif<span>") ?></td>
-                          <td data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_buka'])) ?></td>
+                          <td data-id="<?= $v['id_angkatan'] ?>"><?= ubahFormatTanggal($v['tgl_buka']) ?></td>
 
-                          <td data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_tutup'])) ?></td>
+                          <td data-id="<?= $v['id_angkatan'] ?>"><?= ubahFormatTanggal($v['tgl_tutup']) ?></td>
 
-                          <td data-id="<?= $v['id_angkatan'] ?>"><?= date('d F Y', strtotime($v['tgl_pengumuman'])) ?></td>
+                          <td data-id="<?= $v['id_angkatan'] ?>"><?= ubahFormatTanggal($v['tgl_pengumuman']) ?></td>
 
                           <td>
                             <a class="btn btn-sm btn-info cell" data-id="<?= $v['id_angkatan'] ?>" title="Edit data"><i class="fa fa-pencil-alt"></i> Edit</a>

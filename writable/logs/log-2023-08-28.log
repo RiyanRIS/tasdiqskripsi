@@ -1,0 +1,410 @@
+INFO - 2023-08-28 12:34:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:35:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:35:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:35:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:35:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:35:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:35:31 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 30.
+ 1 APPPATH\Helpers\ini_helper.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 30, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:35:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:35:34 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 30.
+ 1 APPPATH\Helpers\ini_helper.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 30, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:35:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:36:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:36:14 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 30.
+ 1 APPPATH\Helpers\ini_helper.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 30, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:37:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:37:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:37:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:37:36 --> Undefined index: 08
+in APPPATH\Helpers\ini_helper.php on line 35.
+ 1 APPPATH\Helpers\ini_helper.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: 08', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 35, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal('2023-08-01')
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:37:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:37:39 --> Undefined index: 08
+in APPPATH\Helpers\ini_helper.php on line 35.
+ 1 APPPATH\Helpers\ini_helper.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: 08', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 35, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal('2023-08-01')
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:39:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:39:08 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 32.
+ 1 APPPATH\Helpers\ini_helper.php(32): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 32, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:39:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:39:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:40:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:40:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:40:19 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 31.
+ 1 APPPATH\Helpers\ini_helper.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 31, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:40:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:40:20 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 31.
+ 1 APPPATH\Helpers\ini_helper.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 31, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:40:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:40:21 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 31.
+ 1 APPPATH\Helpers\ini_helper.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 31, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:40:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:40:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:40:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:40:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:40:58 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 29.
+ 1 APPPATH\Helpers\ini_helper.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 29, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:41:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:41:00 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 29.
+ 1 APPPATH\Helpers\ini_helper.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 29, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:42:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:42:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:42:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:42:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:42:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:42:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:42:52 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 29.
+ 1 APPPATH\Helpers\ini_helper.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 29, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:43:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:43:00 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 29.
+ 1 APPPATH\Helpers\ini_helper.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 29, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:43:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:43:20 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 30.
+ 1 APPPATH\Helpers\ini_helper.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 30, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:43:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:43:25 --> Undefined offset: 2023
+in APPPATH\Helpers\ini_helper.php on line 33.
+ 1 APPPATH\Helpers\ini_helper.php(33): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 2023', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 33, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal('2023-08-01')
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:43:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:43:37 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 30.
+ 1 APPPATH\Helpers\ini_helper.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 30, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:43:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:44:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:45:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:45:00 --> Undefined index: 08
+in APPPATH\Helpers\ini_helper.php on line 33.
+ 1 APPPATH\Helpers\ini_helper.php(33): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: 08', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 33, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal('2023-08-01')
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+CRITICAL - 2023-08-28 12:45:15 --> Invalid numeric literal
+in APPPATH\Helpers\ini_helper.php on line 24.
+ 1 APPPATH\Controllers\BaseController.php(85): helper([...])
+ 2 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 3 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:45:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:45:43 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 31.
+ 1 APPPATH\Helpers\ini_helper.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 31, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:45:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:45:49 --> Undefined index: 08
+in APPPATH\Helpers\ini_helper.php on line 33.
+ 1 APPPATH\Helpers\ini_helper.php(33): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: 08', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 33, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal('2023-08-01')
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:46:10 --> Undefined index: 08
+in APPPATH\Helpers\ini_helper.php on line 35.
+ 1 APPPATH\Helpers\ini_helper.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: 08', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 35, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal('2023-08-01')
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:46:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:46:14 --> Undefined index: 08
+in APPPATH\Helpers\ini_helper.php on line 35.
+ 1 APPPATH\Helpers\ini_helper.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: 08', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 35, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal('2023-08-01')
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:46:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:46:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:46:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:46:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:46:57 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 31.
+ 1 APPPATH\Helpers\ini_helper.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 31, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:47:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:47:47 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 31.
+ 1 APPPATH\Helpers\ini_helper.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 31, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:49:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:49:59 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 31.
+ 1 APPPATH\Helpers\ini_helper.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 31, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:50:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:50:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:50:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:50:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:51:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:51:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:51:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:51:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:51:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:52:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:52:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:52:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:52:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-28 12:52:41 --> Undefined offset: 1
+in APPPATH\Helpers\ini_helper.php on line 34.
+ 1 APPPATH\Helpers\ini_helper.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 1', 'C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Helpers\\ini_helper.php', 34, [...])
+ 2 APPPATH\Views\admin\home\index.php(85): ubahFormatTanggal(null)
+ 3 SYSTEMPATH\View\View.php(213): include('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\app\\Views\\admin\\home\\index.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 6 APPPATH\Controllers\Admin\Home.php(40): view('admin/home/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(68): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Riyan Risky\\My\\ci4\\tasdiq\\public\\index.php')
+INFO - 2023-08-28 12:54:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:55:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-28 12:55:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
