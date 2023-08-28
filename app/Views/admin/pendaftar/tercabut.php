@@ -43,7 +43,7 @@ $cfg = new \SConfig();
                     <tbody>
                       <?php
                       foreach ($record as $key => $v) {
-                        $rata = ($v['nilai_un'] + $v['nilai_raport'] + $v['nilai_ps'] + $v['nilai_pa']) / 4;
+                        $rata = $v['rata'];
                       ?>
                         <tr>
                           <td>

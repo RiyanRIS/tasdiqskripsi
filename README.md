@@ -12,3 +12,8 @@
 
 - username: admin
 - password: admin
+
+Tulisanya di ubah kaya gini mas done
+Data Diri Ubah = Data Saya done
+Data Berkas Ubah = Upload Berkas done
+nama bulanya di ganti pake Bahasa Indonesia done
