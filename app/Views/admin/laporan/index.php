@@ -55,14 +55,15 @@ $get = @$_GET;
 
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table id="tabelexport" class="table table-bordered table-hover table-pendaftar">
+                    <table style="text-align: center;" id="tabelexport" class="table table-bordered table-hover table-pendaftar">
                       <thead>
                         <tr>
                           <th rowspan="2">NO</th>
                           <th rowspan="2">ID DAFTAR</th>
                           <th rowspan="2">NAMA</th>
                           <th rowspan="2">ASAL SEKOLAH</th>
-                          <th colspan="8">NILAI</th>
+                          <th colspan="4">NILAI UJIAN NASIONAL</th>
+                          <th colspan="3">NILAI TES</th>
                           <th rowspan="2">STATUS</th>
                         </tr>
                         <tr>
@@ -73,7 +74,7 @@ $get = @$_GET;
                           <th>PRAKTIK SHOLAT</th>
                           <th>PRAKTIK AL QURAN</th>
                           <th>WAWANCARA</th>
-                          <th>RATA RATA</th>
+                          <!-- <th>RATA RATA</th> -->
                         </tr>
                       </thead>
                       <tbody>
@@ -92,7 +93,7 @@ $get = @$_GET;
                             <td><?= $v['nilai_ps'] ?></td>
                             <td><?= $v['nilai_pa'] ?></td>
                             <td><?= $v['nilai_wawancara'] ?></td>
-                            <td><?= $v['rata'] ?></td>
+                            <!-- <td><?= $v['rata'] ?></td> -->
                             <td><?= ($v['rata'] > $cfg->_nilaiminim ? "<span class='badge badge-success'>Lulus<span>" : "<span class='badge badge-danger'>Tidak Lulus<span>") ?></td>
                           </tr>
                         <?php  } ?>

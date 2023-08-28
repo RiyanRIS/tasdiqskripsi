@@ -13,7 +13,9 @@
 - username: admin
 - password: admin
 
+// 28 08 2023
 Tulisanya di ubah kaya gini mas done
 Data Diri Ubah = Data Saya done
 Data Berkas Ubah = Upload Berkas done
 nama bulanya di ganti pake Bahasa Indonesia done
+Fitur Cabut berkasnya masi error done
