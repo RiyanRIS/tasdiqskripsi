@@ -230,6 +230,15 @@ $cfg = new \SConfig();
           text: 'Harap hadir ke MAN 1 GAYO LUES untuk melakukan tes baca Alquran, sholat dan wawancara.!',
         })
       </script>
+    <?php } else if ($pesan == 5) { ?>
+      <script>
+        Swal.fire({
+          icon: 'info',
+          title: 'Informasi!',
+          confirmButtonText: "Oke",
+          html: 'Tunggu proses verifikasi berkas oleh admin, harap selalu periksa <a href="<?= site_url('berkas') ?>">halaman ini</a>!',
+        })
+      </script>
     <?php } ?>
   <?php } ?>
 

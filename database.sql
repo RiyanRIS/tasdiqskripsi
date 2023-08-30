@@ -76,9 +76,10 @@ INSERT INTO `tbl_angkatan` (`id_angkatan`, `angkatan`, `tahun`, `tgl_buka`, `tgl
 CREATE TABLE `tbl_berkas` (
   `id_berkas` int(11) NOT NULL,
   `id_dt_pribadi` int(11) NOT NULL,
-  `nama` varchar(64) NOT NULL,
-  `file` varchar(255) NOT NULL,
-  `status` varchar(60) NOT NULL,
+  `nama` varchar(64) DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `status` varchar(60) DEFAULT NULL,
+  `jenis` varchar(64) DEFAULT NULL,
   `upload_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -123,7 +124,7 @@ CREATE TABLE `tbl_nilai` (
   `nilai_wawancara` int(11) NOT NULL,
   `rata` int(11) NOT NULL,
   `berkas` text DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
