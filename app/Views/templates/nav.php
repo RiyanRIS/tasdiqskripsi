@@ -41,6 +41,14 @@ $cfg = new \SConfig();
           </a>
         </li>
         <li class="nav-item">
+          <a href="<?= site_url('nilai') ?>" data-nav="nilai" class="nav-link">
+            <i class="nav-icon fas fa-graduation-cap"></i>
+            <p>
+              Nilai Saya
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="<?= site_url('berkas') ?>" data-nav="berkas" class="nav-link">
             <i class="nav-icon fas fa-address-book"></i>
             <p>

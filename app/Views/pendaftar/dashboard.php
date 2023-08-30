@@ -29,18 +29,20 @@ $cfg = new \SConfig();
           <div class="row">
             <!-- Status Diterima -->
             <div class="col-12">
-              <!-- <h4 class="alert-heading">Selamat datang, <?= ucwords(@session()->get('user_nama')) ?></h4> -->
-
+              <?php if ($pesan == 0) { ?>
+                <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading">Terima kasih</h4>
+                  <p>Kamu telah menyelesaikan tahapan pendaftaran siswa baru MAN 1 GAYO LUES. Mohon menunggu hingga tanggal <a href="<?= site_url('pengumuman') ?>">pengumuman</a> tiba.</p>
+                </div>
+              <?php } ?>
 
             </div>
             <!-- Nilai -->
-            <!-- FORM Nilai -->
-
             <div class="col-md-6">
               <form method="post" action="edit" data-url="<?= site_url(" ubah/datanilai2") ?>" id="myForm2" enctype="multipart/form-data" accept-charset="utf-8" class="col-md-12">
                 <?php
-                $berkasnya = json_decode(@$nilai['berkas']);
-                $status = json_decode(@$nilai['status']);
+                $berkasnya = $berkasnya;
+                $status = $status_berkas;
                 ?>
                 <input type="hidden" name="id" value="<?= session()->user_id ?>">
 
@@ -65,7 +67,7 @@ $cfg = new \SConfig();
                       </td>
                       <td>
                         <div id="pilihan-<?= $jenis ?>">
-                          <p>File: <?php if (isset($berkasnya->$jenis)) {
+                          <p>File: <?php if ($berkasnya->$jenis != 'Belum upload') {
                                     ?><a target="BLANK" href="<?= base_url('uploads/temp/' . $berkasnya->$jenis) ?>">klik disini</a><?php } ?></p>
                         </div>
                         <div class="image-upload">
@@ -80,20 +82,13 @@ $cfg = new \SConfig();
                         <?php $jenisnya = 'status_' . $value; ?>
                         <div id="pilihan-<?= $jenisnya ?>">
                           <p><?php
-                              if (isset($berkasnya->$jenis)) {
-                                $stat_nil = $status->$jenisnya ?? null;
-                                if ($stat_nil) {
-                                  if ($stat_nil ==  'terverifikasi') {
-                                    echo "<span class='badge badge-success'>" . $stat_nil . "<span>";
-                                  } else {
-                                    echo "<span class='badge badge-danger'>" . $stat_nil . "<span>";
-                                  }
-                                } else {
-                                  echo "Belum verifikasi";
-                                } ?></p>
-                        <?php } else {
-                                echo "<span class='badge badge-danger'>Belum upload berkas<span>";
-                              } ?>
+                              $stat_nil = $status->$jenisnya ? $status->$jenisnya : "belum upload";
+                              if ($stat_nil ==  'terverifikasi') {
+                                echo "<span class='badge badge-success'>" . $stat_nil . "<span>";
+                              } else {
+                                echo "<span class='badge badge-danger'>" . $stat_nil . "<span>";
+                              }
+                              ?></p>
                         </div>
                       </td>
                     </tr>
@@ -146,10 +141,11 @@ $cfg = new \SConfig();
                       </thead>
                       <tbody>
                         <?php if ($berkas != null) {
-                          foreach ($berkas as $key => $v) { ?>
+                          foreach ($berkas as $key => $v) {
+                            $tampil = ($v->jenis == "kk" ? "Kartu Keluarga" : ($v->jenis == 'akta' ? "Akta Kelahiran" : ($v->jenis == 'bukti' ? "Ijazah/Surat Keterangan Lulus" : "Dokumen Lain"))); ?>
                             <tr>
                               <td><?= ++$key ?></td>
-                              <td><a target="_BLANK" href="<?= base_url('uploads/temp/' . $v->file) ?>"><?= $v->nama ?></a></td>
+                              <td><a target="_BLANK" href="<?= base_url('uploads/temp/' . $v->file) ?>"><?= $tampil ?></a></td>
                               <td>
                                 <?php if ($v->status == "Terverifikasi") { ?>
                                   <span class='badge badge-success'>Terverifikasi<span>
@@ -197,74 +193,47 @@ $cfg = new \SConfig();
     <?php } ?>
   </script>
 
-  <?php if (@$nilai['nilai_ps'] == 0 || @$nilai['nilai_pa'] == 0 || @$nilai['nilai_wawancara'] == 0) { ?>
-    <script>
-      Swal.fire({
-        icon: 'info',
-        title: 'Informasi!',
-        confirmButtonText: "Oke",
-        text: 'Harap hadir ke MAN 1 GAYO LUES untuk melakukan tes baca Alquran, sholat dan wawancara.!',
-      })
-    </script>
+  <?php if ($pesan != 0) { ?>
+    <?php if ($pesan == 1) { ?>
+      <script>
+        Swal.fire({
+          icon: 'info',
+          title: 'Informasi',
+          confirmButtonText: "Oke",
+          html: 'Mohon untuk melengkapi <a href="<?= site_url('nilai') ?>">data nilai</a> terlebih dahulu.',
+        })
+      </script>
+    <?php } else if ($pesan == 2) { ?>
+      <script>
+        Swal.fire({
+          icon: 'info',
+          title: 'Informasi',
+          confirmButtonText: "Oke",
+          html: 'Tunggu proses verifikasi nilai oleh admin, harap selalu periksa <a href="<?= site_url('nilai') ?>">halaman ini</a>',
+        })
+      </script>
+    <?php } else if ($pesan == 3) { ?>
+      <script>
+        Swal.fire({
+          icon: 'info',
+          title: 'Informasi',
+          confirmButtonText: "Oke",
+          html: 'Mohon untuk melengkapi <a href="<?= site_url('berkas') ?>">berkas</a> terlebih dahulu.',
+        })
+      </script>
+    <?php } else if ($pesan == 4) { ?>
+      <script>
+        Swal.fire({
+          icon: 'info',
+          title: 'Informasi!',
+          confirmButtonText: "Oke",
+          text: 'Harap hadir ke MAN 1 GAYO LUES untuk melakukan tes baca Alquran, sholat dan wawancara.!',
+        })
+      </script>
+    <?php } ?>
   <?php } ?>
 
-  <?php if (!$berkas) { ?>
-    <script>
-      Swal.fire({
-        icon: 'error',
-        title: 'Informasi',
-        confirmButtonText: "Oke",
-        html: 'Mohon untuk melengkapi <a href="<?= site_url('berkas') ?>">berkas</a> terlebih dahulu.',
-      })
-    </script>
-  <?php } ?>
 
-  <?php
-  $status = json_decode(@$nilai['status']);
-  $statu_res = true;
-  if ($status) {
-    $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
-    foreach ($jenis_nilai as $key => $value) {
-      $jenisnya = 'status_' . $value;
-      $stat_nil = $status->$jenisnya ?? null;
-      if ($stat_nil ==  'ditolak') {
-        $statu_res = false;
-      }
-    }
-  }
-  ?>
-  <?php if (!$statu_res) { ?>
-    <script>
-      Swal.fire({
-        icon: 'error',
-        title: 'Informasi',
-        confirmButtonText: "Oke",
-        html: 'Ada berkas nilai yang ditolak, harap periksa kembali <a href="<?= site_url('pendaftar') ?>">halaman ini</a>',
-      })
-    </script>
-  <?php } ?>
-
-  <?php if (!$nilai) { ?>
-    <script>
-      Swal.fire({
-        icon: 'error',
-        title: 'Informasi',
-        confirmButtonText: "Oke",
-        html: 'Mohon untuk melengkapi <a href="<?= site_url('pendaftar') ?>">form berikut</a> terlebih dahulu.',
-      })
-    </script>
-  <?php } ?>
-
-  <?php if (@$nilai['berkas'] == '[]') { ?>
-    <script>
-      Swal.fire({
-        icon: 'error',
-        title: 'Informasi',
-        confirmButtonText: "Oke",
-        html: 'Mohon untuk mengupload <a href="<?= site_url('pendaftar') ?>">bukti nilai</a> ujian nasional.',
-      })
-    </script>
-  <?php } ?>
 
 </body>
 

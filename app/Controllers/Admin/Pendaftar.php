@@ -35,9 +35,11 @@ class Pendaftar extends BaseController
   {
     if (!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
+    $smp = $this->smp->find();
     $data = [
       "record" => $this->pribadi->find($id),
       "nilai" => @$this->nilai->getBySiswa($id)[0],
+      "smp" => $smp,
       "judul" => "Halaman Detail Pendaftar"
     ];
 
@@ -308,11 +310,6 @@ class Pendaftar extends BaseController
         'rules'  => 'required',
         'errors' => [],
       ],
-      'agama' => [
-        'label'  => 'Agama',
-        'rules'  => 'required',
-        'errors' => [],
-      ],
       'alamat' => [
         'label'  => 'Alamat',
         'rules'  => 'required',
@@ -536,7 +533,7 @@ class Pendaftar extends BaseController
     return redirect()->to(site_url('admin/berkastercabut/'))->with('msg', $msg);
   }
 
-  public function cabutberkas_permanen(string $id)
+  public function cabutberkas_permanen()
   {
     // Cek hak akses user
     if (!$this->isSecure()) {
@@ -546,6 +543,12 @@ class Pendaftar extends BaseController
         'pesan'   => 'Anda tidak berhak mengakses halaman ini',
       ];
       return json_encode($msg);
+    }
+
+    $datas = $this->pribadi->where('deleted_at is NOT NULL', NULL, false)->get()->getResult();
+    foreach ($datas as $key => $value) {
+      $this->berkas->delete(['id_dt_pribadi' => $value->id]);
+      $this->nilai->delete(['id_dt_pribadi' => $value->id]);
     }
 
     $hapus = $this->pribadi->purgeDeleted();

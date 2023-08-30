@@ -17,22 +17,18 @@ class Home extends BaseController
         $laporan = [];
         $ipa = $ips = $lulus = $tidak_lulus = 0;
         foreach ($pendaftars as $key => $v) {
-            if ($v['jurusan'] == 'IPA') $ipa++;
-            if ($v['jurusan'] == 'IPS') $ips++;
             ($v['rata'] > $this->cfg->_nilaiminim ? $lulus++ : $tidak_lulus++);
         }
 
         $laporan = [
-            'ipa' => $ipa,
-            'ips' => $ips,
             'total' => $total,
-            'lulus' => 0,
-            'tidak_lulus' => 0,
+            'lulus' => $lulus,
+            'tidak_lulus' => $tidak_lulus,
         ];
 
         $data = [
             "laporan" => $laporan,
-            'sisa' => 200 - count($pendaftars),
+            'sisa' => $this->cfg->_kuota - count($pendaftars),
             "angkatans" => $this->angkatan->where('isDelete', null)->orderby('tahun', 'DESC')->find(),
             "judul" => "Dashboard"
         ];
