@@ -124,11 +124,7 @@ CREATE TABLE `tbl_nilai` (
   `nilai_wawancara` int(11) NOT NULL,
   `rata` int(11) NOT NULL,
   `berkas` text DEFAULT NULL,
-<<<<<<< HEAD
-  `status` varchar(255) NOT NULL DEFAULT "{}"
-=======
   `status` varchar(255) DEFAULT NULL
->>>>>>> f269e82265b7ccaab6e4cb004c4ee10e800a450e
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
