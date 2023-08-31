@@ -234,7 +234,7 @@ class Pendaftar extends BaseController
     // Cek isian ngga boleh kosong dan nilai minimal 1 dan maksimal 100
 
     if ($this->request->getPost()) {
-      $id = $this->request->getPost('id');
+      $id = $this->request->getPost('id_dt_pribadi');
       $additionalData = $this->request->getPost();
       unset($additionalData['id']);
       // Cek Nilai Sudah Pernah Simpan
@@ -244,7 +244,7 @@ class Pendaftar extends BaseController
         // Proses Update
         $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], $additionalData);
       } else {
-        $additionalData['id_dt_pribadi'] = $id;
+        $additionalData['id_dt_pribadi'] = $this->request->getPost('id_dt_pribadi');
         $lastid = $this->nilai->simpan($additionalData);
       }
 
