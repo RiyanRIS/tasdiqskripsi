@@ -56,3 +56,17 @@ function genId1($v)
     die();
     // echo $v['tahun'] . "_" . ($v['jurusan'] == 'IPA' ? 'A' : 'B') . str_pad($v['id'], 4, "0", STR_PAD_LEFT);
 }
+
+// 0 = belum dibuka, 1 = pendaftaran, 2 = pengumuman
+function mode_sistem($angkatan, $now = false)
+{
+    $date_now = $now ? $now : date("Y-m-d");
+    $status = 0;
+    if ($date_now >= $angkatan->tgl_buka && $date_now <= $angkatan->tgl_tutup) {
+        $status = 1;
+    }
+    if ($date_now >= $angkatan->tgl_pengumuman) {
+        $status = 2;
+    }
+    return $status;
+}

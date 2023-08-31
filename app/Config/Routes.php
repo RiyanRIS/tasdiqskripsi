@@ -38,6 +38,7 @@ $routes->get('jadwal', 'Home::jadwal');
 $routes->get('persyaratan', 'Home::persyaratan');
 $routes->get('pendaftar', 'Home::pendaftar');
 $routes->get('berkas', 'Home::berkas');
+$routes->get('nilai', 'Home::nilai');
 
 $routes->group('ubah', function ($routes) {
     $routes->post('datamasuk', 'Pendaftar::ubahdatamasuk');

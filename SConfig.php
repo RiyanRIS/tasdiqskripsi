@@ -7,6 +7,8 @@ class SConfig
     public $_logoSekolah = "http://localhost:8080/assets/images/logo.png";
 
     public $_nilaiminim = 75;
+    public $_kuota = 200;
+    public $_path_upload = ROOTPATH . 'public/uploads/temp/';
 
     function is_active($a, $b)
     {

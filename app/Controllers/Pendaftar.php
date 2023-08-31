@@ -96,8 +96,6 @@ class Pendaftar extends BaseController
       $isSudahAda = $this->nilai->isSudahAda($id);
 
       $berkass = [];
-      // $nilais = $isSudahAda ? $this->nilai->getBySiswa($id)[0] : [];
-      // $berkasnya = $isSudahAda ? (array)json_decode(@$nilais['berkas']) : [];
 
       $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
 
@@ -107,24 +105,25 @@ class Pendaftar extends BaseController
         if (!$file->isValid()) {
           $msg = [
             'status' => false,
-            'url' => site_url("pendaftar"),
-            'pesan'   => 'Ada berkas yang belum terupload',
+            'url' => site_url("nilai"),
+            'pesan'   => 'Ada berkas yang belum dipilih',
           ];
           return json_encode($msg);
-        } else {
-          if ($file->getSize() > $maxSize) {
-            $msg = [
-              'status' => false,
-              'url' => site_url("pendaftar"),
-              'pesan'   => 'File maksimal 2 mb',
-            ];
-            return json_encode($msg);
-          } else {
-            $newName = $file->getRandomName();
-            $file->move(ROOTPATH . 'public/uploads/temp/', $newName);
-            $berkass[$v] = $newName;
-          }
         }
+        if ($file->getSize() > $maxSize) {
+          $msg = [
+            'status' => false,
+            'url' => site_url("nilai"),
+            'pesan'   => 'Ukuran File maksimal 2 mb',
+          ];
+          return json_encode($msg);
+        }
+      }
+      foreach ($jenis_nilai as $k => $v) {
+        $file = $this->request->getFile('file' . $v);
+        $newName = $file->getRandomName();
+        $file->move($this->cfg->_path_upload, $newName);
+        $berkass[$v] = $newName;
       }
 
       $additionalData['berkas'] = json_encode($berkass);
@@ -136,19 +135,27 @@ class Pendaftar extends BaseController
         $lastid = $this->nilai->simpan($additionalData);
       }
 
+      $json_nilai = [
+        'status_un_mat' => "Belum verifikasi",
+        'status_un_bi' => "Belum verifikasi",
+        'status_un_ipa' => "Belum verifikasi",
+        'status_un_bing' => "Belum verifikasi",
+      ];
+      $jsonya = json_encode($json_nilai);
+
       $nilais = $this->nilai->getBySiswa($id)[0];
       $rata = genNilai($nilais);
-      $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], ['rata' => $rata]);
+      $lastid = $this->nilai->updateS(["id_dt_pribadi" => $id], ['rata' => $rata, 'status' => $jsonya]);
 
       if ($lastid) {
         $msg = [
           'status' => true,
-          'url' => site_url("pendaftar"),
+          'url' => site_url("nilai"),
         ];
       } else {
         $msg = [
           'status' => false,
-          'url' => site_url("pendaftar"),
+          'url' => site_url("nilai"),
           'pesan'   => 'Data gagal dirubah',
         ];
       }
@@ -261,30 +268,24 @@ class Pendaftar extends BaseController
       return json_encode($msg);
     }
 
-    // Cek isian
-    $rules = [
-      'nama' => [
-        'label'  => 'Nama Berkas',
-        'rules'  => 'required',
-        'errors' => [],
-      ]
-    ];
-
-    $this->validation->setRules($rules);
-
-    if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
+    if ($this->request->getPost()) {
       $file = $this->request->getFile('file');
+      $maxSize = 2 * 1024 * 1000;
+      if ($file->getSize() > $maxSize) {
+        $msg = [
+          'status' => false,
+          'url' => site_url("nilai"),
+          'pesan'   => 'Ukuran File maksimal 2 mb',
+        ];
+        return json_encode($msg);
+      }
       $newName = $file->getRandomName();
-      $file->move(ROOTPATH . 'public/uploads/temp/', $newName);
+      $file->move($this->cfg->_path_upload, $newName);
 
       $id = $this->request->getPost('id');
 
-      $additionalData['file'] = $newName;
-      $additionalData['nama'] = $this->request->getPost('nama');
-      $additionalData['id_dt_pribadi'] = $id;
-      $additionalData['status'] = "Belum Dicek";
-
-      $lastid = $this->berkas->insert($additionalData);
+      // $lastid = $this->berkas->update(['id_dt_pribadi' => $id, 'jenis' => $this->request->getPost('jenis')], ['file' => $newName])
+      $lastid = $this->berkas->where('id_dt_pribadi', $id)->where('jenis', $this->request->getPost('jenis'))->set(['file' => $newName, 'status' => "Belum dicek"])->update();
 
       if ($lastid) {
         $msg = [
@@ -320,11 +321,9 @@ class Pendaftar extends BaseController
       return json_encode($msg);
     }
 
-    $get = $this->berkas->find($id);
+    $hapus = $this->berkas->where('id_berkas', $id)->set(['file' => null])->update();
 
-    $hapus = $this->berkas->delete($id);
-
-    $msg = ($hapus ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
+    $msg = ($hapus ? [1, "Berhasil menghapus berkas"] : [0, "Gagal menghapus berkas"]);
 
     return redirect()->to(site_url('berkas'))->with('msg', $msg);
   }

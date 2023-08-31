@@ -41,10 +41,11 @@
                     </thead>
                     <tbody>
                       <?php if ($berkas != null) {
-                        foreach ($berkas as $key => $v) { ?>
+                        foreach ($berkas as $key => $v) {
+                          $tampil = ($v->jenis == "kk" ? "Kartu Keluarga" : ($v->jenis == 'akta' ? "Akta Kelahiran" : ($v->jenis == 'bukti' ? "Ijazah/Surat Keterangan Lulus" : "Dokumen Lain"))); ?>
                           <tr>
                             <td><?= ++$key ?></td>
-                            <td><a target="_BLANK" href="<?= base_url('uploads/temp/' . $v->file) ?>"><?= $v->nama ?></a></td>
+                            <td><a target="_BLANK" href="<?= base_url('uploads/temp/' . $v->file) ?>"><?= $tampil ?></a></td>
                             <td>
                               <?php if ($v->status == "Terverifikasi") { ?>
                                 <span class='badge badge-success'>Terverifikasi<span>
@@ -55,7 +56,7 @@
                                           <?php } ?>
                             </td>
                             <td>
-                              <a onclick="return confirm('Hapus Data?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/pendaftar/ubah/berkas/hapus/' . $v->id_berkas) ?>" class="btn btn-sm btn-danger" title="Hapus"><i class="fa fa-trash"></i></a>
+                              <!-- <a onclick="return confirm('Hapus Data?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/pendaftar/ubah/berkas/hapus/' . $v->id_berkas) ?>" class="btn btn-sm btn-danger" title="Hapus"><i class="fa fa-trash"></i></a> -->
 
                               <div class="btn-group" role="group">
                                 <button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,7 +79,7 @@
             </div>
 
             <!-- FORM Berkas -->
-            <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/pendaftar/tambah/berkas") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-4">
+            <!-- <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/pendaftar/tambah/berkas") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-4">
               <div class="card card-success">
 
                 <div class="card-header">
@@ -107,7 +108,7 @@
                   <a href="<?= site_url('admin/pendaftar') ?>" class="btn btn-success">Kembali</a>
                 </div>
               </div>
-            </form>
+            </form> -->
 
           </div>
         </div>

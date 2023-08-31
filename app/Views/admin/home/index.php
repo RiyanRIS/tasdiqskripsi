@@ -52,7 +52,7 @@
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="<?= site_url('admin/laporan') ?>?angkatan=&status=0" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= site_url('admin/laporan') ?>?angkatan=&status=2" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
           </div>
@@ -175,6 +175,9 @@
       $('#modalnya #myForm').attr('data-url', '<?= site_url("admin/angkatan/ubah/") ?>' + id)
       $('#id').val(id)
       $('#angkatan').val(data.angkatan)
+      $('#tgl_buka').val(data.tgl_buka)
+      $('#tgl_tutup').val(data.tgl_tutup)
+      $('#tgl_pengumuman').val(data.tgl_pengumuman)
       $('#tahun').val(data.tahun)
       if (data.status == 1) {
         $('#status').val('1')

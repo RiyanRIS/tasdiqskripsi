@@ -43,7 +43,7 @@ $get = @$_GET;
                       <select name="status" id="status" class="form-control">
                         <option value="">--Semua Status--</option>
                         <option <?= is_selected(@$get['status'], '1') ?> value="1">Lulus</option>
-                        <option <?= is_selected(@$get['status'], '2') ?> value="0">Tidak Lulus</option>
+                        <option <?= is_selected(@$get['status'], '2') ?> value="2">Tidak Lulus</option>
                       </select>
                     </div>
 

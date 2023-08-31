@@ -62,7 +62,12 @@
 
                   <div class="form-group" id="notifikasi_asl_sekolah">
                     <label for="asl_sekolah">Asal Sekolah</label>
-                    <input type="text" class="form-control" id="asl_sekolah" value="<?= @$record['asl_sekolah'] ?>" name="asl_sekolah" placeholder="Masukkan " required="true" autocomplete="off">
+                    <select class="custom-select d-block w-100" name="asl_sekolah" id="asl_sekolah" required>
+                      <option value="">--- ASAL SEKOLAH ---</option>
+                      <?php foreach ($smp as $val) { ?>
+                        <option <?= $val['nama'] == $record['asl_sekolah'] ? 'selected' : '' ?> value="<?= $val['nama'] ?>"><?= $val['nama'] ?></option>
+                      <?php } ?>
+                    </select>
                   </div>
 
                   <div class="form-group" id="notifikasi_no_tlpn">

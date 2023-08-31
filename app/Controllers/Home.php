@@ -7,20 +7,11 @@ class Home extends BaseController
     public function index()
     {
         $angkatan = $this->angkatan->isActive();
-        $date_now = date('Y-m-d');
-        // $date_now = "2023-03-20"; // ubah ini untuk tes
-        $status = 0; // 1=masa pendaftaran, 2=pengumuman
-
-        if ($date_now >= $angkatan->tgl_buka && $date_now <= $angkatan->tgl_tutup) {
-            $status = 1;
-        }
-        if ($date_now >= $angkatan->tgl_pengumuman) {
-            $status = 2;
-        }
         $data = [
-            'status' => $status,
+            'status' => mode_sistem($angkatan),
             'angkatan' => $angkatan,
         ];
+
         return view('index', $data);
     }
 
@@ -32,18 +23,8 @@ class Home extends BaseController
     public function jadwal()
     {
         $angkatan = $this->angkatan->isActive();
-        $date_now = date('Y-m-d');
-        // $date_now = "2023-03-20"; // ubah ini untuk tes
-        $status = 0; // 1=masa pendaftaran, 2=pengumuman
 
-        if ($date_now >= $angkatan->tgl_buka && $date_now <= $angkatan->tgl_tutup) {
-            $status = 1;
-        }
-        if ($date_now >= $angkatan->tgl_pengumuman) {
-            $status = 2;
-        }
         $data = [
-            'status' => $status,
             'angkatan' => $angkatan,
         ];
         return view('jadwal', $data);
@@ -59,20 +40,74 @@ class Home extends BaseController
         if (!$this->isSecure('user')) return redirect()->to(site_url('login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $id = session()->get('user_id');
-        $v = @$this->nilai->getBySiswa($id)[0];
-        $status_peserta = false;
+        $v = $this->nilai->getBySiswa($id)[0];
+        $pesan = 0;
 
-        if ($v) {
-            if (genNilai($v) > $this->cfg->_nilaiminim) {
-                $status_peserta = true;
+        $status_nilai = json_decode($v['status']);
+        $bukti_nilai = json_decode($v['berkas']);
+
+        // cek berkas nilai peserta
+        $statu_res = true;
+        $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
+        foreach ($jenis_nilai as $key => $value) {
+            $jenisnya = 'status_' . $value;
+            $stat_nil = $status_nilai->$jenisnya ?? null;
+            if ($stat_nil !=  'terverifikasi') {
+                $statu_res = false;
             }
         }
 
+        if (!$statu_res) {
+            $pesan = 2;
+        }
+
+        // cek verifikasi berkas
+        $status_berkas = true;
+        $berkas = $this->berkas->getByUser($id);
+        foreach ($berkas as $key => $value) {
+            if ($value->status != "Terverifikasi") $status_berkas = false;
+        }
+
+        if (!$status_berkas) {
+            $pesan = 5;
+        }
+
+        // cek nilai admin
+        $status_nil = true;
+        $jenis_nilai_admin = ['nilai_ps', 'nilai_pa', 'nilai_wawancara'];
+        foreach ($jenis_nilai_admin as $k => $val) {
+            if ($v[$val] == 0) $status_nil = false;
+        }
+
+        if (!$status_nil) {
+            $pesan = 4;
+        }
+
+        // cek berkas
+        $status_berkas = true;
+        $berkas = $this->berkas->getByUser($id);
+        foreach ($berkas as $key => $value) {
+            if ($value->file == null) $status_berkas = false;
+        }
+
+        if (!$status_berkas) {
+            $pesan = 3;
+        }
+
+        // cek nilai
+        if ($bukti_nilai->un_mat == 'Belum upload') {
+            $pesan = 1;
+        }
+
+        $pribadi = $this->pribadi->find($id);
+
         $data = [
+            "pesan" => $pesan,
+            'status_berkas' => $status_nilai,
+            "berkasnya" => $bukti_nilai,
             "nilai" => $v,
-            "pribadi" => $this->pribadi->find($id),
-            "berkas" => $this->berkas->getByUser($id),
-            "status_peserta" => $status_peserta,
+            "pribadi" => $pribadi,
+            "berkas" => $berkas,
             "judul" => "Dashboard Peserta"
         ];
 
@@ -84,65 +119,87 @@ class Home extends BaseController
         if (!$this->isSecure('user')) return redirect()->to(site_url('login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $id = session()->get('user_id');
-        $v = @$this->nilai->getBySiswa($id)[0];
-        $status_peserta = false;
+        $v = $this->nilai->getBySiswa($id)[0];
+        $pesan = 0;
 
-        if ($v) {
-            if (genNilai($v) > $this->cfg->_nilaiminim) {
-                $status_peserta = true;
-            }
-        }
+        $status_nilai = json_decode($v['status']);
+        $bukti_nilai = json_decode($v['berkas']);
 
-        $status = "Belum waktunya pengumuman";
-
-        $angkatan = $this->angkatan->isActive();
-        $tgl_now = date("Y-m-d");
-        if ($angkatan->tgl_pengumuman <= $tgl_now) {
-            if ($status_peserta) {
-                $status = "Anda lulus";
-            } else {
-                $status = "Anda tidak lulus";
-            }
-        }
-
-        $berkas = $this->berkas->getByUser($id);
-
-        if (@$v['nilai_ps'] == 0 || @$v['nilai_pa'] == 0 || @$v['nilai_wawancara'] == 0) {
-            $status = "Periksa";
-        }
-        if (!$berkas) {
-            $status = "Periksa";
-        }
-
-        $status = json_decode(@$v['status']);
+        // cek berkas nilai peserta
         $statu_res = true;
-        if ($status) {
-            $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
-            foreach ($jenis_nilai as $key => $value) {
-                $jenisnya = 'status_' . $value;
-                $stat_nil = $status->$jenisnya ?? null;
-                if ($stat_nil ==  'ditolak') {
-                    $statu_res = false;
-                }
+        $jenis_nilai = ['un_mat', 'un_bi', 'un_ipa', 'un_bing'];
+        foreach ($jenis_nilai as $key => $value) {
+            $jenisnya = 'status_' . $value;
+            $stat_nil = $status_nilai->$jenisnya ?? null;
+            if ($stat_nil !=  'terverifikasi') {
+                $statu_res = false;
             }
         }
+
         if (!$statu_res) {
-            $status = "Periksa";
+            $pesan = 2;
         }
-        if (!$v) {
-            $status = "Periksa";
+
+        // cek verifikasi berkas
+        $status_berkas = true;
+        $berkas = $this->berkas->getByUser($id);
+        foreach ($berkas as $key => $value) {
+            if ($value->status != "Terverifikasi") $status_berkas = false;
         }
-        if (@$v['berkas'] == '[]') {
-            $status = "Periksa";
+
+        if (!$status_berkas) {
+            $pesan = 5;
         }
+
+        // cek nilai admin
+        $status_nil = true;
+        $jenis_nilai_admin = ['nilai_ps', 'nilai_pa', 'nilai_wawancara'];
+        foreach ($jenis_nilai_admin as $k => $val) {
+            if ($v[$val] == 0) $status_nil = false;
+        }
+
+        if (!$status_nil) {
+            $pesan = 4;
+        }
+
+        // cek berkas
+        $status_berkas = true;
+        $berkas = $this->berkas->getByUser($id);
+        foreach ($berkas as $key => $value) {
+            if ($value->file == null) $status_berkas = false;
+        }
+
+        if (!$status_berkas) {
+            $pesan = 3;
+        }
+
+        // cek nilai
+        if ($bukti_nilai->un_mat == 'Belum upload') {
+            $pesan = 1;
+        }
+
+        $pengumuman = true;
+        $angkatan = $this->angkatan->isActive();
+        if ($angkatan->tgl_pengumuman <= date('Y-m-d')) {
+            $pengumuman = false;
+        }
+
+        $lulus = false;
+        if ($v['rata'] >= $this->cfg->_nilaiminim)
+            $lulus = true;
+
+        $pribadi = $this->pribadi->find_noww($id)[0];
 
         $data = [
+            "pesan" => $pesan,
+            'status_berkas' => $status_nilai,
+            "berkasnya" => $bukti_nilai,
             "nilai" => $v,
-            "pribadi" => $this->pribadi->find_noww($id)[0],
+            "pribadi" => $pribadi,
             "berkas" => $berkas,
-            "status_peserta" => $status_peserta,
-            "judul" => "Pengumuman Seleksi",
-            "status" => $status
+            "judul" => "Halaman Pengumuman",
+            "pengumuman" => $pengumuman,
+            "lulus" => $lulus
         ];
 
         return view('pendaftar/pengumuman', $data);
@@ -153,13 +210,28 @@ class Home extends BaseController
         if (!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
         $id = session()->get('user_id');
+        $smp = $this->smp->find();
         $data = [
             "record" => $this->pribadi->find($id),
             "nilai" => @$this->nilai->getBySiswa($id)[0],
+            "smp" => $smp,
             "judul" => "Halaman Pendaftar"
         ];
 
         return view('pendaftar/detail', $data);
+    }
+
+    public function nilai()
+    {
+        if (!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
+
+        $id = session()->get('user_id');
+        $data = [
+            "nilai" => @$this->nilai->getBySiswa($id)[0],
+            "judul" => "Halaman Nilai"
+        ];
+
+        return view('pendaftar/nilai', $data);
     }
 
     public function berkas()
